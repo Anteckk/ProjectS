@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class Item 
 {
+    //Add item type here
     public enum ItemType
     {
         //TODO: Add more thing later (VS)
-        Screwdriver,
+        Screwdriver, Statuette,
     }
 
     public ItemType itemType;
