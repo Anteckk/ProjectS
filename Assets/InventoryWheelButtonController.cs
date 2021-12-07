@@ -9,12 +9,14 @@ public class InventoryWheelButtonController : MonoBehaviour
     public Image selectedItem;
     public Sprite icon;
     
+    private PlayerController playerController;
     private Animator anim;
     private bool selected = false;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -31,12 +33,15 @@ public class InventoryWheelButtonController : MonoBehaviour
     {
         selected = true;
         InventoryWheelController.itemID = iD;
+        playerController.getPlayerInventory().SetItemEquipped(iD);
+        Debug.Log(iD);
     }
     
     public void Deselected()
     {
         selected = false;
         InventoryWheelController.itemID = -1;
+        playerController.getPlayerInventory().UnequipItem();
     }
 
     public void HoverEnter()
@@ -50,4 +55,5 @@ public class InventoryWheelButtonController : MonoBehaviour
         anim.SetBool("Hover", false);
         itemText.text = "";
     }
+
 }

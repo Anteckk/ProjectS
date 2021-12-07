@@ -8,14 +8,7 @@ public class InventoryWheelController : MonoBehaviour
     public Image selectedItem;
     public Sprite noImage;
     public static int itemID;
-
-    private PlayerController playerController;
     private bool inventoryWheelSelected = false;
-
-    private void Start()
-    {
-        playerController = FindObjectOfType<PlayerController>();
-    }
 
     private void Update()
     {
@@ -37,12 +30,9 @@ public class InventoryWheelController : MonoBehaviour
         {
             case -1: //Nothing is selected
                 selectedItem.sprite = noImage;
-                setPlayerEquipped(itemID);
                 break;
             case 0://Screwdriver
                 //TODO: Do something idk
-                setPlayerEquipped(itemID);
-                Debug.Log("Screwdriver");
                 break;
             case 1: //Item
                 break;
@@ -58,19 +48,6 @@ public class InventoryWheelController : MonoBehaviour
                 break;
             case 7: //Item
                 break;  
-        }
-    }
-
-    //Set/Unset Equipement du joueur
-    private void setPlayerEquipped(int index)
-    {
-        if (index == -1)
-        {
-            playerController.getPlayerInventory().UnequipItem();
-        }
-        else
-        {
-            playerController.getPlayerInventory().SetItemEquipped(index);
         }
     }
 }

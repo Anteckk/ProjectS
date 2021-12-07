@@ -35,7 +35,6 @@ public class Inventory
 
     public void SetItemEquipped(int index)
     {
-        UnequipItem();
         itemList[index].isEquipped = true;
         Debug.Log(itemList.Find(x => x.isEquipped=true));
     }

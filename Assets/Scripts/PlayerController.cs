@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public Material SherlockMaterial;
     public Material WatsonMaterial;
     private Camera camera;
+    private Inventory playerInventory;
 
     // Start is called before the first frame update
     void Start()
@@ -69,4 +70,10 @@ public class PlayerController : MonoBehaviour
             meshRenderer.material = WatsonMaterial;
         }
     }
+
+    public Inventory getPlayerInventory()
+    {
+        return playerInventory;
+    }
+    
 }
