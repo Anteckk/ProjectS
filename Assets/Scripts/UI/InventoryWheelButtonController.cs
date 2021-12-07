@@ -36,7 +36,7 @@ public class InventoryWheelButtonController : MonoBehaviour
         if (selected)
         {
             selectedItem.sprite = icon;
-            itemText.text = itemName;
+            itemText.text = playerController.getPlayerInventory().getItem(iD).itemType.ToString();
         }
     }
 

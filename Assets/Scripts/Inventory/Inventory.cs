@@ -26,7 +26,6 @@ public class Inventory
         {
             itemList.Find(x => x.isEquipped = true).isEquipped = false;
         }
-        
     }
 
     public void SetItemEquipped(int index)
@@ -37,5 +36,10 @@ public class Inventory
     public int getInventorySize()
     {
         return itemList.Count;
+    }
+
+    public Item getItem(int index)
+    {
+        return itemList[index];
     }
 }
