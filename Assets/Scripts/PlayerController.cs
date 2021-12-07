@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,14 +14,17 @@ public class PlayerController : MonoBehaviour
     private MeshRenderer meshRenderer;
     public Material SherlockMaterial;
     public Material WatsonMaterial;
+    private Camera camera;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
-        speed = 50;
+        speed = 10;
         isSherlock = true;
+
+        camera = Camera.main;
     }
 
     // Update is called once per frame
@@ -29,9 +33,12 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
 
+        //Character movement
         Vector3 movement = transform.right * x + transform.forward * z;
-        rb.MovePosition(transform.position + movement.normalized * speed * Time.deltaTime);
-
+        transform.position += movement.normalized * speed * Time.deltaTime;
+        
+        camera.transform.LookAt(gameObject.transform);
+        
         if (Input.GetKeyDown("r"))
         {
             switchCharacter();
@@ -53,12 +60,12 @@ public class PlayerController : MonoBehaviour
         
         if (isSherlock)
         {
-            speed = 50;
+            speed = 10;
             meshRenderer.material = SherlockMaterial;
         }
         else
         {
-            speed = 80;
+            speed = 20;
             meshRenderer.material = WatsonMaterial;
         }
     }
