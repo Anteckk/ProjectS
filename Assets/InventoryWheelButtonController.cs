@@ -8,15 +8,26 @@ public class InventoryWheelButtonController : MonoBehaviour
     public TextMeshProUGUI itemText;
     public Image selectedItem;
     public Sprite icon;
+    public Sprite blankIcon;
     
     private PlayerController playerController;
     private Animator anim;
     private bool selected = false;
+    private int currentPlayerInventorySize;
+    private void Awake()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+    }
     // Start is called before the first frame update
     void Start()
     {
+        currentPlayerInventorySize = playerController.getPlayerInventory().getInventorySize();
+        if (iD >= currentPlayerInventorySize)
+        {
+            GetComponent<Button>().interactable = false;
+        }
         anim = GetComponent<Animator>();
-        playerController = FindObjectOfType<PlayerController>();
+        
     }
 
     // Update is called once per frame
@@ -34,7 +45,6 @@ public class InventoryWheelButtonController : MonoBehaviour
         selected = true;
         InventoryWheelController.itemID = iD;
         playerController.getPlayerInventory().SetItemEquipped(iD);
-        Debug.Log(iD);
     }
     
     public void Deselected()

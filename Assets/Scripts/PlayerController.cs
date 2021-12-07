@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
         isSherlock = true;
 
         camera = Camera.main;
+
+        playerInventory = new Inventory();
     }
 
     // Update is called once per frame

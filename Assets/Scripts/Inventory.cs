@@ -12,15 +12,11 @@ public class Inventory
         itemList = new List<Item>();
         //TODO: Fix to not have item added directly to inventory (release)
         AddItem(new Item { itemType = Item.ItemType.Screwdriver});
-        foreach (Item item in itemList)
-        {
-            item.isEquipped = false;
-        }
-        Debug.Log(itemList[0].itemType);
     }
 
     public void AddItem(Item item)
     {
+        item.isEquipped = false;
         itemList.Add(item);
     }
 
@@ -36,6 +32,10 @@ public class Inventory
     public void SetItemEquipped(int index)
     {
         itemList[index].isEquipped = true;
-        Debug.Log(itemList.Find(x => x.isEquipped=true));
+    }
+
+    public int getInventorySize()
+    {
+        return itemList.Count;
     }
 }

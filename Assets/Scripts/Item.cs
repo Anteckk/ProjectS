@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Item 
 {
     public enum ItemType
@@ -8,4 +10,5 @@ public class Item
 
     public ItemType itemType;
     public bool isEquipped;
+    public Sprite itemSprite;
 }
