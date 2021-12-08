@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI
@@ -10,10 +11,9 @@ namespace UI
         public TextMeshProUGUI itemText;
         public Image selectedItem;
         public Image icon;
-
+        
         private PlayerController playerController;
         private Animator anim;
-        private int currentPlayerInventorySize;
         private Sprite blankIcon;
         private void Awake()
         {
@@ -24,11 +24,9 @@ namespace UI
         // Start is called before the first frame update
         void Start()
         {
-            //Set max size to have button interactable
-            currentPlayerInventorySize = playerController.getPlayerInventory().GetInventorySize();
             //If button iD is higher than current player inventory size Disableinteraction()
             //Else show the sprite of the item
-            if (iD >= currentPlayerInventorySize)
+            if (iD >= playerController.getPlayerInventory().GetInventorySize())
             {
                 DisableInteraction();
             }
@@ -61,7 +59,7 @@ namespace UI
         public void HoverEnter()
         {
             anim.SetBool("Hover", true);
-            if (iD < currentPlayerInventorySize)
+            if (iD < playerController.getPlayerInventory().GetInventorySize())
             {
                 itemText.text = playerController.getPlayerInventory().GetItem(iD).itemType.ToString();
             }
@@ -76,15 +74,31 @@ namespace UI
         }
 
         /// <summary>
-        /// Disable the interaction/Hide the sprite. Use this when removing item
+        /// Refresh the button sprite/interactibility. Use this when removing an item to update the inventory.
+        /// Called by RefreshUIInventory from InventoryWheelController
         /// </summary>
-        public void DisableInteraction()
+        public void RefreshButton()
+        {
+            if (iD >= playerController.getPlayerInventory().GetInventorySize())
+            {
+                DisableInteraction();
+            }
+            else
+            {
+                icon.sprite = playerController.getPlayerInventory().GetItem(iD).itemSprite;
+                GetComponent<Button>().interactable = true;
+            }
+        }
+        
+        /// <summary>
+        /// Disable the interaction/Hide the sprite.
+        /// </summary>
+        private void DisableInteraction()
         {
             GetComponent<Button>().interactable = false;
             icon.sprite = blankIcon;
             selectedItem.sprite = blankIcon;
-            currentPlayerInventorySize = playerController.getPlayerInventory().GetInventorySize();
+            EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
         }
-
     }
 }

@@ -16,10 +16,12 @@ public class Inventory
         //TODO: Fix to not have item added directly to inventory (release)
         AddItem(new Item { itemType = Item.ItemType.Screwdriver, itemSprite = Resources.Load<Sprite>("Inventory/Screwdriver")});
         AddItem(new Item { itemType = Item.ItemType.Statuette, itemSprite = Resources.Load<Sprite>("Inventory/Statue")});
+        Debug.Log(itemList);
     }
 
     /// <summary>
     /// Add an Item to the list
+    /// Do not forget to call the function RefreshUIItem from InventoryWheelButtonController after calling this
     /// </summary>
     /// <param name="item">the Item to add to the list</param>
     public void AddItem(Item item)
@@ -41,6 +43,7 @@ public class Inventory
     
     /// <summary>
     /// Search the currently equipped item, and then remove it from the list
+    /// Do not forget to call the function RefreshUIItem from InventoryWheelButtonController after calling this
     /// </summary>
     public void RemoveEquippedItem()
     {

@@ -39,33 +39,43 @@ namespace UI
 
             //Do something when an item is selected (TBD)
             //TODO: Do something idk
-            switch (itemID)
+            /*switch (itemID)
             {
                 case -1: //Nothing is selected
                     selectedItem.sprite = blankIcon;
                     break;
-                case 0://Screwdriver
+                case 0://Item Slot 1
                     break;
-                case 1: //Item
+                case 1: //Item Slot 2
                     break;
-                case 2: //Item
+                case 2: //Item Slot 3
                     break;
-                case 3: //Item
+                case 3: //Item Slot 4
                     break;
-                case 4: //Item
+                case 4: //Item Slot 5
                     break;
-                case 5: //Item
+                case 5: //Item Slot 6
                     break;
-                case 6: //Item
+                case 6: //Item Slot 7
                     break;
-                case 7: //Item
+                case 7: //Item Slot 8
                     break;  
-            }
-            //TODO: Remove this, DEBUG
+            }*/
+            //TODO: Remove this, DEBUG/TEST
             if (Input.GetKeyDown(KeyCode.P))
             {
-                playerController.getPlayerInventory().RemoveEquippedItem();
-                this.transform.GetChild(itemID).GetComponent<InventoryWheelButtonController>().DisableInteraction();
+                RefreshUIItem();
+            }
+        }
+        /// <summary>
+         /// /!\ CALL THIS WHENEVER YOU ADD/REMOVE ITEM from inventory /!\
+         /// </summary>
+        public void RefreshUIItem()
+        {
+            playerController.getPlayerInventory().RemoveEquippedItem();
+            foreach (InventoryWheelButtonController x in transform.GetComponentsInChildren<InventoryWheelButtonController>())
+            {
+                x.RefreshButton();
             }
         }
     }
