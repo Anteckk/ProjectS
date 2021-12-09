@@ -77,5 +77,10 @@ public class PlayerController : MonoBehaviour
     {
         return playerInventory;
     }
+
+    public bool getCharacter()
+    {
+        return isSherlock;
+    }
     
 }

@@ -16,7 +16,6 @@ public class Inventory
         //TODO: Fix to not have item added directly to inventory (release)
         AddItem(new Item { itemType = Item.ItemType.Screwdriver, itemSprite = Resources.Load<Sprite>("Inventory/Screwdriver")});
         AddItem(new Item { itemType = Item.ItemType.Statuette, itemSprite = Resources.Load<Sprite>("Inventory/Statue")});
-        Debug.Log(itemList);
     }
 
     /// <summary>
