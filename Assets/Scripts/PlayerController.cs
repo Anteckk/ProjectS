@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -17,6 +18,13 @@ public class PlayerController : MonoBehaviour
     private Camera camera;
     private Inventory playerInventory;
 
+    private void Awake()
+    {
+        playerInventory = new Inventory();
+        playerInventory.AddItem(new Item { itemType = Item.ItemType.Screwdriver, itemSprite = Resources.Load<Sprite>("Inventory/Screwdriver")});
+        playerInventory.AddItem(new Item { itemType = Item.ItemType.Statue, itemSprite = Resources.Load<Sprite>("Inventory/Statue")});
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +32,8 @@ public class PlayerController : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
         speed = 10;
         isSherlock = true;
-
+        
         camera = Camera.main;
-
-        playerInventory = new Inventory();
     }
 
     // Update is called once per frame

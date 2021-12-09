@@ -1195,6 +1195,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618394264}
   m_CullTransparentMesh: 1
+--- !u!1 &638617160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6656831641831661991, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+  m_PrefabInstance: {fileID: 909124332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &648196356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8221084991268085304, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+  m_PrefabInstance: {fileID: 909124332}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &650717113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1780,26 +1790,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2024514048}
     m_Modifications:
-    - target: {fileID: 1326135292189548761, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
-      propertyPath: loops
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705038157671379105, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
-      propertyPath: loops
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5238884931976881083, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
-      propertyPath: loops
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 1102989216168227063, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 2024514047}
+    - target: {fileID: 6169291342850225045, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 2024514047}
+    - target: {fileID: 6656985016397144207, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 2024514047}
     - target: {fileID: 7036197714452629479, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: m_Name
       value: ElectricityPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 8015667792651587390, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
-      propertyPath: loops
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 8220376364286713616, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 2024514047}
     - target: {fileID: 9188494215486231673, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4236,6 +4246,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746187506}
   m_CullTransparentMesh: 1
+--- !u!1 &1781342812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1102563154011681247, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+  m_PrefabInstance: {fileID: 909124332}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1793248691
 GameObject:
   m_ObjectHideFlags: 0
@@ -4472,6 +4487,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793248691}
   m_CullTransparentMesh: 1
+--- !u!1 &1814830680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6169426039693718205, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+  m_PrefabInstance: {fileID: 909124332}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1839939833
 GameObject:
   m_ObjectHideFlags: 0
@@ -5235,6 +5255,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 1932360667}
+  screws:
+  - {fileID: 638617160}
+  - {fileID: 648196356}
+  - {fileID: 1781342812}
+  - {fileID: 1814830680}
 --- !u!1 &2115054100
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,9 +6,11 @@ using UnityEngine;
 public class ElectricityPanel : MonoBehaviour
 {
     public Camera camera;
+    public GameObject[] screws;
     private RaycastHit hit;
     private int layerMask;
     private Ray ray;
+    private int screwsUnscrewed = 0;
 
     private void Start()
     {
@@ -31,5 +33,19 @@ public class ElectricityPanel : MonoBehaviour
                 Debug.Log("Didn't hit shit");
             }
         }
+    }
+
+    public void CountScrews()
+    {
+        screwsUnscrewed++;
+        if (screwsUnscrewed == 4)
+        {
+            Disappear();
+        }
+    }
+
+    public void Disappear()
+    {
+        Debug.Log("TBA");
     }
 }

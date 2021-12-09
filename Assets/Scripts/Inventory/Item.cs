@@ -6,7 +6,7 @@ public class Item
     public enum ItemType
     {
         //TODO: Add more thing later (VS)
-        Screwdriver, Statuette,
+        Screwdriver, Statue,
     }
 
     public ItemType itemType;

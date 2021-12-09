@@ -7,7 +7,8 @@ public class ScrewScript : MonoBehaviour
     public DOTweenAnimation moveAnim;
     public DOTweenAnimation rotateAnim;
     public DOTweenAnimation fallAnim;
-    
+    public GameObject parent;
+
     public void GetHit()
     {
         moveAnim.DOPlay();
@@ -21,6 +22,7 @@ public class ScrewScript : MonoBehaviour
 
     public void DestroyThis()
     {
-        Destroy(this);
+        gameObject.SetActive(false);
+        parent.GetComponent<ElectricityPanel>().CountScrews();
     }
 }
