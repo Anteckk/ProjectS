@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Elvyn/Main Menu.unity
+    guid: b220028d4e6743f4f9e78ac48e968d70
+  - enabled: 1
+    path: Assets/Scenes/Elvyn/HubElvyn.unity
+    guid: a07e56ae032024041ba619fca00c091a
+  - enabled: 1
+    path: Assets/Scenes/Elvyn/ElvynScene.unity
+    guid: 8b447194ac9d0484b9ef6f834555c37b
   m_configObjects: {}

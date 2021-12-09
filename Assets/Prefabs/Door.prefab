@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3128548859237175097}
+  - component: {fileID: 8122148273691486491}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -31,6 +32,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8122148273691486491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2422330920815152581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92bcc1533a8cf5845ab9d39c1dbf6d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 0
+  levelBuildIndex: 0
 --- !u!1 &3113552263013027863
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,6 +58,7 @@ GameObject:
   - component: {fileID: 2084808912071508170}
   - component: {fileID: 2024868306906761375}
   - component: {fileID: 6903190358797227309}
+  - component: {fileID: 1806491725230316632}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -126,3 +142,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1806491725230316632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3113552263013027863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63da79bc80e6b8946a9a2e3bf523c43f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Door: {fileID: 8122148273691486491}

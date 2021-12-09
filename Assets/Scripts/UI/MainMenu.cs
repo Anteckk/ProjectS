@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
     
     public void LoadHub()
     {
-        SceneManager.LoadScene("Scenes/Elvyn/HubElvyn");
+        SceneManager.LoadScene(1);
     }
 
     public void LoadCredits()
