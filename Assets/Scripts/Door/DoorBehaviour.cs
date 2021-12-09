@@ -22,9 +22,9 @@ public class DoorBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Door.isActive && other.GetComponent("PlayerController"))
+        if (Door.getIsActive() && other.GetComponent("PlayerController"))
         {
-            SceneManager.LoadScene(Door.levelBuildIndex);
+            SceneManager.LoadScene(Door.getLevelBuildIndex());
         }
     }
 }

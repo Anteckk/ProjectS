@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Elvyn/Main Menu.unity
-    guid: b220028d4e6743f4f9e78ac48e968d70
+    path: Assets/Scenes/Main/MainMenu.unity
+    guid: eea606d79f3d85746bb280c8d45584b6
   - enabled: 1
-    path: Assets/Scenes/Elvyn/HubElvyn.unity
-    guid: a07e56ae032024041ba619fca00c091a
+    path: Assets/Scenes/Main/Hub.unity
+    guid: 2087b52d218ed774b9d05080d05f0ecc
   - enabled: 1
-    path: Assets/Scenes/Elvyn/ElvynScene.unity
-    guid: 8b447194ac9d0484b9ef6f834555c37b
+    path: Assets/Scenes/Main/Level.unity
+    guid: 84e7976bdea6c994a806d57c91ba48e3
   m_configObjects: {}
