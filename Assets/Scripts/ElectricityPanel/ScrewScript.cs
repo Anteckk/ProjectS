@@ -23,6 +23,6 @@ public class ScrewScript : MonoBehaviour
     public void DestroyThis()
     {
         gameObject.SetActive(false);
-        parent.GetComponent<ElectricityPanel>().CountScrews();
+        parent.GetComponent<ElectricityDoor>().CountScrews();
     }
 }
