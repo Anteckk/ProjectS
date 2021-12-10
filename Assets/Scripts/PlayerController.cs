@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         var transformCam = camera.transform;
         UnityEngine.Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
         
-        UnityEngine.Vector3 direction = new UnityEngine.Vector3(movement.normalized.x, 0f, movement.normalized.z);
+        UnityEngine.Vector3 direction = new UnityEngine.Vector3(movement.x, 0f, movement.z);
         rb.transform.position += direction * speed * Time.deltaTime;
 
         if (XZAxis.Equals(Vector2.zero))
