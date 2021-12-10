@@ -6,10 +6,10 @@ using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
+using Vector3 = System.Numerics.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
-
     private float speed;
     private bool isSherlock;
     private Rigidbody rb;
@@ -34,13 +34,39 @@ public class PlayerController : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
         speed = 10;
         isSherlock = true;
+
+        camera = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(XZAxis.x * speed * Time.deltaTime,0,XZAxis.y * speed * Time.deltaTime);
+        var transformCam = camera.transform;
+        UnityEngine.Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
+        
+        UnityEngine.Vector3 direction = new UnityEngine.Vector3(movement.normalized.x, 0f, movement.normalized.z);
+        rb.transform.position += direction * speed * Time.deltaTime;
+
+        if (XZAxis.Equals(Vector2.zero))
+        {
+            var forward = transformCam.forward;
+            transform.forward = new UnityEngine.Vector3(forward.x,0f,forward.z);
+        }
+        else
+        {
+            transform.rotation = Quaternion.LookRotation(direction);
+        }
     }
+
+    // Vector2 rotation(float prmAngle, Vector2 prmVector2)
+    // {
+    //     var temp = prmVector2.x * Math.Cos(prmAngle) - prmVector2.y * Math.Sin(prmAngle);
+    //     var temp2 = prmVector2.x * Math.Sin(prmAngle) + prmVector2.y * Math.Cos(prmAngle);
+    //
+    //     return new Vector2((float) temp, (float) temp2);
+    //
+    //     merci charles <3;
+    // }
 
     public void switchCharacter()
     {
@@ -53,8 +79,8 @@ public class PlayerController : MonoBehaviour
         {
             isSherlock = true;
         }
-        
-        
+
+
         if (isSherlock)
         {
             speed = 10;
@@ -86,5 +112,4 @@ public class PlayerController : MonoBehaviour
     {
         switchCharacter();
     }
-    
 }
