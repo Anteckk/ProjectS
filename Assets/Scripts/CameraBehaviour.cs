@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 public class CameraBehaviour : MonoBehaviour
@@ -16,17 +17,22 @@ public class CameraBehaviour : MonoBehaviour
     void Start()
     {
         cinemachineOrbitalTransposer = camera.GetCinemachineComponent<CinemachineOrbitalTransposer>();
+        cinemachineOrbitalTransposer.m_XAxis.m_MaxSpeed = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        
+    }
+
+    void OnCameraClick(InputValue prmInputValue)
+    {
+        if (prmInputValue.isPressed)
         {
             cinemachineOrbitalTransposer.m_XAxis.m_MaxSpeed = 600;
         }
-
-        if (Input.GetMouseButtonUp(0))
+        else
         {
             cinemachineOrbitalTransposer.m_XAxis.m_MaxSpeed = 0;
         }

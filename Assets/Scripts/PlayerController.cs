@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
 
 public class PlayerController : MonoBehaviour
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public Material WatsonMaterial;
     private Camera camera;
     private Inventory.Inventory playerInventory;
+    private Vector2 XZAxis;
 
     private void Awake()
     {
@@ -32,26 +34,12 @@ public class PlayerController : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
         speed = 10;
         isSherlock = true;
-        
-        camera = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
-
-        //Character movement
-        Vector3 movement = transform.right * x + transform.forward * z;
-        transform.position += movement.normalized * speed * Time.deltaTime;
-        
-        camera.transform.LookAt(gameObject.transform);
-        
-        if (Input.GetKeyDown("r"))
-        {
-            switchCharacter();
-        }
+        transform.Translate(XZAxis.x * speed * Time.deltaTime,0,XZAxis.y * speed * Time.deltaTime);
     }
 
     public void switchCharacter()
@@ -87,6 +75,16 @@ public class PlayerController : MonoBehaviour
     public bool getCharacter()
     {
         return isSherlock;
+    }
+
+    void OnMovement(InputValue prmInputValue)
+    {
+        XZAxis = prmInputValue.Get<Vector2>();
+    }
+
+    void OnChangeCharacter(InputValue prmInputValue)
+    {
+        switchCharacter();
     }
     
 }

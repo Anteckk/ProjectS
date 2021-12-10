@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1012601526}
   - component: {fileID: 1012601525}
   - component: {fileID: 508912881}
+  - component: {fileID: 404028262}
+  - component: {fileID: 404028263}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -82,6 +84,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 1012601525}
   cinemachineOrbitalTransposer: {fileID: 0}
+--- !u!114 &404028262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012601523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 395e5e0e72947064494b2f55195e726d, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Character action map
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &404028263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012601523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerIndex: -1
+  XYAxis: {fileID: -5351712038635137033, guid: 395e5e0e72947064494b2f55195e726d, type: 3}
+  ZAxis: {fileID: 0}
 --- !u!1 &1677647357
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +482,7 @@ GameObject:
   - component: {fileID: 3313525601416359571}
   - component: {fileID: 8044040620403431983}
   - component: {fileID: 8352400254093311804}
+  - component: {fileID: 1127575389}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -536,3 +584,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SherlockMaterial: {fileID: 2100000, guid: 4cb7696e8e1098a4d9a900d8eaad88cf, type: 2}
   WatsonMaterial: {fileID: 2100000, guid: f421b3da5286b7a4981eafb8e873490d, type: 2}
+--- !u!114 &1127575389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73510249040266917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 395e5e0e72947064494b2f55195e726d, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Character action map
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
