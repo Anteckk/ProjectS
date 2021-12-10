@@ -32,7 +32,7 @@ namespace UI
             }
             else
             {
-                icon.sprite = playerController.getPlayerInventory().GetItem(iD).itemSprite;
+                icon.sprite = playerController.getPlayerInventory().GetItem(iD).ItemSprite;
             }
         }
         
@@ -43,7 +43,7 @@ namespace UI
         {
             InventoryWheelController.itemID = iD;
             playerController.getPlayerInventory().SetItemEquipped(iD);
-            selectedItem.sprite = playerController.getPlayerInventory().GetItem(iD).itemSprite;
+            selectedItem.sprite = playerController.getPlayerInventory().GetItem(iD).ItemSprite;
         }
         /// <summary>
         /// When player click something else
@@ -61,7 +61,7 @@ namespace UI
             anim.SetBool("Hover", true);
             if (iD < playerController.getPlayerInventory().GetInventorySize())
             {
-                itemText.text = playerController.getPlayerInventory().GetItem(iD).itemType.ToString();
+                itemText.text = playerController.getPlayerInventory().GetItem(iD).TypeOfItem.ToString();
             }
         }
         /// <summary>
@@ -85,7 +85,7 @@ namespace UI
             }
             else
             {
-                icon.sprite = playerController.getPlayerInventory().GetItem(iD).itemSprite;
+                icon.sprite = playerController.getPlayerInventory().GetItem(iD).ItemSprite;
                 GetComponent<Button>().interactable = true;
             }
         }

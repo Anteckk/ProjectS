@@ -1,76 +1,78 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 
-public class Inventory
+namespace Inventory
 {
-    private List<Item> itemList;
+    public class Inventory
+    {
+        private readonly List<Item> _itemList;
 
-    /// <summary>
-    /// Constructor
-    /// </summary>
-    public Inventory()
-    {
-        itemList = new List<Item>();
-    }
-
-    /// <summary>
-    /// Add an Item to the list
-    /// Do not forget to call the function RefreshUIItem from InventoryWheelButtonController after calling this
-    /// </summary>
-    /// <param name="item">the Item to add to the list</param>
-    public void AddItem(Item item)
-    {
-        item.isEquipped = false;
-        itemList.Add(item);
-    }
-    
-    /// <summary>
-    /// Search the currently equipped item, and then unequip it
-    /// </summary>
-    public void UnequipItem()
-    {
-        if (itemList.Exists(x => x.isEquipped = true))
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Inventory()
         {
-            itemList.Find(x => x.isEquipped = true).isEquipped = false;
+            _itemList = new List<Item>();
         }
-    }
-    
-    /// <summary>
-    /// Search the currently equipped item, and then remove it from the list
-    /// Do not forget to call the function RefreshUIItem from InventoryWheelButtonController after calling this
-    /// </summary>
-    public void RemoveEquippedItem()
-    {
-        if (itemList.Exists(x => x.isEquipped = true))
+
+        /// <summary>
+        /// Add an Item to the list
+        /// Do not forget to call the function RefreshUIItem from InventoryWheelButtonController after calling this
+        /// </summary>
+        /// <param name="item">the Item to add to the list</param>
+        public void AddItem(Item item)
         {
-            itemList.Remove(itemList.Find(x => x.isEquipped = true));
+            _itemList.Add(item);
         }
-    }
+    
+        /// <summary>
+        /// Search the currently equipped item, and then unequip it
+        /// </summary>
+        public void UnequipItem()
+        {
+            if (_itemList.Exists(x => x.IsEquipped = true))
+            {
+                _itemList.Find(x => x.IsEquipped = true).IsEquipped = false;
+            }
+        }
+    
+        /// <summary>
+        /// Search the currently equipped item, and then remove it from the list
+        /// Do not forget to call the function RefreshUIItem from InventoryWheelButtonController after calling this
+        /// </summary>
+        public bool RemoveEquippedItem()
+        {
+            if (_itemList.Exists(x => x.IsEquipped == true && x.IsRemovable == true))
+            {
+                _itemList.Remove(_itemList.Find(x => x.IsEquipped == true && x.IsRemovable == true));
+                return true;
+            }
 
-    #region Getter
-    public int GetInventorySize()
-    {
-        return itemList.Count;
-    }
+            return false;
+        }
 
-    public Item GetItem(int index)
-    {
-        return itemList[index];
-    }
+        #region Getter
+        public int GetInventorySize()
+        {
+            return _itemList.Count;
+        }
 
-    public List<Item> GetList()
-    {
-        return itemList;
-    }
-    #endregion
+        public Item GetItem(int index)
+        {
+            return _itemList[index];
+        }
 
-    #region Setter
-    public void SetItemEquipped(int index)
-    {
-        itemList[index].isEquipped = true;
-    }
-    #endregion
+        public List<Item> GetList()
+        {
+            return _itemList;
+        }
+        #endregion
 
+        #region Setter
+        public void SetItemEquipped(int index)
+        {
+            _itemList[index].IsEquipped = true;
+        }
+        #endregion
+
+    }
 }
