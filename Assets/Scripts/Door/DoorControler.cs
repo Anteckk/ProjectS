@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DoorControler : MonoBehaviour
 {
-    public bool isActive;
-    public int levelBuildIndex;
+    [SerializeField] bool isActive;
+    [SerializeField] int levelBuildIndex;
     
     // Start is called before the first frame update
     void Start()
@@ -17,5 +17,15 @@ public class DoorControler : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public bool getIsActive()
+    {
+        return isActive;
+    }
+
+    public int getLevelBuildIndex()
+    {
+        return levelBuildIndex;
     }
 }

@@ -72,10 +72,12 @@ namespace UI
          /// </summary>
         public void RefreshUIItem()
         {
-            playerController.getPlayerInventory().RemoveEquippedItem();
-            foreach (InventoryWheelButtonController x in transform.GetComponentsInChildren<InventoryWheelButtonController>())
+            if (playerController.getPlayerInventory().RemoveEquippedItem())
             {
-                x.RefreshButton();
+                foreach (InventoryWheelButtonController x in transform.GetComponentsInChildren<InventoryWheelButtonController>())
+                {
+                    x.RefreshButton();
+                }
             }
         }
     }

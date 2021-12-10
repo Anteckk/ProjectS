@@ -16,13 +16,13 @@ public class PlayerController : MonoBehaviour
     public Material SherlockMaterial;
     public Material WatsonMaterial;
     private Camera camera;
-    private Inventory playerInventory;
+    private Inventory.Inventory playerInventory;
 
     private void Awake()
     {
-        playerInventory = new Inventory();
-        playerInventory.AddItem(new Item { itemType = Item.ItemType.Screwdriver, itemSprite = Resources.Load<Sprite>("Inventory/Screwdriver")});
-        playerInventory.AddItem(new Item { itemType = Item.ItemType.Statue, itemSprite = Resources.Load<Sprite>("Inventory/Statue")});
+        playerInventory = new Inventory.Inventory();
+        playerInventory.AddItem(new Item(Item.ItemType.Screwdriver, false));
+        playerInventory.AddItem(new Item(Item.ItemType.Statue, true));
     }
 
     // Start is called before the first frame update
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public Inventory getPlayerInventory()
+    public Inventory.Inventory getPlayerInventory()
     {
         return playerInventory;
     }
