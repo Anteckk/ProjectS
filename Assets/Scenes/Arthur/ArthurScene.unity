@@ -5251,6 +5251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 1932360667}
+  door: {fileID: 0}
   screws:
   - {fileID: 638617160}
   - {fileID: 648196356}

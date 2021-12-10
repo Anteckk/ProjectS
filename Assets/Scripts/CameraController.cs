@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetKeyDown("e"))
         {
-            UI.SetActive(false);
+            // UI.SetActive(false);
             cameras[currentCameraIndex].enabled = false;
             currentCameraIndex = 1;
             cameras[currentCameraIndex].enabled = true;
