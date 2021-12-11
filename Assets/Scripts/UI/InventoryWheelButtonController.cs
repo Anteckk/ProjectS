@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -99,6 +98,7 @@ namespace UI
             GetComponent<Button>().interactable = false;
             icon.sprite = blankIcon;
             selectedItem.sprite = blankIcon;
+            EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
         }
     }
 }

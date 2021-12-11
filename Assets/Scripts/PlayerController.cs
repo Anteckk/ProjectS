@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     {
         playerInventory = new Inventory.Inventory();
         playerInventory.AddItem(new Item(Item.ItemType.Screwdriver, false));
-        playerInventory.AddItem(new Item(Item.ItemType.Statue, true));
         inventoryWheelController = FindObjectOfType<InventoryWheelController>();
     }
 
@@ -96,6 +95,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #region Getter
     public Inventory.Inventory getPlayerInventory()
     {
         return playerInventory;
@@ -105,6 +105,12 @@ public class PlayerController : MonoBehaviour
     {
         return isSherlock;
     }
+
+    public InventoryWheelController getInventoryWheelController()
+    {
+        return inventoryWheelController;
+    }
+    #endregion
 
     void OnMovement(InputValue prmInputValue)
     {

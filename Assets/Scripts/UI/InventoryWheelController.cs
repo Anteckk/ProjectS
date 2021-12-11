@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -66,12 +65,9 @@ namespace UI
          /// </summary>
         public void RefreshUIItem()
         {
-            if (playerController.getPlayerInventory().RemoveEquippedItem())
+            foreach (InventoryWheelButtonController x in transform.GetComponentsInChildren<InventoryWheelButtonController>())
             {
-                foreach (InventoryWheelButtonController x in transform.GetComponentsInChildren<InventoryWheelButtonController>())
-                {
                     x.RefreshButton();
-                }
             }
         }
 
