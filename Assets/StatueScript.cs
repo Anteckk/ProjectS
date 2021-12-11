@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StatueScript : MonoBehaviour
@@ -20,9 +18,8 @@ public class StatueScript : MonoBehaviour
         if ((player.transform.position - transform.position).sqrMagnitude<3*3)
         {
             player.GetComponent<PlayerController>().getPlayerInventory().AddItem(self);
-            enabled = false;
-            Destroy(gameObject);
-            Debug.Log("Near");
+            player.GetComponent<PlayerController>().getInventoryWheelController().RefreshUIItem();
+            gameObject.SetActive(false);
         }
     }
 }

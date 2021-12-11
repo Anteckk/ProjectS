@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Item 
@@ -7,13 +6,14 @@ public class Item
     public enum ItemType
     {
         //TODO: Add more thing later (VS)
+        //When adding more item, add them to the constructor
         Screwdriver, Statue,
     }
 
-    public ItemType TypeOfItem;
+    public readonly ItemType TypeOfItem;
     public readonly Sprite ItemSprite;
     public bool IsEquipped;
-    public bool IsRemovable;
+    public readonly bool IsRemovable;
 
     /// <summary>
     /// Constructor
@@ -21,7 +21,6 @@ public class Item
     public Item(ItemType typeOfItem, bool isRemovable)
     {
         TypeOfItem = typeOfItem;
-        //If you add another item type need to add it to the constructor
         switch (TypeOfItem)
         {
             case ItemType.Screwdriver:

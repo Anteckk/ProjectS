@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 
+
 namespace Inventory
 {
     public class Inventory
@@ -39,15 +40,12 @@ namespace Inventory
         /// Search the currently equipped item, and then remove it from the list
         /// Do not forget to call the function RefreshUIItem from InventoryWheelButtonController after calling this
         /// </summary>
-        public bool RemoveEquippedItem()
+        public void RemoveEquippedItem()
         {
             if (_itemList.Exists(x => x.IsEquipped == true && x.IsRemovable == true))
             {
                 _itemList.Remove(_itemList.Find(x => x.IsEquipped == true && x.IsRemovable == true));
-                return true;
             }
-
-            return false;
         }
 
         #region Getter
