@@ -21,12 +21,14 @@ public class PlayerController : MonoBehaviour
     private Inventory.Inventory playerInventory;
     private Vector2 XZAxis;
     private InventoryWheelController inventoryWheelController;
+    private Interactable interactedObject;
 
     private void Awake()
     {
         playerInventory = new Inventory.Inventory();
         playerInventory.AddItem(new Item(Item.ItemType.Screwdriver, false));
         inventoryWheelController = FindObjectOfType<InventoryWheelController>();
+        
     }
 
     // Start is called before the first frame update
@@ -37,7 +39,8 @@ public class PlayerController : MonoBehaviour
         speed = 10;
         isSherlock = true;
 
-        camera = Camera.main;
+        camera = GetComponentInChildren<Camera>();
+        camera.enabled = true;
     }
 
     // Update is called once per frame
@@ -125,5 +128,30 @@ public class PlayerController : MonoBehaviour
     void OnShowInventory(InputValue prmInputValue)
     {
         inventoryWheelController.ShowInventory();
+    }
+
+    void OnInteract()
+    {
+        interactedObject = GetComponentInChildren<InteractionRangeBehaviour>().getInteractableObject();
+        
+        if (interactedObject != null)
+        {
+            interactedObject.action();
+            if (interactedObject.getObjectCamera() != null)
+            {
+                camera.enabled = false;
+                interactedObject.getObjectCamera().enabled = true;
+            }
+            
+        }
+    }
+
+    void OnBack()
+    {
+        if (interactedObject.getObjectCamera() != null)
+        {
+            interactedObject.getObjectCamera().enabled = false;
+            camera.enabled = true;
+        }
     }
 }
