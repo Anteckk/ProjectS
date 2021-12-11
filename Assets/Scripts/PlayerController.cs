@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
+using Vector3 = System.Numerics.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
-
     private float speed;
     private bool isSherlock;
     private Rigidbody rb;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public Material WatsonMaterial;
     private Camera camera;
     private Inventory.Inventory playerInventory;
+    private Vector2 XZAxis;
 
     private void Awake()
     {
@@ -32,27 +34,39 @@ public class PlayerController : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
         speed = 10;
         isSherlock = true;
-        
+
         camera = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
+        var transformCam = camera.transform;
+        UnityEngine.Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
+        
+        UnityEngine.Vector3 direction = new UnityEngine.Vector3(movement.x, 0f, movement.z);
+        rb.transform.position += direction * speed * Time.deltaTime;
 
-        //Character movement
-        Vector3 movement = transform.right * x + transform.forward * z;
-        transform.position += movement.normalized * speed * Time.deltaTime;
-        
-        camera.transform.LookAt(gameObject.transform);
-        
-        if (Input.GetKeyDown("r"))
+        if (XZAxis.Equals(Vector2.zero))
         {
-            switchCharacter();
+            var forward = transformCam.forward;
+            transform.forward = new UnityEngine.Vector3(forward.x,0f,forward.z);
+        }
+        else
+        {
+            transform.rotation = Quaternion.LookRotation(direction);
         }
     }
+
+    // Vector2 rotation(float prmAngle, Vector2 prmVector2)
+    // {
+    //     var temp = prmVector2.x * Math.Cos(prmAngle) - prmVector2.y * Math.Sin(prmAngle);
+    //     var temp2 = prmVector2.x * Math.Sin(prmAngle) + prmVector2.y * Math.Cos(prmAngle);
+    //
+    //     return new Vector2((float) temp, (float) temp2);
+    //
+    //     merci charles <3;
+    // }
 
     public void switchCharacter()
     {
@@ -65,8 +79,8 @@ public class PlayerController : MonoBehaviour
         {
             isSherlock = true;
         }
-        
-        
+
+
         if (isSherlock)
         {
             speed = 10;
@@ -88,5 +102,14 @@ public class PlayerController : MonoBehaviour
     {
         return isSherlock;
     }
-    
+
+    void OnMovement(InputValue prmInputValue)
+    {
+        XZAxis = prmInputValue.Get<Vector2>();
+    }
+
+    void OnChangeCharacter(InputValue prmInputValue)
+    {
+        switchCharacter();
+    }
 }
