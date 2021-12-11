@@ -17,13 +17,13 @@ namespace UI
         private Sprite blankIcon;
         private void Awake()
         {
-            playerController = FindObjectOfType<PlayerController>();
             blankIcon = Resources.Load<Sprite>("Inventory/Empty");
             anim = GetComponent<Animator>();
         }
         // Start is called before the first frame update
         void Start()
         {
+            playerController = FindObjectOfType<PlayerController>();
             //If button iD is higher than current player inventory size Disableinteraction()
             //Else show the sprite of the item
             if (iD >= playerController.getPlayerInventory().GetInventorySize())
@@ -98,7 +98,6 @@ namespace UI
             GetComponent<Button>().interactable = false;
             icon.sprite = blankIcon;
             selectedItem.sprite = blankIcon;
-            EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
         }
     }
 }
