@@ -11,7 +11,9 @@ public class ElectricityPanel : MonoBehaviour
     [SerializeField] List<Material> cableMaterials;
     [SerializeField] List<GameObject> cableList;
     [SerializeField] List<GameObject> cablePlaceList;
+    [SerializeField] List<GameObject> wireList;
     private RaycastHit hit;
+    private bool doorOpen;
     private int layerMask;
     private Ray ray;
     private int screwsUnscrewed = 0;
@@ -19,27 +21,12 @@ public class ElectricityPanel : MonoBehaviour
     private void Start()
     {
         layerMask = 1 << 10;
+        doorOpen = false;
         initCable();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            ray = camera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
-            {
-                Debug.Log(hit.collider.name);
-                hit.transform.gameObject.GetComponent<ScrewScript>().GetHit();
-            }
-            else
-            {
-                Debug.Log("Didn't hit shit");
-            }
-        }
-    }
 
+    // Here we initialize the random color of the cables and the places of cables
     private void initCable()
     {
         var rand = new Random();
@@ -49,6 +36,7 @@ public class ElectricityPanel : MonoBehaviour
         for (int i = 0; i < cableList.Count; i++)
         {
             cableList[i].GetComponent<MeshRenderer>().material.color = cableMaterials[i].color;
+            wireList[i].GetComponent<MeshRenderer>().material.color = cableMaterials[i].color;
         }
         
         randomList = cableMaterials.OrderBy(x => rand.Next()).ToList();
@@ -59,4 +47,15 @@ public class ElectricityPanel : MonoBehaviour
             cablePlaceList[i].GetComponent<MeshRenderer>().material.color = cableMaterials[i].color;
         }
     }
+
+    public void OpenDoor()
+    {
+        doorOpen = true;
+    }
+
+    public bool isDoorOpen()
+    {
+        return doorOpen;
+    }
+
 }

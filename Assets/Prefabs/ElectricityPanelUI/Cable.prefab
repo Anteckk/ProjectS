@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4838468872736217745}
   - component: {fileID: 6195174624507356879}
   - component: {fileID: 8180110841838881652}
+  - component: {fileID: 3125684942107620330}
   m_Layer: 0
   m_Name: Cable
-  m_TagString: Untagged
+  m_TagString: Cable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &3125684942107620330
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843306363641850868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.50000024
+  m_Height: 2.5962315
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0.0041292906, z: -0.00000011920929}

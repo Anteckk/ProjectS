@@ -6,6 +6,7 @@ using DG.Tweening;
 public class ElectricityDoor : MonoBehaviour
 {
     [SerializeField] Camera camera;
+    [SerializeField] GameObject parent;
     public DOTweenAnimation anim;
     private int screwUnscrewed = 0;
     public GameObject[] screws;
@@ -22,12 +23,11 @@ public class ElectricityDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !parent.GetComponent<ElectricityPanel>().isDoorOpen())
         {
             ray = camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
             {
-                Debug.Log(hit.collider.name);
                 hit.transform.gameObject.GetComponent<ScrewScript>().GetHit();
             }
             else
@@ -48,6 +48,7 @@ public class ElectricityDoor : MonoBehaviour
 
     public void Disappear()
     {
+        parent.GetComponent<ElectricityPanel>().OpenDoor();
         anim.DOPlay();
         enabled = false;
     }
