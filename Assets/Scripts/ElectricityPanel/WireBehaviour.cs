@@ -13,6 +13,8 @@ public class WireBehaviour : MonoBehaviour
     private GameObject cablePlace;
     
     private Vector3 startPosition;
+    private Vector3 startLocalScale;
+    private Vector3 center;
 
     void Awake()
     {
@@ -24,6 +26,7 @@ public class WireBehaviour : MonoBehaviour
     void Start()
     {
         startPosition = cablePart.transform.parent.position;
+        startLocalScale = transform.localScale;
     }
 
     public void OnMouseDrag()
@@ -32,10 +35,14 @@ public class WireBehaviour : MonoBehaviour
         Vector3 newPosition = camera.ScreenToWorldPoint(Input.mousePosition);
         newPosition.z = cablePart.transform.position.z;
 
-        transform.position = newPosition;
-
+        // Update rotation
+        transform.position = (startPosition + newPosition)/2;
+        Vector3 temp = newPosition - startPosition;
+        transform.rotation = Quaternion.LookRotation(Vector3.forward,temp);
+        
         //update scale of cable
         float dist = Vector3.Distance(startPosition, newPosition);
+        transform.localScale = new Vector3(transform.localScale.x, dist, transform.localScale.z);
     }
 
     void OnTriggerEnter(Collider other)
@@ -63,11 +70,14 @@ public class WireBehaviour : MonoBehaviour
     {
         if (cablePlace != null)
         {
-            transform.position = cablePlace.transform.position;
+            transform.position = (cablePlace.transform.position + startPosition)/2;
+            float dist = Vector3.Distance(startPosition, cablePlace.transform.position);
+            transform.localScale = new Vector3(transform.localScale.x, dist, transform.localScale.z);
         }
         else
         {
             transform.position = startPosition;
+            transform.localScale = startLocalScale;
         }
     }
 

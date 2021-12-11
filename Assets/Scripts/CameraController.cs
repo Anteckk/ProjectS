@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
@@ -21,16 +22,12 @@ public class CameraController : MonoBehaviour
         cameras[currentCameraIndex].enabled = true;
         UI = GameObject.FindGameObjectWithTag("UI");
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    
+    void OnInteract(InputValue prmInputValue)
     {
-        if (Input.GetKeyDown("e"))
-        {
-            // UI.SetActive(false);
-            cameras[currentCameraIndex].enabled = false;
-            currentCameraIndex = 1;
-            cameras[currentCameraIndex].enabled = true;
-        }   
+        cameras[currentCameraIndex].enabled = false;
+        currentCameraIndex = 1;
+        cameras[currentCameraIndex].enabled = true;
     }
 }

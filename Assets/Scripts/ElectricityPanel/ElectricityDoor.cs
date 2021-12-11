@@ -25,15 +25,7 @@ public class ElectricityDoor : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !parent.GetComponent<ElectricityPanel>().isDoorOpen())
         {
-            ray = camera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
-            {
-                hit.transform.gameObject.GetComponent<ScrewScript>().GetHit();
-            }
-            else
-            {
-                Debug.Log("Didn't hit shit");
-            }
+            
         }
     }
     
@@ -51,5 +43,18 @@ public class ElectricityDoor : MonoBehaviour
         parent.GetComponent<ElectricityPanel>().OpenDoor();
         anim.DOPlay();
         enabled = false;
+    }
+
+    void OnCameraClick()
+    {
+        ray = camera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        {
+            hit.transform.gameObject.GetComponent<ScrewScript>().GetHit();
+        }
+        else
+        {
+            Debug.Log("Didn't hit shit");
+        }
     }
 }
