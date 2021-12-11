@@ -49,21 +49,29 @@ public class WireBehaviour : MonoBehaviour
     {
         if (other.GetComponent<MeshRenderer>() != null)
         {
-            cablePlace = other.gameObject;
-            if (other.GetComponent<MeshRenderer>().material.color == cablePart.GetComponent<MeshRenderer>().material.color)
+            if (!other.GetComponent<CablePlaceBehaviour>().haveCable())
             {
-                hasGoodPlace = true;
-            }
-            else
-            {
-                hasGoodPlace = false;
+                cablePlace = other.gameObject;
+                cablePlace.GetComponent<CablePlaceBehaviour>().occupe();
+                if (other.GetComponent<MeshRenderer>().material.color == cablePart.GetComponent<MeshRenderer>().material.color)
+                {
+                    hasGoodPlace = true;
+                }
+                else
+                {
+                    hasGoodPlace = false;
+                }
             }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        cablePlace = null;
+        if (cablePlace != null)
+        {
+            cablePlace.GetComponent<CablePlaceBehaviour>().free();
+            cablePlace = null;
+        }
     }
 
     void OnMouseUp()
