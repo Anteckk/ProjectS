@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using UI;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,12 +20,14 @@ public class PlayerController : MonoBehaviour
     private Camera camera;
     private Inventory.Inventory playerInventory;
     private Vector2 XZAxis;
+    private InventoryWheelController inventoryWheelController;
 
     private void Awake()
     {
         playerInventory = new Inventory.Inventory();
         playerInventory.AddItem(new Item(Item.ItemType.Screwdriver, false));
         playerInventory.AddItem(new Item(Item.ItemType.Statue, true));
+        inventoryWheelController = FindObjectOfType<InventoryWheelController>();
     }
 
     // Start is called before the first frame update
@@ -111,5 +114,10 @@ public class PlayerController : MonoBehaviour
     void OnChangeCharacter(InputValue prmInputValue)
     {
         switchCharacter();
+    }
+
+    void OnShowInventory(InputValue prmInputValue)
+    {
+        inventoryWheelController.ShowInventory();
     }
 }

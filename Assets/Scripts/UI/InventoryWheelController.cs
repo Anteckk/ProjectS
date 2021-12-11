@@ -21,12 +21,6 @@ namespace UI
 
         private void Update()
         {
-            //When the player press Tab Show/Hide inventory
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                inventoryWheelSelected = !inventoryWheelSelected;
-            }
-
             //Show/Hide inventory animation
             if (inventoryWheelSelected)
             {
@@ -60,12 +54,12 @@ namespace UI
                     break;
                 case 7: //Item Slot 8
                     break;  
-            }*/
+            }
             //TODO: Remove this, DEBUG/TEST
             if (Input.GetKeyDown(KeyCode.P))
             {
                 RefreshUIItem();
-            }
+            }*/
         }
         /// <summary>
          /// /!\ CALL THIS WHENEVER YOU ADD/REMOVE ITEM from inventory /!\
@@ -79,6 +73,14 @@ namespace UI
                     x.RefreshButton();
                 }
             }
+        }
+
+        /// <summary>
+        /// Show/Hide the inventory
+        /// </summary>
+        public void ShowInventory()
+        {
+            inventoryWheelSelected = !inventoryWheelSelected;
         }
     }
 }

@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ShowInvenctory",
+                    "name": "ShowInventory",
                     "type": "Button",
                     "id": "c9051bf4-1bcf-492a-9739-e088455e53ab",
                     "expectedControlType": "Button",
@@ -191,7 +191,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
-                    "action": "ShowInvenctory",
+                    "action": "ShowInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
