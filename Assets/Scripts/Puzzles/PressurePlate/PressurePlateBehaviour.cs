@@ -8,13 +8,12 @@ public class PressurePlateBehaviour : MonoBehaviour
 {
     [SerializeField] bool isActive;
     [SerializeField] bool isSteppedOn;
-    
+
     private List<GameObject> objectsList = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -40,16 +39,24 @@ public class PressurePlateBehaviour : MonoBehaviour
         return isActive;
     }
 
+    public bool getIsSteppedOn()
+    {
+        return isSteppedOn;
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
-        objectsList.Append(other.gameObject);
+        objectsList.Add(other.gameObject);
+        Debug.Log("added");
+        foreach (GameObject go in objectsList)
+        {
+            Debug.Log(go.name);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (objectsList.Contains(other.gameObject))
-        {
-            objectsList.Remove(other.gameObject);
-        }
+        objectsList.Remove(other.gameObject);
+        Debug.Log("removed");
     }
 }

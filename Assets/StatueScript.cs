@@ -16,24 +16,30 @@ public class StatueScript : Interactable
         player = GameObject.Find("Player");
         door = GameObject.Find("Door");
     }
+
+    void Update()
+    {
+        int activated = 0;
+        
+        foreach (PressurePlateBehaviour plates in plates)
+        {
+            if (plates.getIsSteppedOn())
+            {
+                activated++;
+            }
+        }
+
+        if (activated == plates.Length)
+        {
+            isPickup = true;
+        }
+    }
+    
     /// <summary>
     /// The action associated to this item
     /// </summary>
     public override void action()
     {
-
-        foreach (PressurePlateBehaviour plates in plates)
-        {
-            if (plates.getIsActive())
-            {
-                isPickup = true;
-            }
-            else
-            {
-                isPickup = false;
-            }
-        }
-        
         StatuePickup();
     }
 
