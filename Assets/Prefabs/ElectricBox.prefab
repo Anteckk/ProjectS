@@ -445,20 +445,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2814178889558327928, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
-      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 3773885512099281486}
-    - target: {fileID: 2814178889558327928, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2814178889558327928, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
-      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CountScrews
-      objectReference: {fileID: 0}
-    - target: {fileID: 2814178889558327928, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
-      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ElectricityDoor, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2814178889558327928, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -562,7 +550,7 @@ PrefabInstance:
       objectReference: {fileID: 1967188539}
     - target: {fileID: 5720337604117880375, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6086836030314511453, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -629,20 +617,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9069928425366929690, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
-      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 3773885512099281486}
-    - target: {fileID: 9069928425366929690, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9069928425366929690, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
-      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CountScrews
-      objectReference: {fileID: 0}
-    - target: {fileID: 9069928425366929690, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
-      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ElectricityDoor, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9069928425366929690, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

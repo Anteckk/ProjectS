@@ -46,14 +46,6 @@ namespace UI
             selectedItem.sprite = playerController.getPlayerInventory().GetItem(iD).ItemSprite;
         }
         /// <summary>
-        /// When player click something else
-        /// </summary>
-        public void Deselected()
-        {
-            InventoryWheelController.itemID = -1;
-            playerController.getPlayerInventory().UnequipItem();
-        }
-        /// <summary>
         /// When mouse is over the button
         /// </summary>
         public void HoverEnter()

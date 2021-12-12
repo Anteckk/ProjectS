@@ -7,7 +7,7 @@ public class Item
     {
         //TODO: Add more thing later (VS)
         //When adding more item, add them to the constructor
-        Screwdriver, Statue,
+        Empty ,Screwdriver, Statue,
     }
 
     public readonly ItemType TypeOfItem;
@@ -23,6 +23,9 @@ public class Item
         TypeOfItem = typeOfItem;
         switch (TypeOfItem)
         {
+            case ItemType.Empty:
+                ItemSprite = null;
+                break;
             case ItemType.Screwdriver:
                 ItemSprite = Resources.Load<Sprite>("Inventory/Screwdriver");
                 break;
@@ -35,5 +38,14 @@ public class Item
         }
         IsEquipped = false;
         IsRemovable = isRemovable;
+    }
+
+    /// <summary>
+    /// Used for debug
+    /// </summary>
+    /// <returns>string with all the Item info</returns>
+    public string GetInfo()
+    {
+        return TypeOfItem + " " + IsEquipped + " " + IsRemovable + " " + ItemSprite;
     }
 }

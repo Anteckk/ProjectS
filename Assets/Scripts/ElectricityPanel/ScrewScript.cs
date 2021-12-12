@@ -6,23 +6,26 @@ public class ScrewScript : MonoBehaviour
 {
     public DOTweenAnimation moveAnim;
     public DOTweenAnimation rotateAnim;
-    public DOTweenAnimation fallAnim;
     public GameObject parent;
+    private PlayerController _playerController;
 
-    public void GetHit()
+    private void Start()
     {
-        moveAnim.DOPlay();
-        rotateAnim.DOPlay();
-    }
-
-    public void Falling()
-    {
-        fallAnim.DOPlay();
+        _playerController = FindObjectOfType<PlayerController>();
     }
 
     public void DestroyThis()
     {
         gameObject.SetActive(false);
         parent.GetComponent<ElectricityDoor>().CountScrews();
+    }
+
+    public void OnMouseDown()
+    {
+        if (_playerController.getPlayerInventory().GetEquippedItem().TypeOfItem == Item.ItemType.Screwdriver)
+        {
+            moveAnim.DOPlay();
+            rotateAnim.DOPlay();
+        }
     }
 }

@@ -21,14 +21,7 @@ namespace UI
         private void Update()
         {
             //Show/Hide inventory animation
-            if (inventoryWheelSelected)
-            {
-                anim.SetBool("OpenInventoryWheel", true);
-            }
-            else
-            {
-                anim.SetBool("OpenInventoryWheel", false);
-            }
+            anim.SetBool("OpenInventoryWheel", inventoryWheelSelected);
 
             //Do something when an item is selected (TBD)
             //TODO: Do something idk
@@ -53,11 +46,6 @@ namespace UI
                     break;
                 case 7: //Item Slot 8
                     break;  
-            }
-            //TODO: Remove this, DEBUG/TEST
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                RefreshUIItem();
             }*/
         }
         /// <summary>
@@ -70,7 +58,6 @@ namespace UI
                     x.RefreshButton();
             }
         }
-
         /// <summary>
         /// Show/Hide the inventory
         /// </summary>

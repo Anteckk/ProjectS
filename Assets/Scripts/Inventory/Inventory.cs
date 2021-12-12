@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 
 namespace Inventory
@@ -26,14 +27,11 @@ namespace Inventory
         }
     
         /// <summary>
-        /// Search the currently equipped item, and then unequip it
+        /// 
         /// </summary>
         public void UnequipItem()
         {
-            if (_itemList.Exists(x => x.IsEquipped = true))
-            {
-                _itemList.Find(x => x.IsEquipped = true).IsEquipped = false;
-            }
+            
         }
     
         /// <summary>
@@ -59,15 +57,38 @@ namespace Inventory
             return _itemList[index];
         }
 
-        public List<Item> GetList()
+        public Item GetEquippedItem()
+        {
+            if (_itemList.Exists(x => x.IsEquipped == true))
+            {
+                return _itemList.Find(x => x.IsEquipped == true);
+            }
+            else
+            {
+                return new Item(Item.ItemType.Empty, false);
+            }
+        }
+        /// <summary>
+        /// Mostly used for debug
+        /// </summary>
+        /// <returns></returns>
+        public List<Item> getItemList()
         {
             return _itemList;
         }
         #endregion
 
         #region Setter
+        /// <summary>
+        /// Search for the currently equipped item, and then unequip it, then equip the new item
+        /// </summary>
+        /// <param name="index"></param>
         public void SetItemEquipped(int index)
         {
+            if (_itemList.Exists(x => x.IsEquipped == true))
+            {
+                _itemList.Find(x => x.IsEquipped == true).IsEquipped = false;
+            }
             _itemList[index].IsEquipped = true;
         }
         #endregion
