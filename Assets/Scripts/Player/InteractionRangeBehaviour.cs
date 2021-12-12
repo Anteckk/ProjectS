@@ -7,6 +7,7 @@ public class InteractionRangeBehaviour : MonoBehaviour
 {
 
     private Interactable interactableObject;
+    private GameObject triggeredObject;
     
     // Start is called before the first frame update
     void Start()
@@ -23,11 +24,21 @@ public class InteractionRangeBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Interactable interactable = other.gameObject.GetComponent<Interactable>();
+        triggeredObject = other.gameObject;
         
         if ( interactable != null)
         {
             interactableObject = interactable;
             Debug.Log("In Range");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.Equals(triggeredObject))
+        {
+            interactableObject = null;
+            Debug.Log("Not in Range");
         }
     }
 
