@@ -51,8 +51,7 @@ public class StatueScript : Interactable
             player.GetComponent<PlayerController>().getInventoryWheelController().RefreshUIItem();
             door.GetComponent<DoorControler>().SetIsActive(true);
             gameObject.SetActive(false);
+            
         }
-        
-        
     }
 }

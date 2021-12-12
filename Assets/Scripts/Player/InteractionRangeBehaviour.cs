@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InteractionRangeBehaviour : MonoBehaviour
@@ -8,6 +9,9 @@ public class InteractionRangeBehaviour : MonoBehaviour
 
     private Interactable interactableObject;
     private GameObject triggeredObject;
+
+    public Canvas InteractioncanCanvas;
+    public TMP_Text InteractedObject;
     
     // Start is called before the first frame update
     void Start()
@@ -18,7 +22,7 @@ public class InteractionRangeBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        InteractioncanCanvas.transform.LookAt(Camera.main.transform.position);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,6 +34,8 @@ public class InteractionRangeBehaviour : MonoBehaviour
         {
             interactableObject = interactable;
             Debug.Log("In Range");
+            InteractioncanCanvas.enabled = true;
+            InteractedObject.SetText(interactable.gameObject.name);
         }
     }
 
@@ -39,6 +45,8 @@ public class InteractionRangeBehaviour : MonoBehaviour
         {
             interactableObject = null;
             Debug.Log("Not in Range");
+            InteractioncanCanvas.enabled = false;
+            
         }
     }
 

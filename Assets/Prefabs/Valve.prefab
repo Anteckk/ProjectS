@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6772436480070428943}
   - component: {fileID: 378704978}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Gas valve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

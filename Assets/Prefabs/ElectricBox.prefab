@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 2081849526752638159}
   - component: {fileID: 1221517665}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Electrical box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
