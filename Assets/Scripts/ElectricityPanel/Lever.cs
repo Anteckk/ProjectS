@@ -7,6 +7,7 @@ public class Lever : MonoBehaviour
 {
     
     [SerializeField] List<GameObject> wireList;
+    [SerializeField] GameObject objectToBeActived;
     
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,10 @@ public class Lever : MonoBehaviour
             result = result && wire.GetComponentInParent<WireBehaviour>().idGoodPlaced();
         }
 
+        if (result)
+        {
+            // Active the objectToBeActived
+        }
         return result;
     }
 }
