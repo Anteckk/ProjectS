@@ -5,6 +5,10 @@ public class StatueScript : Interactable
     private GameObject player;
     private Item self;
     private GameObject door;
+
+    public PressurePlateBehaviour[] plates;
+
+    public bool isPickup;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +21,32 @@ public class StatueScript : Interactable
     /// </summary>
     public override void action()
     {
+
+        foreach (PressurePlateBehaviour plates in plates)
+        {
+            if (plates.getIsActive())
+            {
+                isPickup = true;
+            }
+            else
+            {
+                isPickup = false;
+            }
+        }
+        
         StatuePickup();
     }
 
     private void StatuePickup()
     {
-        player.GetComponent<PlayerController>().getPlayerInventory().AddItem(self);
-        player.GetComponent<PlayerController>().getInventoryWheelController().RefreshUIItem();
-        door.GetComponent<DoorControler>().SetIsActive(true);
-        gameObject.SetActive(false);
+        if (isPickup)
+        {
+            player.GetComponent<PlayerController>().getPlayerInventory().AddItem(self);
+            player.GetComponent<PlayerController>().getInventoryWheelController().RefreshUIItem();
+            door.GetComponent<DoorControler>().SetIsActive(true);
+            gameObject.SetActive(false);
+        }
+        
+        
     }
 }
