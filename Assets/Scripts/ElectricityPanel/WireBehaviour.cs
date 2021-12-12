@@ -69,11 +69,11 @@ public class WireBehaviour : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (cablePlace != null)
+        if (other.tag == "CablePlace")
         {
-            if (cablePlace.GetComponent<CablePlaceBehaviour>().getCableName() == name)
+            if (other.GetComponent<CablePlaceBehaviour>().getCableName() == name)
             {
-                cablePlace.GetComponent<CablePlaceBehaviour>().free();
+                other.GetComponent<CablePlaceBehaviour>().free();
                 cablePlace = null;
             }
         }
