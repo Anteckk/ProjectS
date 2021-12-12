@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
 
     void OnBack()
     {
-        if (interactedObject.getObjectCamera() != null)
+        if (interactedObject.getObjectCamera() != null && camera.enabled != true)
         {
             interactedObject.getObjectCamera().enabled = false;
             camera.enabled = true;
