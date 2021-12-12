@@ -11,9 +11,9 @@ using Vector3 = System.Numerics.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] GameObject electricPanel;
+    /*[SerializeField] GameObject electricPanel;
     [SerializeField] Material redCableMaterial;
-    [SerializeField] Material blueCableMaterial;
+    [SerializeField] Material blueCableMaterial;*/
     private float speed;
     private bool isSherlock;
     private Rigidbody rb;
@@ -43,11 +43,11 @@ public class PlayerController : MonoBehaviour
         speed = 10;
         isSherlock = true;
         
-        redObjects = electricPanel.GetComponent<ElectricityPanel>().getRedObjects();
+        /*redObjects = electricPanel.GetComponent<ElectricityPanel>().getRedObjects();
         foreach (var redObject in redObjects)
         {
             redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
-        }
+        }*/
         
         camera = GetComponentInChildren<Camera>();
         camera.enabled = true;
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         {
             speed = 10;
             meshRenderer.material = SherlockMaterial;
-            foreach (var redObject in redObjects)
+            /*foreach (var redObject in redObjects)
             {
                 redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
             }
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
             foreach (var redObject in redObjects)
             {
                 redObject.GetComponent<MeshRenderer>().material.color = redCableMaterial.color;
-            }
+            }*/
         }
     }
 

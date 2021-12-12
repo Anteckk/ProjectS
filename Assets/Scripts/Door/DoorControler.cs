@@ -28,4 +28,9 @@ public class DoorControler : MonoBehaviour
     {
         return levelBuildIndex;
     }
+
+    public void SetIsActive(bool boolean)
+    {
+        isActive = boolean;
+    }
 }

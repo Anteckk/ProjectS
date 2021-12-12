@@ -1,25 +1,30 @@
 using UnityEngine;
 
-public class StatueScript : MonoBehaviour
+public class StatueScript : Interactable
 {
     private GameObject player;
     private Item self;
+    private GameObject door;
     // Start is called before the first frame update
     void Start()
     {
         self = new Item(Item.ItemType.Statue, true);
         player = GameObject.Find("Player");
+        door = GameObject.Find("Door");
+    }
+    /// <summary>
+    /// The action associated to this item
+    /// </summary>
+    public override void action()
+    {
+        StatuePickup();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void StatuePickup()
     {
-        //SqrMagnite<3*3 -> Set the range to notice the player at 3 unit
-        if ((player.transform.position - transform.position).sqrMagnitude<3*3)
-        {
-            player.GetComponent<PlayerController>().getPlayerInventory().AddItem(self);
-            player.GetComponent<PlayerController>().getInventoryWheelController().RefreshUIItem();
-            gameObject.SetActive(false);
-        }
+        player.GetComponent<PlayerController>().getPlayerInventory().AddItem(self);
+        player.GetComponent<PlayerController>().getInventoryWheelController().RefreshUIItem();
+        door.GetComponent<DoorControler>().SetIsActive(true);
+        gameObject.SetActive(false);
     }
 }
