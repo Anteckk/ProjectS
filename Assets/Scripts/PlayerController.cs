@@ -11,6 +11,9 @@ using Vector3 = System.Numerics.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] GameObject electricPanel;
+    [SerializeField] Material redCableMaterial;
+    [SerializeField] Material blueCableMaterial;
     private float speed;
     private bool isSherlock;
     private Rigidbody rb;
@@ -22,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 XZAxis;
     private InventoryWheelController inventoryWheelController;
     private Interactable interactedObject;
+    private List<GameObject> redObjects;
 
     private void Awake()
     {
@@ -38,7 +42,13 @@ public class PlayerController : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
         speed = 10;
         isSherlock = true;
-
+        
+        redObjects = electricPanel.GetComponent<ElectricityPanel>().getRedObjects();
+        foreach (var redObject in redObjects)
+        {
+            redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
+        }
+        
         camera = GetComponentInChildren<Camera>();
         camera.enabled = true;
     }
@@ -84,17 +94,24 @@ public class PlayerController : MonoBehaviour
         {
             isSherlock = true;
         }
-
-
+        
         if (isSherlock)
         {
             speed = 10;
             meshRenderer.material = SherlockMaterial;
+            foreach (var redObject in redObjects)
+            {
+                redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
+            }
         }
         else
         {
             speed = 20;
             meshRenderer.material = WatsonMaterial;
+            foreach (var redObject in redObjects)
+            {
+                redObject.GetComponent<MeshRenderer>().material.color = redCableMaterial.color;
+            }
         }
     }
 

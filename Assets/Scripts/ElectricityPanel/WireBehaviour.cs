@@ -47,12 +47,14 @@ public class WireBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<MeshRenderer>() != null)
+        if (other.tag == "CablePlace")
         {
             if (!other.GetComponent<CablePlaceBehaviour>().haveCable())
             {
                 cablePlace = other.gameObject;
-                cablePlace.GetComponent<CablePlaceBehaviour>().occupe();
+                Debug.Log(gameObject.name);
+                Debug.Log(name);
+                cablePlace.GetComponent<CablePlaceBehaviour>().occupe(name);
                 if (other.GetComponent<MeshRenderer>().material.color == cablePart.GetComponent<MeshRenderer>().material.color)
                 {
                     hasGoodPlace = true;
@@ -69,8 +71,11 @@ public class WireBehaviour : MonoBehaviour
     {
         if (cablePlace != null)
         {
-            cablePlace.GetComponent<CablePlaceBehaviour>().free();
-            cablePlace = null;
+            if (cablePlace.GetComponent<CablePlaceBehaviour>().getCableName() == name)
+            {
+                cablePlace.GetComponent<CablePlaceBehaviour>().free();
+                cablePlace = null;
+            }
         }
     }
 
@@ -86,6 +91,7 @@ public class WireBehaviour : MonoBehaviour
         {
             transform.position = startPosition;
             transform.localScale = startLocalScale;
+            transform.rotation = Quaternion.Euler(90,90,0);
         }
     }
 

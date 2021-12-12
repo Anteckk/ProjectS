@@ -17,11 +17,13 @@ public class ElectricityPanel : MonoBehaviour
     private int layerMask;
     private Ray ray;
     private int screwsUnscrewed = 0;
+    private List<GameObject> redObjects;
 
     private void Start()
     {
         layerMask = 1 << 10;
         doorOpen = false;
+        redObjects = new List<GameObject>();
         initCable();
     }
 
@@ -35,6 +37,14 @@ public class ElectricityPanel : MonoBehaviour
 
         for (int i = 0; i < cableList.Count; i++)
         {
+            if (cableMaterials[i].color.Equals(Color.red))
+            {
+                Debug.Log("red object + " + cableList[i].gameObject);
+                redObjects.Add(
+                    cableList[i].gameObject
+                    );
+                redObjects.Add(wireList[i].gameObject);
+            }
             cableList[i].GetComponent<MeshRenderer>().material.color = cableMaterials[i].color;
             wireList[i].GetComponent<MeshRenderer>().material.color = cableMaterials[i].color;
         }
@@ -44,6 +54,11 @@ public class ElectricityPanel : MonoBehaviour
 
         for (int i = 0; i < cablePlaceList.Count; i++)
         {
+            
+            if (cableMaterials[i].color.Equals(Color.red))
+            {
+                redObjects.Add(cablePlaceList[i].gameObject);
+            }
             cablePlaceList[i].GetComponent<MeshRenderer>().material.color = cableMaterials[i].color;
         }
     }
@@ -58,4 +73,8 @@ public class ElectricityPanel : MonoBehaviour
         return doorOpen;
     }
 
+    public List<GameObject> getRedObjects()
+    {
+        return redObjects;
+    }
 }

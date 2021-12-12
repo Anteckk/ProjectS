@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 2285324388332865156}
   - component: {fileID: 984914167416421606}
   m_Layer: 10
-  m_Name: ElectricityPanel
+  m_Name: SwitchPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
