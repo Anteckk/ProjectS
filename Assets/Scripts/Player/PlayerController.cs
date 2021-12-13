@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private InventoryWheelController inventoryWheelController;
     private Interactable interactedObject;
     private List<GameObject> redObjects;
+    private Transform previousSpawnPoint = null;
+    private Transform spawnPoint;
 
     private void Awake()
     {
@@ -119,6 +121,24 @@ public class PlayerController : MonoBehaviour
     {
         return inventoryWheelController;
     }
+    #endregion
+
+    #region Setter
+
+    public void SetSpawnPoint(Transform transform)
+    {
+        if (previousSpawnPoint == null)
+        {
+            previousSpawnPoint = transform;
+        }
+        else
+        {
+            previousSpawnPoint = spawnPoint;
+        }
+
+        spawnPoint = transform;
+    }
+
     #endregion
 
     void OnMovement(InputValue prmInputValue)
