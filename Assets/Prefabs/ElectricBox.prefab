@@ -331,18 +331,18 @@ PrefabInstance:
     - target: {fileID: 37407309482061565, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3773885512099281486}
+      objectReference: {fileID: 8220376364217274707}
     - target: {fileID: 37407309482061565, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 37407309482061565, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CountScrews
+      value: DestroyThis
       objectReference: {fileID: 0}
     - target: {fileID: 37407309482061565, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ElectricityDoor, Assembly-CSharp
+      value: ScrewScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 37407309482061565, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -495,18 +495,18 @@ PrefabInstance:
     - target: {fileID: 3382798817933840738, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3773885512099281486}
+      objectReference: {fileID: 6656985016323583692}
     - target: {fileID: 3382798817933840738, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3382798817933840738, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CountScrews
+      value: DestroyThis
       objectReference: {fileID: 0}
     - target: {fileID: 3382798817933840738, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ElectricityDoor, Assembly-CSharp
+      value: ScrewScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3382798817933840738, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -679,15 +679,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9188494215486231673, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
   m_PrefabInstance: {fileID: 207851075}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3773885512099281486 stripped
+--- !u!114 &8220376364217274707 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3773885512034038797, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8220376364286713616, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
   m_PrefabInstance: {fileID: 207851075}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e79730f7a4f22cb4ebb1d2861815e403, type: 3}
+  m_Script: {fileID: 11500000, guid: fa706539539d949488b4035f677f3ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6656985016323583692 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6656985016397144207, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+  m_PrefabInstance: {fileID: 207851075}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa706539539d949488b4035f677f3ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8090030830071353505 stripped
