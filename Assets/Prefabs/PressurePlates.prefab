@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5956511142285093069}
   - component: {fileID: 3667414281641813421}
   - component: {fileID: 2412730998782112685}
-  - component: {fileID: 8117853729525277249}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -40,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2879105852790978690}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -754667642709018251, guid: 143b3761e57605b4a85c7bc58d380c34, type: 3}
 --- !u!23 &2412730998782112685
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8117853729525277249
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2879105852790978690}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3570273193348012370
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4169683507753411916}
-  - component: {fileID: 1716976748}
+  - component: {fileID: 8024255767185378871}
   - component: {fileID: 1716976749}
   m_Layer: 0
   m_Name: PressurePlates
@@ -128,7 +114,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1716976748
+--- !u!65 &8024255767185378871
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,11 +122,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3570273193348012370}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.20730351, z: 1}
-  m_Center: {x: 0, y: 0.012028486, z: 0}
+  m_Size: {x: 1.3799582, y: 0.20929043, z: 1.3917947}
+  m_Center: {x: 0.0073787374, y: 0.08869084, z: -0.008810759}
 --- !u!114 &1716976749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,3 +141,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isSteppedOn: 0
+  otherPlate: {fileID: 0}
+  doorBehaviour: {fileID: 0}
+  statueScript: {fileID: 0}
