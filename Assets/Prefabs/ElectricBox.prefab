@@ -224,7 +224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4942090664569294356}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2.5, z: 0}
   m_LocalScale: {x: 1.148, y: 2.2342, z: 0.732789}
   m_Children: []
   m_Father: {fileID: 7745399175855892250}
@@ -392,6 +392,10 @@ PrefabInstance:
       propertyPath: wireList.Array.data[3]
       value: 
       objectReference: {fileID: 261524524445172964}
+    - target: {fileID: 1102989216168227063, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 5720337604048769140}
     - target: {fileID: 1160670995359546011, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -556,6 +560,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.8
       objectReference: {fileID: 0}
+    - target: {fileID: 6169291342850225045, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 5720337604048769140}
     - target: {fileID: 6564636311022783542, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: camera
       value: 
@@ -568,6 +576,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.124
       objectReference: {fileID: 0}
+    - target: {fileID: 6656985016397144207, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 5720337604048769140}
     - target: {fileID: 7036197714452629479, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: m_Name
       value: ElectricityPanel
@@ -586,7 +598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7751928745935758343, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0000009536743
+      value: -0.000002861023
       objectReference: {fileID: 0}
     - target: {fileID: 7751928745935758343, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -600,6 +612,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.65
       objectReference: {fileID: 0}
+    - target: {fileID: 8220376364286713616, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 5720337604048769140}
     - target: {fileID: 9069928425366929690, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: endValueV3.z
       value: 720
@@ -677,6 +693,11 @@ PrefabInstance:
 --- !u!4 &9188494215551277626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9188494215486231673, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+  m_PrefabInstance: {fileID: 207851075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5720337604048769140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5720337604117880375, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
   m_PrefabInstance: {fileID: 207851075}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8220376364217274707 stripped

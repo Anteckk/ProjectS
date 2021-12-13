@@ -16,8 +16,8 @@ public class ScrewScript : MonoBehaviour
 
     public void DestroyThis()
     {
-        gameObject.SetActive(false);
         parent.GetComponent<ElectricityDoor>().CountScrews();
+        gameObject.SetActive(false);
     }
 
     public void OnMouseDown()
