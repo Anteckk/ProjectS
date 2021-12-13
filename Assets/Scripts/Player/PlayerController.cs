@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using UI;
 using UnityEditor.IMGUI.Controls;
@@ -11,11 +12,14 @@ using Vector3 = System.Numerics.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] GameObject Hand;
+    [SerializeField] GameObject crate;
     [SerializeField] GameObject electricPanel;
     [SerializeField] Material redCableMaterial;
     [SerializeField] Material blueCableMaterial;
     private float speed;
     private bool isSherlock;
+    private bool isLifting;
     private Rigidbody rb;
     private MeshRenderer meshRenderer;
     public Material SherlockMaterial;
@@ -28,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private List<GameObject> redObjects;
     private Transform previousSpawnPoint = null;
     private Transform spawnPoint;
+    private GameObject crateTaken;
 
     private void Awake()
     {
@@ -44,6 +49,7 @@ public class PlayerController : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
         speed = 10;
         isSherlock = true;
+        isLifting = false;
         
         redObjects = electricPanel.GetComponent<ElectricityPanel>().getRedObjects();
         foreach (var redObject in redObjects)
@@ -159,8 +165,8 @@ public class PlayerController : MonoBehaviour
     void OnInteract()
     {
         interactedObject = GetComponentInChildren<InteractionRangeBehaviour>().getInteractableObject();
-        
-        if (interactedObject != null)
+
+        if (interactedObject != null && !isLifting)
         {
             interactedObject.action();
             if (interactedObject.getObjectCamera() != null)
@@ -168,7 +174,9 @@ public class PlayerController : MonoBehaviour
                 camera.enabled = false;
                 interactedObject.getObjectCamera().enabled = true;
             }
-            
+        } else if (isLifting)
+        {
+            crateTaken.GetComponent<TakeObjet>().action();
         }
     }
 
@@ -180,4 +188,21 @@ public class PlayerController : MonoBehaviour
             camera.enabled = true;
         }
     }
+
+    public void TakeCrate()
+    {
+        isLifting = true;
+        crateTaken = Instantiate(crate, Hand.transform);
+        crateTaken.GetComponent<Rigidbody>().useGravity = true;
+        crateTaken.GetComponent<Rigidbody>().isKinematic = false;
+        crateTaken.GetComponent<TakeObjet>().isTaken();
+        crateTaken.GetComponent<BoxCollider>().isTrigger = true;
+    }
+
+    public void releaseCrate()
+    {
+        isLifting = false;
+        crateTaken.GetComponent<BoxCollider>().isTrigger = false;
+    }
+
 }
