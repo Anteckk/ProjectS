@@ -224,7 +224,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677647357}
   m_LocalRotation: {x: -0.08915747, y: 0.8984559, z: -0.3721526, w: -0.21524514}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: -48.368633, y: 10, z: 4.00441}
+=======
+<<<<<<< HEAD
+  m_LocalPosition: {x: 4.5313683, y: 10, z: 8.91441}
+=======
+  m_LocalPosition: {x: -48.368633, y: 10, z: 4.00441}
+>>>>>>> 2c7cad1eff11ec339bdb3b7fd6eb8ad5b0fdaa34
+>>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 774508226922605611}
@@ -453,7 +461,6 @@ GameObject:
   - component: {fileID: 3304598841018178479}
   - component: {fileID: 9080080137742179982}
   - component: {fileID: 3024470859658359179}
-  - component: {fileID: 2231911295027133824}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -524,20 +531,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2231911295027133824
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52438477417833612}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &73510249040266917
 GameObject:
   m_ObjectHideFlags: 0
