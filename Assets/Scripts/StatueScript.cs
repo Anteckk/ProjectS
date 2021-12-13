@@ -42,7 +42,8 @@ public class StatueScript : Interactable
             player.GetComponent<PlayerController>().getPlayerInventory().AddItem(self);
             player.GetComponent<PlayerController>().getInventoryWheelController().RefreshUIItem();
             gameObject.SetActive(false);
-            
+            player.GetComponentInChildren<Canvas>().enabled = false;
+
         }
     }
 }

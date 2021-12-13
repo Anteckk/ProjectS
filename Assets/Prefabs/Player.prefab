@@ -95,7 +95,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012601523}
-  m_LocalRotation: {x: -0.08915746, y: 0.8984559, z: -0.3721526, w: -0.21524514}
+  m_LocalRotation: {x: -0.08915743, y: 0.8984559, z: -0.3721526, w: -0.21524511}
   m_LocalPosition: {x: 4.5313683, y: 10, z: 8.91441}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -223,7 +223,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677647357}
-  m_LocalRotation: {x: -0.08915746, y: 0.8984559, z: -0.3721526, w: -0.21524514}
+  m_LocalRotation: {x: -0.08915743, y: 0.8984559, z: -0.3721526, w: -0.21524511}
   m_LocalPosition: {x: 4.5313683, y: 10, z: 8.91441}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -640,8 +640,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687d1a6348564774cb6081d482888060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  electricPanel: {fileID: 0}
+  redCableMaterial: {fileID: 0}
+  blueCableMaterial: {fileID: 0}
   SherlockMaterial: {fileID: 2100000, guid: 4cb7696e8e1098a4d9a900d8eaad88cf, type: 2}
   WatsonMaterial: {fileID: 2100000, guid: f421b3da5286b7a4981eafb8e873490d, type: 2}
+  camera: {fileID: 1677647359}
 --- !u!114 &1127575389
 MonoBehaviour:
   m_ObjectHideFlags: 0

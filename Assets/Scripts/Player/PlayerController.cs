@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private MeshRenderer meshRenderer;
     public Material SherlockMaterial;
     public Material WatsonMaterial;
-    private Camera camera;
+    [SerializeField] Camera camera;
     private Inventory.Inventory playerInventory;
     private Vector2 XZAxis;
     private InventoryWheelController inventoryWheelController;
@@ -49,7 +49,6 @@ public class PlayerController : MonoBehaviour
             redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
         }
         
-        camera = GetComponentInChildren<Camera>();
         camera.enabled = true;
     }
 
