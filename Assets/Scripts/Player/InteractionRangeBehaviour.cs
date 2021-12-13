@@ -6,17 +6,15 @@ using UnityEngine;
 
 public class InteractionRangeBehaviour : MonoBehaviour
 {
-
     private Interactable interactableObject;
     private GameObject triggeredObject;
 
     public Canvas InteractioncanCanvas;
     public TMP_Text InteractedObject;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -29,11 +27,12 @@ public class InteractionRangeBehaviour : MonoBehaviour
     {
         Interactable interactable = other.gameObject.GetComponent<Interactable>();
         triggeredObject = other.gameObject;
-        
-        if ( interactable != null)
+
+        if (interactable != null)
         {
             interactableObject = interactable;
             Debug.Log("In Range");
+
             InteractioncanCanvas.enabled = true;
             InteractedObject.SetText(interactable.gameObject.name);
         }
@@ -45,8 +44,8 @@ public class InteractionRangeBehaviour : MonoBehaviour
         {
             interactableObject = null;
             Debug.Log("Not in Range");
+
             InteractioncanCanvas.enabled = false;
-            
         }
     }
 

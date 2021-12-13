@@ -11,6 +11,10 @@ public class PressurePlateBehaviour : MonoBehaviour
 
     private List<GameObject> objectsList = new List<GameObject>();
 
+    [SerializeField] PressurePlateBehaviour otherPlate;
+    [SerializeField] DoorControler doorBehaviour;
+    [SerializeField] StatueScript statueScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +56,7 @@ public class PressurePlateBehaviour : MonoBehaviour
         {
             Debug.Log(go.name);
         }
+        checkPlates();
     }
 
     private void OnTriggerExit(Collider other)
@@ -59,4 +64,20 @@ public class PressurePlateBehaviour : MonoBehaviour
         objectsList.Remove(other.gameObject);
         Debug.Log("removed");
     }
+
+    public void checkPlates()
+    {
+        if (otherPlate.getIsSteppedOn() && getIsSteppedOn())
+        {
+            if (!doorBehaviour.getIsActive())
+            {
+               doorBehaviour.SetIsActive(true);
+            } 
+            if (!statueScript.getIsPickup())
+            {
+                statueScript.setIsPickup(true);
+            }
+        }
+    }
+    
 }
