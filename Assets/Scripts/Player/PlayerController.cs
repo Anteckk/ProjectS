@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Material redCableMaterial;
     [SerializeField] Material blueCableMaterial;
     private float speed;
-    private int rotationSpeed;
     private bool isSherlock;
     private bool isLifting;
     private Rigidbody rb;
@@ -40,6 +39,7 @@ public class PlayerController : MonoBehaviour
         playerInventory = new Inventory.Inventory();
         playerInventory.AddItem(new Item(Item.ItemType.Screwdriver, false));
         inventoryWheelController = FindObjectOfType<InventoryWheelController>();
+        
     }
 
     // Start is called before the first frame update
@@ -48,42 +48,37 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
         speed = 10;
-        rotationSpeed = 10;
         isSherlock = true;
-<<<<<<< Updated upstream
         isLifting = false;
         
-=======
-
->>>>>>> Stashed changes
         redObjects = electricPanel.GetComponent<ElectricityPanel>().getRedObjects();
         foreach (var redObject in redObjects)
         {
             redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
         }
-
+        
         camera.enabled = true;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        Debug.Log(XZAxis);
         var transformCam = camera.transform;
         UnityEngine.Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
-
+        
         UnityEngine.Vector3 direction = new UnityEngine.Vector3(movement.x, 0f, movement.z);
-        rb.transform.Translate(direction * speed * Time.fixedDeltaTime, Space.World);
+        rb.transform.position += direction * speed * Time.deltaTime;
 
-        if (XZAxis.magnitude != 0)
+        if (XZAxis.Equals(Vector2.zero))
         {
-            Quaternion rotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
+            var forward = transformCam.forward;
+            transform.forward = new UnityEngine.Vector3(forward.x,0f,forward.z);
         }
-        
-        
+        else
+        {
+            transform.rotation = Quaternion.LookRotation(direction);
+        }
     }
-    
 
     public void switchCharacter()
     {
@@ -96,7 +91,7 @@ public class PlayerController : MonoBehaviour
         {
             isSherlock = true;
         }
-
+        
         if (isSherlock)
         {
             speed = 10;
@@ -118,7 +113,6 @@ public class PlayerController : MonoBehaviour
     }
 
     #region Getter
-
     public Inventory.Inventory getPlayerInventory()
     {
         return playerInventory;
@@ -133,7 +127,6 @@ public class PlayerController : MonoBehaviour
     {
         return inventoryWheelController;
     }
-
     #endregion
 
     #region Setter
@@ -173,11 +166,7 @@ public class PlayerController : MonoBehaviour
     {
         interactedObject = GetComponentInChildren<InteractionRangeBehaviour>().getInteractableObject();
 
-<<<<<<< Updated upstream
         if (interactedObject != null && !isLifting)
-=======
-        if (interactedObject != null)
->>>>>>> Stashed changes
         {
             interactedObject.action();
             if (interactedObject.getObjectCamera() != null)
@@ -185,12 +174,9 @@ public class PlayerController : MonoBehaviour
                 camera.enabled = false;
                 interactedObject.getObjectCamera().enabled = true;
             }
-<<<<<<< Updated upstream
         } else if (isLifting)
         {
             crateTaken.GetComponent<TakeObjet>().action();
-=======
->>>>>>> Stashed changes
         }
     }
 
