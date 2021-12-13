@@ -721,6 +721,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318263479}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &344396691 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8122148273691486491, guid: 6a4d840dc1b120f44b4b6ec28c9e914d, type: 3}
+  m_PrefabInstance: {fileID: 499599767}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92bcc1533a8cf5845ab9d39c1dbf6d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &348663013 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 22425749149889579, guid: b4dccc7702ee0b846be3ec423cd40106, type: 3}
@@ -925,6 +936,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1593732932}
     m_Modifications:
+    - target: {fileID: 1716976749, guid: 7e9899b4482387148b527216060c241d, type: 3}
+      propertyPath: otherPlate
+      value: 
+      objectReference: {fileID: 1716976749}
+    - target: {fileID: 1716976749, guid: 7e9899b4482387148b527216060c241d, type: 3}
+      propertyPath: statueScript
+      value: 
+      objectReference: {fileID: 1514590188}
+    - target: {fileID: 1716976749, guid: 7e9899b4482387148b527216060c241d, type: 3}
+      propertyPath: doorBehaviour
+      value: 
+      objectReference: {fileID: 344396691}
     - target: {fileID: 3570273193348012370, guid: 7e9899b4482387148b527216060c241d, type: 3}
       propertyPath: m_Name
       value: PressurPlates (1)
@@ -1882,7 +1905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8074039400548256584, guid: 105a3cfe0064a244ba45c28268f16610, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.059792
+      value: -13.321
       objectReference: {fileID: 0}
     - target: {fileID: 8074039400548256584, guid: 105a3cfe0064a244ba45c28268f16610, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2314,6 +2337,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1593732932}
     m_Modifications:
+    - target: {fileID: 1716976749, guid: 7e9899b4482387148b527216060c241d, type: 3}
+      propertyPath: otherPlate
+      value: 
+      objectReference: {fileID: 441494737}
+    - target: {fileID: 1716976749, guid: 7e9899b4482387148b527216060c241d, type: 3}
+      propertyPath: statueScript
+      value: 
+      objectReference: {fileID: 1514590188}
+    - target: {fileID: 1716976749, guid: 7e9899b4482387148b527216060c241d, type: 3}
+      propertyPath: doorBehaviour
+      value: 
+      objectReference: {fileID: 344396691}
     - target: {fileID: 3570273193348012370, guid: 7e9899b4482387148b527216060c241d, type: 3}
       propertyPath: m_Name
       value: PressurPlates
@@ -2802,6 +2837,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508148686}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1514590188 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 693560664, guid: 15ef1a37aaf91ac4790adc3354d9f587, type: 3}
+  m_PrefabInstance: {fileID: 1401432304}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c63f766498392489f03f4a11fc4df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1529178409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2981,6 +3027,10 @@ PrefabInstance:
       propertyPath: speed
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 8352400254093311804, guid: b4e0ca1989094bf40bd8b541359c04de, type: 3}
+      propertyPath: electricPanel
+      value: 
+      objectReference: {fileID: 2128078317}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4e0ca1989094bf40bd8b541359c04de, type: 3}
 --- !u!4 &1529178410 stripped
@@ -3550,7 +3600,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1982155514
@@ -3956,3 +4006,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125558423}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2128078317 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1901613739, guid: 74072f9f3db3e20479fe7e30ac8744c9, type: 3}
+  m_PrefabInstance: {fileID: 186070197}
+  m_PrefabAsset: {fileID: 0}

@@ -11,7 +11,7 @@ public class TakeObjet : Interactable
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("player");
+        player = GameObject.FindWithTag("Player");
     }
 
     public override void action()

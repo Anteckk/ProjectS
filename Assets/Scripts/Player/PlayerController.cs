@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Material redCableMaterial;
     [SerializeField] Material blueCableMaterial;
     private float speed;
+    private float rotationSpeed;
     private bool isSherlock;
     private bool isLifting;
     private Rigidbody rb;
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
         speed = 10;
+        rotationSpeed = 10;
         isSherlock = true;
         isLifting = false;
         
@@ -61,24 +63,22 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        var transformCam = camera.transform;
-        UnityEngine.Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
-        
-        UnityEngine.Vector3 direction = new UnityEngine.Vector3(movement.x, 0f, movement.z);
-        rb.transform.position += direction * speed * Time.deltaTime;
-
-        if (XZAxis.Equals(Vector2.zero))
+    void FixedUpdate()
         {
-            var forward = transformCam.forward;
-            transform.forward = new UnityEngine.Vector3(forward.x,0f,forward.z);
+            var transformCam = camera.transform;
+            UnityEngine.Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
+    
+            UnityEngine.Vector3 direction = new UnityEngine.Vector3(movement.x, 0f, movement.z);
+            rb.transform.Translate(direction * speed * Time.fixedDeltaTime, Space.World);
+    
+            if (XZAxis.magnitude != 0)
+            {
+                Quaternion rotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
+            }
+            
+            
         }
-        else
-        {
-            transform.rotation = Quaternion.LookRotation(direction);
-        }
-    }
 
     public void switchCharacter()
     {
@@ -193,8 +193,8 @@ public class PlayerController : MonoBehaviour
     {
         isLifting = true;
         crateTaken = Instantiate(crate, Hand.transform);
-        crateTaken.GetComponent<Rigidbody>().useGravity = true;
-        crateTaken.GetComponent<Rigidbody>().isKinematic = false;
+        crateTaken.GetComponent<Rigidbody>().useGravity = false;
+        crateTaken.GetComponent<Rigidbody>().isKinematic = true;
         crateTaken.GetComponent<TakeObjet>().isTaken();
         crateTaken.GetComponent<BoxCollider>().isTrigger = true;
     }
@@ -203,6 +203,8 @@ public class PlayerController : MonoBehaviour
     {
         isLifting = false;
         crateTaken.GetComponent<BoxCollider>().isTrigger = false;
+        crateTaken.GetComponent<Rigidbody>().useGravity = true;
+        crateTaken.GetComponent<Rigidbody>().isKinematic = false;
     }
 
 }
