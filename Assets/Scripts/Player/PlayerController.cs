@@ -8,7 +8,6 @@ using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
-using Vector3 = System.Numerics.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
@@ -66,10 +65,10 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
         {
             var transformCam = camera.transform;
-            UnityEngine.Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
+            Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
     
-            UnityEngine.Vector3 direction = new UnityEngine.Vector3(movement.x, 0f, movement.z);
-            rb.transform.Translate(direction * speed * Time.fixedDeltaTime, Space.World);
+            Vector3 direction = new Vector3(movement.x, 0f, movement.z);
+            rb.velocity = direction * speed + rb.velocity.y * Vector3.up;
     
             if (XZAxis.magnitude != 0)
             {
