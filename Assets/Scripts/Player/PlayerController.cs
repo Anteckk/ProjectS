@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
             meshRenderer.material = SherlockMaterial;
             foreach (var redObject in redObjects)
             {
+                
                 redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
             }
         }
@@ -107,6 +108,7 @@ public class PlayerController : MonoBehaviour
             meshRenderer.material = WatsonMaterial;
             foreach (var redObject in redObjects)
             {
+                
                 redObject.GetComponent<MeshRenderer>().material.color = redCableMaterial.color;
             }
         }

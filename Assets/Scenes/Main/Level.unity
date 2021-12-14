@@ -506,7 +506,7 @@ PrefabInstance:
       objectReference: {fileID: 1737825122}
     - target: {fileID: 3570273193348012370, guid: 7e9899b4482387148b527216060c241d, type: 3}
       propertyPath: m_Name
-      value: PressurPlates (1)
+      value: LeftPlate
       objectReference: {fileID: 0}
     - target: {fileID: 4169683507753411916, guid: 7e9899b4482387148b527216060c241d, type: 3}
       propertyPath: m_RootOrder
@@ -709,6 +709,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15ef1a37aaf91ac4790adc3354d9f587, type: 3}
+--- !u!1 &435037272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3570273193348012370, guid: 7e9899b4482387148b527216060c241d, type: 3}
+  m_PrefabInstance: {fileID: 933877468}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &440021473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -716,6 +721,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1901613741, guid: 74072f9f3db3e20479fe7e30ac8744c9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 789484449303852130, guid: 74072f9f3db3e20479fe7e30ac8744c9, type: 3}
+      propertyPath: objectToBeActived
+      value: 
+      objectReference: {fileID: 435037272}
+    - target: {fileID: 984914167355503269, guid: 74072f9f3db3e20479fe7e30ac8744c9, type: 3}
+      propertyPath: redCableMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 6522a1e3e8822b14891998fcdbc9227a, type: 2}
     - target: {fileID: 1374487158245508703, guid: 74072f9f3db3e20479fe7e30ac8744c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.71
@@ -770,11 +787,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74072f9f3db3e20479fe7e30ac8744c9, type: 3}
---- !u!1 &440021474 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1901613739, guid: 74072f9f3db3e20479fe7e30ac8744c9, type: 3}
-  m_PrefabInstance: {fileID: 440021473}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &591174346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1195,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 610336543182850958, guid: eddc17d379e7e324c84747b4a88050a4, type: 3}
   m_PrefabInstance: {fileID: 849747746}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &887719835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7777710794884873860, guid: 74072f9f3db3e20479fe7e30ac8744c9, type: 3}
+  m_PrefabInstance: {fileID: 440021473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &933877468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1190,6 +1207,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747852646}
     m_Modifications:
+    - target: {fileID: 1716976749, guid: 7e9899b4482387148b527216060c241d, type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1716976749, guid: 7e9899b4482387148b527216060c241d, type: 3}
       propertyPath: otherPlate
       value: 
@@ -1204,7 +1225,7 @@ PrefabInstance:
       objectReference: {fileID: 1737825122}
     - target: {fileID: 3570273193348012370, guid: 7e9899b4482387148b527216060c241d, type: 3}
       propertyPath: m_Name
-      value: PressurPlates
+      value: RIghtPlate
       objectReference: {fileID: 0}
     - target: {fileID: 4169683507753411916, guid: 7e9899b4482387148b527216060c241d, type: 3}
       propertyPath: m_RootOrder
@@ -1262,7 +1283,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1716976749, guid: 7e9899b4482387148b527216060c241d, type: 3}
   m_PrefabInstance: {fileID: 933877468}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 435037272}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c881a6066380b4d499b09d256ac8b130, type: 3}
@@ -1554,6 +1575,14 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 5817240197849661323, guid: b4e0ca1989094bf40bd8b541359c04de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.111
+      objectReference: {fileID: 0}
+    - target: {fileID: 5817240197849661323, guid: b4e0ca1989094bf40bd8b541359c04de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.238
+      objectReference: {fileID: 0}
     - target: {fileID: 8007238312780063229, guid: b4e0ca1989094bf40bd8b541359c04de, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1589,7 +1618,7 @@ PrefabInstance:
     - target: {fileID: 8352400254093311804, guid: b4e0ca1989094bf40bd8b541359c04de, type: 3}
       propertyPath: electricPanel
       value: 
-      objectReference: {fileID: 440021474}
+      objectReference: {fileID: 887719835}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4e0ca1989094bf40bd8b541359c04de, type: 3}
 --- !u!4 &1002475918 stripped

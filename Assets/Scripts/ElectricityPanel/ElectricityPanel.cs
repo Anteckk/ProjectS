@@ -12,6 +12,7 @@ public class ElectricityPanel : MonoBehaviour
     [SerializeField] List<GameObject> cableList;
     [SerializeField] List<GameObject> cablePlaceList;
     [SerializeField] List<GameObject> wireList;
+    [SerializeField] private Material redCableMaterial;
     private RaycastHit hit;
     private bool doorOpen;
     private int layerMask;
@@ -37,7 +38,7 @@ public class ElectricityPanel : MonoBehaviour
 
         for (int i = 0; i < cableList.Count; i++)
         {
-            if (cableMaterials[i].color.Equals(Color.red))
+            if (cableMaterials[i].color.Equals(redCableMaterial.color))
             {
                 Debug.Log("red object + " + cableList[i].gameObject);
                 redObjects.Add(
@@ -55,7 +56,7 @@ public class ElectricityPanel : MonoBehaviour
         for (int i = 0; i < cablePlaceList.Count; i++)
         {
             
-            if (cableMaterials[i].color.Equals(Color.red))
+            if (cableMaterials[i].color.Equals(redCableMaterial.color))
             {
                 redObjects.Add(cablePlaceList[i].gameObject);
             }
