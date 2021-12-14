@@ -36,7 +36,7 @@ public class ElectricityPanel : MonoBehaviour
         var randomList = cableMaterials.OrderBy(x => rand.Next()).ToList();
         cableMaterials = randomList;
 
-        /*for (int i = 0; i < cableList.Count; i++)
+        for (int i = 0; i < cableList.Count; i++)
         {
             if (cableMaterials[i].color.Equals(redCableMaterial.color))
             {
@@ -61,7 +61,7 @@ public class ElectricityPanel : MonoBehaviour
                 redObjects.Add(cablePlaceList[i].gameObject);
             }
             cablePlaceList[i].GetComponent<MeshRenderer>().material.color = cableMaterials[i].color;
-        }*/
+        }
     }
 
     public void OpenDoor()

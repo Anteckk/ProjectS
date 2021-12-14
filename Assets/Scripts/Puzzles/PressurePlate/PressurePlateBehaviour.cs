@@ -44,11 +44,6 @@ public class PressurePlateBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         objectsList.Add(other.gameObject);
-        // Debug.Log("added");
-        // foreach (GameObject go in objectsList)
-        // {
-        //     Debug.Log(go.name);
-        // }
 
         if (isActive)
         {
@@ -90,7 +85,7 @@ public class PressurePlateBehaviour : MonoBehaviour
 
             if (!statueScript.getIsPickup())
             {
-                statueScript.setIsPickup(true);
+                statueScript.GetComponent<Rigidbody>().useGravity = true;
             }
         }
     }

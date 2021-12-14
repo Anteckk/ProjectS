@@ -81,6 +81,7 @@ MonoBehaviour:
   cableList: []
   cablePlaceList: []
   wireList: []
+  redCableMaterial: {fileID: 0}
 --- !u!1 &1967188538
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +373,10 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 1967188539}
+    - target: {fileID: 984914167416421606, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
+      propertyPath: redCableMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 6522a1e3e8822b14891998fcdbc9227a, type: 2}
     - target: {fileID: 984914167416421606, guid: 81a3285012e3f474482f705570dd5dcd, type: 3}
       propertyPath: wireList.Array.size
       value: 4

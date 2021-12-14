@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
     public void switchCharacter()
     {
         //Trigger the character coin rotating
-        UICharacterChange.Switch();
+        // UICharacterChange.Switch();
         // Check which character we played to change it
         if (isSherlock)
         {
