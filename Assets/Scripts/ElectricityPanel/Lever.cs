@@ -38,7 +38,11 @@ public class Lever : MonoBehaviour
 
         if (result)
         {
-            // Active the objectToBeActived
+            objectToBeActived.GetComponent<PressurePlateBehaviour>().setIsActive(true);
+        }
+        else
+        {
+            objectToBeActived.GetComponent<PressurePlateBehaviour>().setIsActive(false);
         }
         return result;
     }

@@ -23,19 +23,12 @@ public class PressurePlateBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (objectsList.Count == 0)
-        {
-            isSteppedOn = false;
-        }
-        else
-        {
-            isSteppedOn = true;
-        }
     }
 
     public void setIsActive(bool prmIsActive)
     {
         isActive = prmIsActive;
+        changePlateState();
     }
 
     public bool getIsActive()
@@ -47,22 +40,43 @@ public class PressurePlateBehaviour : MonoBehaviour
     {
         return isSteppedOn;
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         objectsList.Add(other.gameObject);
-        Debug.Log("added");
-        foreach (GameObject go in objectsList)
+        // Debug.Log("added");
+        // foreach (GameObject go in objectsList)
+        // {
+        //     Debug.Log(go.name);
+        // }
+
+        if (isActive)
         {
-            Debug.Log(go.name);
+            checkPlates();
+            changePlateState();
         }
-        checkPlates();
     }
 
     private void OnTriggerExit(Collider other)
     {
         objectsList.Remove(other.gameObject);
         Debug.Log("removed");
+        if (isActive)
+        {
+            changePlateState();
+        }
+    }
+
+    private void changePlateState()
+    {
+        if (objectsList.Count == 0)
+        {
+            isSteppedOn = false;
+        }
+        else
+        {
+            isSteppedOn = true;
+        }
     }
 
     public void checkPlates()
@@ -71,13 +85,13 @@ public class PressurePlateBehaviour : MonoBehaviour
         {
             if (!doorBehaviour.getIsActive())
             {
-               doorBehaviour.SetIsActive(true);
-            } 
+                doorBehaviour.SetIsActive(true);
+            }
+
             if (!statueScript.getIsPickup())
             {
                 statueScript.setIsPickup(true);
             }
         }
     }
-    
 }
