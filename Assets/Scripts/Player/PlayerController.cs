@@ -33,13 +33,15 @@ public class PlayerController : MonoBehaviour
     private Transform previousSpawnPoint = null;
     private Transform spawnPoint;
     private GameObject crateTaken;
+    private UICharacterChange UICharacterChange;
 
     private void Awake()
     {
         playerInventory = new Inventory.Inventory();
         playerInventory.AddItem(new Item(Item.ItemType.Screwdriver, false));
         inventoryWheelController = FindObjectOfType<InventoryWheelController>();
-        
+        UICharacterChange = FindObjectOfType<UICharacterChange>();
+
     }
 
     // Start is called before the first frame update
@@ -81,6 +83,8 @@ public class PlayerController : MonoBehaviour
 
     public void switchCharacter()
     {
+        //Trigger the character coin rotating
+        UICharacterChange.Switch();
         // Check which character we played to change it
         if (isSherlock)
         {
