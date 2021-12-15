@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
     public Material SherlockMaterial;
     public Material WatsonMaterial;
     [SerializeField] Camera camera;
-    private Inventory.Inventory playerInventory;
     private Vector2 XZAxis;
     private InventoryWheelController inventoryWheelController;
     private Interactable interactedObject;
@@ -37,16 +36,17 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        playerInventory = new Inventory.Inventory();
-        playerInventory.AddItem(new Item(Item.ItemType.Screwdriver, false));
         inventoryWheelController = FindObjectOfType<InventoryWheelController>();
         UICharacterChange = FindObjectOfType<UICharacterChange>();
-
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        if (GameManager.instance.State == GameState.HUB && GameManager.instance.spawnPointHasBeenSet)
+        {
+            gameObject.transform.position = GameManager.instance.GetLastHubSpawnPoint();
+        }
         rb = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
         speed = 10;
@@ -118,39 +118,12 @@ public class PlayerController : MonoBehaviour
     }
 
     #region Getter
-    public Inventory.Inventory getPlayerInventory()
-    {
-        return playerInventory;
-    }
-
-    public bool getCharacter()
-    {
-        return isSherlock;
-    }
-
     public InventoryWheelController getInventoryWheelController()
     {
         return inventoryWheelController;
     }
     #endregion
 
-    #region Setter
-
-    public void SetSpawnPoint(Transform transform)
-    {
-        if (previousSpawnPoint == null)
-        {
-            previousSpawnPoint = transform;
-        }
-        else
-        {
-            previousSpawnPoint = spawnPoint;
-        }
-
-        spawnPoint = transform;
-    }
-
-    #endregion
 
     void OnMovement(InputValue prmInputValue)
     {

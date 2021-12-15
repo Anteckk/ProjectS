@@ -5,20 +5,12 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    private PlayerController _playerController;
     private bool _onlyOnce = false;
-
-    private void Start()
-    {
-        _playerController = FindObjectOfType<PlayerController>();
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (!_onlyOnce)
         {
-            Debug.Log("Test");
-            _playerController.SetSpawnPoint(transform);
+            GameManager.instance.SetSpawnPoint(gameObject.transform);
             _onlyOnce = true;
         }
     }

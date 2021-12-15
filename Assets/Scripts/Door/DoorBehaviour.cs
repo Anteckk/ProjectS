@@ -24,6 +24,14 @@ public class DoorBehaviour : MonoBehaviour
     {
         if (Door.getIsActive() && other.GetComponent("PlayerController"))
         {
+            if (Door.getLevelBuildIndex() > 1)
+            {
+                GameManager.instance.UpdateGameState(GameState.LEVEL);
+            }
+            else
+            {
+                GameManager.instance.UpdateGameState(GameState.HUB);
+            }
             SceneManager.LoadScene(Door.getLevelBuildIndex());
         }
     }

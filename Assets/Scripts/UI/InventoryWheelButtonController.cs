@@ -12,7 +12,7 @@ namespace UI
         public Image selectedItem;
         public Image icon;
         
-        private PlayerController playerController;
+        private GameManager _gameManager;
         private Animator anim;
         private Sprite blankIcon;
         private void Awake()
@@ -23,16 +23,16 @@ namespace UI
         // Start is called before the first frame update
         void Start()
         {
-            playerController = FindObjectOfType<PlayerController>();
+            _gameManager = FindObjectOfType<GameManager>();
             //If button iD is higher than current player inventory size Disableinteraction()
             //Else show the sprite of the item
-            if (iD >= playerController.getPlayerInventory().GetInventorySize())
+            if (iD >= _gameManager.GetPlayerInventory().GetInventorySize())
             {
                 DisableInteraction();
             }
             else
             {
-                icon.sprite = playerController.getPlayerInventory().GetItem(iD).ItemSprite;
+                icon.sprite = _gameManager.GetPlayerInventory().GetItem(iD).ItemSprite;
             }
         }
         
@@ -42,8 +42,8 @@ namespace UI
         public void Selected()
         {
             InventoryWheelController.itemID = iD;
-            playerController.getPlayerInventory().SetItemEquipped(iD);
-            selectedItem.sprite = playerController.getPlayerInventory().GetItem(iD).ItemSprite;
+            _gameManager.GetPlayerInventory().SetItemEquipped(iD);
+            selectedItem.sprite = _gameManager.GetPlayerInventory().GetItem(iD).ItemSprite;
         }
         /// <summary>
         /// When mouse is over the button
@@ -51,9 +51,9 @@ namespace UI
         public void HoverEnter()
         {
             anim.SetBool("Hover", true);
-            if (iD < playerController.getPlayerInventory().GetInventorySize())
+            if (iD < _gameManager.GetPlayerInventory().GetInventorySize())
             {
-                itemText.text = playerController.getPlayerInventory().GetItem(iD).TypeOfItem.ToString();
+                itemText.text = _gameManager.GetPlayerInventory().GetItem(iD).TypeOfItem.ToString();
             }
         }
         /// <summary>
@@ -71,13 +71,13 @@ namespace UI
         /// </summary>
         public void RefreshButton()
         {
-            if (iD >= playerController.getPlayerInventory().GetInventorySize())
+            if (iD >= _gameManager.GetPlayerInventory().GetInventorySize())
             {
                 DisableInteraction();
             }
             else
             {
-                icon.sprite = playerController.getPlayerInventory().GetItem(iD).ItemSprite;
+                icon.sprite = _gameManager.GetPlayerInventory().GetItem(iD).ItemSprite;
                 GetComponent<Button>().interactable = true;
             }
         }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,7 @@ public class MainMenu : MonoBehaviour
     public void LoadHub()
     {
         SceneManager.LoadScene(1);
+        GameManager.instance.UpdateGameState(GameState.HUB);
     }
 
     public void LoadCredits()
