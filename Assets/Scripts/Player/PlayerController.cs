@@ -53,13 +53,20 @@ public class PlayerController : MonoBehaviour
         rotationSpeed = 10;
         isSherlock = true;
         isLifting = false;
-        
-        redObjects = electricPanel.GetComponent<ElectricityPanel>().getRedObjects();
-        foreach (var redObject in redObjects)
+
+        if (electricPanel != null)
         {
-            redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
+            redObjects = electricPanel.GetComponent<ElectricityPanel>().getRedObjects();
         }
-        
+
+        if (redObjects != null)
+        {
+            foreach (var redObject in redObjects)
+            {
+                redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
+            }
+        }
+
         camera.enabled = true;
     }
 
@@ -99,20 +106,26 @@ public class PlayerController : MonoBehaviour
         {
             speed = 10;
             meshRenderer.material = SherlockMaterial;
-            foreach (var redObject in redObjects)
+            if (redObjects != null)
             {
-                
-                redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
+                foreach (var redObject in redObjects)
+                {
+
+                    redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
+                }
             }
         }
         else
         {
             speed = 20;
             meshRenderer.material = WatsonMaterial;
-            foreach (var redObject in redObjects)
+            if (redObjects != null)
             {
-                
-                redObject.GetComponent<MeshRenderer>().material.color = redCableMaterial.color;
+                foreach (var redObject in redObjects)
+                {
+
+                    redObject.GetComponent<MeshRenderer>().material.color = redCableMaterial.color;
+                }
             }
         }
     }
