@@ -7,6 +7,7 @@ using UI;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 using UnityEngine.PlayerLoop;
 
 public class PlayerController : MonoBehaviour
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour
     public void switchCharacter()
     {
         //Trigger the character coin rotating
-        // UICharacterChange.Switch();
+        UICharacterChange.Switch();
         // Check which character we played to change it
         if (crateTaken == null)
         {
@@ -153,7 +154,12 @@ public class PlayerController : MonoBehaviour
         switchCharacter();
     }
 
-    void OnShowInventory(InputValue prmInputValue)
+    void OnShowInventory()
+    {
+        inventoryWheelController.ShowInventory();
+    }
+
+    void OnHideInventory()
     {
         inventoryWheelController.ShowInventory();
     }

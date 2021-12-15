@@ -47,7 +47,16 @@
                     "id": "c9051bf4-1bcf-492a-9739-e088455e53ab",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HideInventory",
+                    "type": "Button",
+                    "id": "ed15e312-2431-41ae-8510-00304b2b938d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
                     "initialStateCheck": false
                 },
                 {
@@ -232,6 +241,17 @@
                     "processors": "",
                     "groups": "Keyboard and Mouse",
                     "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67890850-62a6-4d25-b8b8-7abad3b0d2c8",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "HideInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
