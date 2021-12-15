@@ -1,29 +1,12 @@
 fileFormatVersion: 2
-guid: a8b33ab883dd07a459f4622f516be986
+guid: dc7a632074cffb0418669ef180a6df1d
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: bed metal
-    second: {fileID: 2800000, guid: 786f72221b1ee3f4ba7e2a3dec1b6a74, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: dirty cloth
-    second: {fileID: 2800000, guid: 49a7d3521b094cc47b4236228576c9fd, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: dirty pillow
-    second: {fileID: 2800000, guid: c502b90aea1d35f4396be32ebf3e4f01, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: white cloth
-    second: {fileID: 2800000, guid: e5139bb7470d23348b84eb8b02c6d075, type: 3}
+      74: 1827226128182048838
+    second: Take 001
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
