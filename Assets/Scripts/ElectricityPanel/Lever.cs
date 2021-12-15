@@ -8,11 +8,12 @@ public class Lever : MonoBehaviour
     
     [SerializeField] List<GameObject> wireList;
     [SerializeField] GameObject objectToBeActived;
+    private GameObject player;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -23,7 +24,7 @@ public class Lever : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("lever clic : " + checkWires());
+        checkWires();
     }
     
     

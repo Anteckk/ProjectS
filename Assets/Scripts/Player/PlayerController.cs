@@ -71,60 +71,65 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void FixedUpdate() {
+        var transformCam = camera.transform;
+        Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
+
+        Vector3 direction = new Vector3(movement.x, 0f, movement.z);
+        rb.velocity = direction * speed + rb.velocity.y * Vector3.up;
+
+        if (XZAxis.magnitude != 0)
         {
-            var transformCam = camera.transform;
-            Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
-    
-            Vector3 direction = new Vector3(movement.x, 0f, movement.z);
-            rb.velocity = direction * speed + rb.velocity.y * Vector3.up;
-    
-            if (XZAxis.magnitude != 0)
-            {
-                Quaternion rotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
-            }
-            
-            
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         }
+    }
+
+    public bool isItSherlock()
+    {
+        return isSherlock;
+    }
 
     public void switchCharacter()
     {
         //Trigger the character coin rotating
         // UICharacterChange.Switch();
         // Check which character we played to change it
-        if (isSherlock)
+        if (crateTaken == null)
         {
-            isSherlock = false;
-        }
-        else
-        {
-            isSherlock = true;
-        }
-        
-        if (isSherlock)
-        {
-            speed = 10;
-            meshRenderer.material = SherlockMaterial;
-            if (redObjects != null)
+            if (isSherlock)
             {
-                foreach (var redObject in redObjects)
-                {
+                isSherlock = false;
+            }
+            else
+            {
+                isSherlock = true;
+            }
 
-                    redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
+            if (isSherlock)
+            {
+                speed = 10;
+                meshRenderer.material = SherlockMaterial;
+                if (redObjects != null)
+                {
+                    foreach (var redObject in redObjects)
+                    {
+
+                        redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
+                    }
                 }
             }
-        }
-        else
-        {
-            speed = 20;
-            meshRenderer.material = WatsonMaterial;
-            if (redObjects != null)
+            else
             {
-                foreach (var redObject in redObjects)
+                speed = 20;
+                meshRenderer.material = WatsonMaterial;
+                if (redObjects != null)
                 {
+                    foreach (var redObject in redObjects)
+                    {
 
-                    redObject.GetComponent<MeshRenderer>().material.color = redCableMaterial.color;
+                        redObject.GetComponent<MeshRenderer>().material.color = redCableMaterial.color;
+                    }
                 }
             }
         }

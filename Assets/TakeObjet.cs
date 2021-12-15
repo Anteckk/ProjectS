@@ -40,10 +40,13 @@ public class TakeObjet : Interactable
 
     private void take()
     {
-        isTaken();
-        Debug.Log("take crate");
-        player.GetComponent<PlayerController>().TakeCrate();
-        Destroy(gameObject);
+        if (!player.GetComponent<PlayerController>().isItSherlock())
+        {
+            isTaken();
+            Debug.Log("take crate");
+            player.GetComponent<PlayerController>().TakeCrate();
+            Destroy(gameObject);
+        }
     }
 
     public void isTaken()
