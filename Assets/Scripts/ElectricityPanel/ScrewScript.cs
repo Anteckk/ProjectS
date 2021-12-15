@@ -7,11 +7,11 @@ public class ScrewScript : MonoBehaviour
     public DOTweenAnimation moveAnim;
     public DOTweenAnimation rotateAnim;
     public GameObject parent;
-    private PlayerController _playerController;
+    private GameManager _gameManager;
 
     private void Start()
     {
-        _playerController = FindObjectOfType<PlayerController>();
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     public void DestroyThis()
@@ -22,7 +22,7 @@ public class ScrewScript : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (_playerController.getPlayerInventory().GetEquippedItem().TypeOfItem == Item.ItemType.Screwdriver)
+        if (_gameManager.GetPlayerInventory().GetEquippedItem().TypeOfItem == Item.ItemType.Screwdriver)
         {
             moveAnim.DOPlay();
             rotateAnim.DOPlay();
