@@ -85,6 +85,7 @@ public class PressurePlateBehaviour : MonoBehaviour
 
             if (!statueScript.getIsPickup())
             {
+                statueScript.setIsPickup(true);
                 statueScript.GetComponent<Rigidbody>().useGravity = true;
             }
         }
