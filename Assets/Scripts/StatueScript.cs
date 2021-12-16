@@ -11,6 +11,10 @@ public class StatueScript : Interactable
     {
         self = new Item(Item.ItemType.Statue, true);
         player = GameObject.Find("Player");
+        if (GameManager.instance.statuetteIsPickedUp)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -40,6 +44,7 @@ public class StatueScript : Interactable
         if (isPickup)
         {
             GameManager.instance.GetPlayerInventory().AddItem(self);
+            GameManager.instance.statuetteIsPickedUp = true;
             player.GetComponent<PlayerController>().getInventoryWheelController().RefreshUIItem();
             gameObject.SetActive(false);
             player.GetComponentInChildren<Canvas>().enabled = false;
