@@ -93,11 +93,11 @@ public class PlayerController : MonoBehaviour
 
     public void switchCharacter()
     {
-        //Trigger the character coin rotating
-        UICharacterChange.Switch();
-        // Check which character we played to change it
-        if (crateTaken == null)
+        if (!isLifting)
         {
+			//Trigger the character coin rotating
+			UICharacterChange.Switch();
+			// Check which character we played to change it
             if (isSherlock)
             {
                 isSherlock = false;
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                speed = 20;
+                speed = 15;
                 meshRenderer.material = WatsonMaterial;
                 if (redObjects != null)
                 {
@@ -184,11 +184,13 @@ public class PlayerController : MonoBehaviour
 
     void OnBack()
     {
-        if (interactedObject.getObjectCamera() != null && camera.enabled != true)
-        {
-            interactedObject.getObjectCamera().enabled = false;
-            camera.enabled = true;
-        }
+		if(interactedObject != null){
+			if (interactedObject.getObjectCamera() != null && camera.enabled != true)
+			{
+				interactedObject.getObjectCamera().enabled = false;
+				camera.enabled = true;
+			}
+		}
     }
 
     public void TakeCrate()
@@ -198,13 +200,11 @@ public class PlayerController : MonoBehaviour
         crateTaken.GetComponent<Rigidbody>().useGravity = false;
         crateTaken.GetComponent<Rigidbody>().isKinematic = true;
         crateTaken.GetComponent<TakeObjet>().isTaken();
-        crateTaken.GetComponent<BoxCollider>().isTrigger = true;
     }
 
     public void releaseCrate()
     {
         isLifting = false;
-        crateTaken.GetComponent<BoxCollider>().isTrigger = false;
         crateTaken.GetComponent<Rigidbody>().useGravity = true;
         crateTaken.GetComponent<Rigidbody>().isKinematic = false;
     }
