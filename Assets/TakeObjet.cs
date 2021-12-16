@@ -45,6 +45,7 @@ public class TakeObjet : Interactable
             isTaken();
             Debug.Log("take crate");
             player.GetComponent<PlayerController>().TakeCrate();
+            player.GetComponent<PlayerController>().removeFromPlate(gameObject);
             Destroy(gameObject);
         }
     }

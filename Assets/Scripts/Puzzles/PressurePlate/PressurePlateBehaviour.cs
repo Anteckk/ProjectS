@@ -9,13 +9,13 @@ public class PressurePlateBehaviour : MonoBehaviour
     [SerializeField] bool isActive;
     [SerializeField] bool isSteppedOn;
 
-    private List<GameObject> objectsList = new List<GameObject>();
+    public List<GameObject> objectsList = new List<GameObject>();
 
     [SerializeField] PressurePlateBehaviour otherPlate;
     [SerializeField] DoorControler doorBehaviour;
     [SerializeField] StatueScript statueScript;
     [SerializeField] GameObject lightPoint;
-    [SerializeField] Collider collider;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -64,8 +64,9 @@ public class PressurePlateBehaviour : MonoBehaviour
         }
     }
 
-    private void changePlateState()
+    public void changePlateState()
     {
+        Debug.Log(objectsList.Count);
         if (objectsList.Count == 0)
         {
             isSteppedOn = false;
@@ -98,17 +99,5 @@ public class PressurePlateBehaviour : MonoBehaviour
     public void activeLight()
     {
         lightPoint.GetComponent<Light>().intensity = 1;
-    }
-
-    public void switchCollider()
-    {
-        if (collider.isTrigger)
-        {
-            collider.isTrigger = false;
-        }
-        else
-        {
-            collider.isTrigger = true;
-        }
     }
 }

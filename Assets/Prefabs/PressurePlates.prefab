@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6813573, y: 0.20929043, z: 0.62248516}
-  m_Center: {x: 0.011181762, y: 0.08869084, z: 0.016108235}
+  m_Size: {x: 0.50496405, y: 0.20929043, z: 0.47790915}
+  m_Center: {x: -0.008416375, y: 0.08869084, z: 0.0015872916}
 --- !u!114 &1716976749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +65,6 @@ MonoBehaviour:
   doorBehaviour: {fileID: 0}
   statueScript: {fileID: 0}
   lightPoint: {fileID: 0}
-  collider: {fileID: 0}
 --- !u!33 &3949678484434627650
 MeshFilter:
   m_ObjectHideFlags: 0

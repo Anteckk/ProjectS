@@ -59,10 +59,7 @@ public class PlayerController : MonoBehaviour
 
         plates = FindObjectsOfType<PressurePlateBehaviour>();
         
-        foreach (PressurePlateBehaviour plate in plates)
-        {
-            plate.switchCollider();
-        }
+        
         
         if (electricPanel != null)
         {
@@ -127,10 +124,7 @@ public class PlayerController : MonoBehaviour
                         redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
                     }
                 }
-                foreach (PressurePlateBehaviour plate in plates)
-                {
-                    plate.switchCollider();
-                }
+                
             }
             else
             {
@@ -144,10 +138,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
-                foreach (PressurePlateBehaviour plate in plates)
-                {
-                    plate.switchCollider();
-                }
+                
             }
         }
     }
@@ -213,10 +204,6 @@ public class PlayerController : MonoBehaviour
     {
         isLifting = true;
         crateTaken = Instantiate(crate, Hand.transform);
-        foreach (PressurePlateBehaviour plate in plates)
-        {
-            Physics.IgnoreCollision(crateTaken.GetComponent<BoxCollider>(), plate.GetComponent<BoxCollider>());
-        }
 
         crateTaken.GetComponent<Rigidbody>().useGravity = false;
         crateTaken.GetComponent<Rigidbody>().isKinematic = true;
@@ -230,4 +217,14 @@ public class PlayerController : MonoBehaviour
         crateTaken.GetComponent<Rigidbody>().isKinematic = false;
     }
 
+    public void removeFromPlate(GameObject prmGameObject)
+    {
+        foreach (var plate in plates)
+        {
+            plate.objectsList.Remove(prmGameObject);
+            plate.changePlateState();
+            plate.checkPlates();
+        }
+    }
+    
 }
