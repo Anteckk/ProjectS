@@ -14,6 +14,7 @@ public class PressurePlateBehaviour : MonoBehaviour
     [SerializeField] PressurePlateBehaviour otherPlate;
     [SerializeField] DoorControler doorBehaviour;
     [SerializeField] StatueScript statueScript;
+    [SerializeField] GameObject lightPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -67,10 +68,12 @@ public class PressurePlateBehaviour : MonoBehaviour
         if (objectsList.Count == 0)
         {
             isSteppedOn = false;
+            lightPoint.GetComponent<Light>().color = Color.red;
         }
         else
         {
             isSteppedOn = true;
+            lightPoint.GetComponent<Light>().color = Color.green;
         }
     }
 
@@ -89,5 +92,10 @@ public class PressurePlateBehaviour : MonoBehaviour
                 statueScript.GetComponent<Rigidbody>().useGravity = true;
             }
         }
+    }
+
+    public void activeLight()
+    {
+        lightPoint.GetComponent<Light>().intensity = 1;
     }
 }
