@@ -8,33 +8,35 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance
     {
-        get { return _instance; }
+        get
+        {
+            if (_instance != null)
+            {
+                return _instance;
+            }
+            else
+            {
+                return _instance = new GameObject("GameManager").AddComponent<GameManager>();
+            }
+        }
     }
+    private static GameManager _instance;
+    
     public GameState State;
     public bool spawnPointHasBeenSet = false;
+    public bool statuetteIsPickedUp = false;
     private Vector3 currentRoomCheckPoint;
-    private Vector3 lastHubSpawnPoint;
+    [SerializeField] Vector3 lastHubSpawnPoint;
     private Inventory.Inventory _playerInventory;
-    private static GameManager _instance;
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(gameObject);
-            Debug.Log("Duplicate GameManager found");
-        }
-        else
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        DontDestroyOnLoad(gameObject);
         InitInventory();
     }
 
     private void Start()
     {
-        UpdateGameState(GameState.MAINMENU);
     }
 
     /// <summary>
