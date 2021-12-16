@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -212,6 +213,11 @@ public class PlayerController : MonoBehaviour
     {
         isLifting = true;
         crateTaken = Instantiate(crate, Hand.transform);
+        foreach (PressurePlateBehaviour plate in plates)
+        {
+            Physics.IgnoreCollision(crateTaken.GetComponent<BoxCollider>(), plate.GetComponent<BoxCollider>());
+        }
+
         crateTaken.GetComponent<Rigidbody>().useGravity = false;
         crateTaken.GetComponent<Rigidbody>().isKinematic = true;
         crateTaken.GetComponent<TakeObjet>().isTaken();

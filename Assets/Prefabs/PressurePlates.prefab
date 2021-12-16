@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7172081429580978631}
   - component: {fileID: 485438625122311331}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WatsonCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 1716976749}
   - component: {fileID: 3949678484434627650}
   - component: {fileID: 4862910445304397688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PressurePlates
   m_TagString: Untagged
   m_Icon: {fileID: 0}
