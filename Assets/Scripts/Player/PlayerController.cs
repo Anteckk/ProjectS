@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private Transform spawnPoint;
     private GameObject crateTaken;
     private UICharacterChange UICharacterChange;
+    private PressurePlateBehaviour[] plates;
 
     private void Awake()
     {
@@ -55,6 +56,13 @@ public class PlayerController : MonoBehaviour
         isSherlock = true;
         isLifting = false;
 
+        plates = FindObjectsOfType<PressurePlateBehaviour>();
+        
+        foreach (PressurePlateBehaviour plate in plates)
+        {
+            plate.switchCollider();
+        }
+        
         if (electricPanel != null)
         {
             redObjects = electricPanel.GetComponent<ElectricityPanel>().getRedObjects();
@@ -115,9 +123,12 @@ public class PlayerController : MonoBehaviour
                 {
                     foreach (var redObject in redObjects)
                     {
-
                         redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
                     }
+                }
+                foreach (PressurePlateBehaviour plate in plates)
+                {
+                    plate.switchCollider();
                 }
             }
             else
@@ -128,9 +139,13 @@ public class PlayerController : MonoBehaviour
                 {
                     foreach (var redObject in redObjects)
                     {
-
                         redObject.GetComponent<MeshRenderer>().material.color = redCableMaterial.color;
                     }
+                }
+
+                foreach (PressurePlateBehaviour plate in plates)
+                {
+                    plate.switchCollider();
                 }
             }
         }

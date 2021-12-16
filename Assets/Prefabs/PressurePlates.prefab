@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1675252170372874259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7172081429580978631}
+  - component: {fileID: 485438625122311331}
+  m_Layer: 0
+  m_Name: WatsonCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7172081429580978631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675252170372874259}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.584, z: 0}
+  m_LocalScale: {x: 1.6033, y: 3.3667827, z: 1.4886}
+  m_Children: []
+  m_Father: {fileID: 4169683507753411916}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &485438625122311331
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675252170372874259}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3570273193348012370
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +74,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 1.5, z: 3}
-  m_Children: []
+  m_Children:
+  - {fileID: 7172081429580978631}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,8 +90,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3799582, y: 0.20929043, z: 1.3917947}
-  m_Center: {x: 0.0073787374, y: 0.08869084, z: -0.008810759}
+  m_Size: {x: 0.6813573, y: 0.20929043, z: 0.62248516}
+  m_Center: {x: 0.011181762, y: 0.08869084, z: 0.016108235}
 --- !u!114 &1716976749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +109,8 @@ MonoBehaviour:
   otherPlate: {fileID: 0}
   doorBehaviour: {fileID: 0}
   statueScript: {fileID: 0}
+  lightPoint: {fileID: 0}
+  collider: {fileID: 485438625122311331}
 --- !u!33 &3949678484434627650
 MeshFilter:
   m_ObjectHideFlags: 0
