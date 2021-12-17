@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.iOS;
+
 
 public class Lever : MonoBehaviour
 {
@@ -46,6 +46,9 @@ public class Lever : MonoBehaviour
         {
             objectToBeActived.GetComponent<PressurePlateBehaviour>().setIsActive(false);
         }
+
+        player.GetComponent<PlayerController>().OnBack();
+        
         return result;
     }
 }

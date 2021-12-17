@@ -1,15 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using UI;
-using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
-using UnityEngine.PlayerLoop;
-using UnityEngine.UIElements;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject electricPanel;
     [SerializeField] Material redCableMaterial;
     [SerializeField] Material blueCableMaterial;
+    [SerializeField] GameObject pauseMenu;
     private float speed;
     private float rotationSpeed;
     private bool isSherlock;
@@ -36,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private GameObject crateTaken;
     private UICharacterChange UICharacterChange;
     private PressurePlateBehaviour[] plates;
+    
 
     private void Awake()
     {
@@ -50,6 +45,7 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.transform.position = GameManager.instance.GetLastHubSpawnPoint();
         }
+
         rb = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
         speed = 10;
@@ -58,9 +54,8 @@ public class PlayerController : MonoBehaviour
         isLifting = false;
 
         plates = FindObjectsOfType<PressurePlateBehaviour>();
-        
-        
-        
+
+
         if (electricPanel != null)
         {
             redObjects = electricPanel.GetComponent<ElectricityPanel>().getRedObjects();
@@ -78,7 +73,8 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         var transformCam = camera.transform;
         Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
 
@@ -101,9 +97,9 @@ public class PlayerController : MonoBehaviour
     {
         if (!isLifting)
         {
-			//Trigger the character coin rotating
-			UICharacterChange.Switch();
-			// Check which character we played to change it
+            //Trigger the character coin rotating
+            UICharacterChange.Switch();
+            // Check which character we played to change it
             if (isSherlock)
             {
                 isSherlock = false;
@@ -124,7 +120,6 @@ public class PlayerController : MonoBehaviour
                         redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
                     }
                 }
-                
             }
             else
             {
@@ -137,17 +132,17 @@ public class PlayerController : MonoBehaviour
                         redObject.GetComponent<MeshRenderer>().material.color = redCableMaterial.color;
                     }
                 }
-
-                
             }
         }
     }
 
     #region Getter
+
     public InventoryWheelController getInventoryWheelController()
     {
         return inventoryWheelController;
     }
+
     #endregion
 
 
@@ -183,21 +178,29 @@ public class PlayerController : MonoBehaviour
                 camera.enabled = false;
                 interactedObject.getObjectCamera().enabled = true;
             }
-        } else if (isLifting)
+        }
+        else if (isLifting)
         {
             crateTaken.GetComponent<TakeObjet>().action();
         }
     }
 
-    void OnBack()
+    public void OnBack()
     {
-		if(interactedObject != null){
-			if (interactedObject.getObjectCamera() != null && camera.enabled != true)
-			{
-				interactedObject.getObjectCamera().enabled = false;
-				camera.enabled = true;
-			}
-		}
+        if (interactedObject != null)
+        {
+            if (interactedObject.getObjectCamera() != null && camera.enabled != true)
+            {
+                interactedObject.getObjectCamera().enabled = false;
+                camera.enabled = true;
+            }
+        }
+    }
+
+    void OnPause()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void TakeCrate()
@@ -226,5 +229,4 @@ public class PlayerController : MonoBehaviour
             plate.checkPlates();
         }
     }
-    
 }

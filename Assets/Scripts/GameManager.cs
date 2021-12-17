@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UI;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -20,8 +16,9 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
     private static GameManager _instance;
-    
+
     public GameState State;
     public bool spawnPointHasBeenSet = false;
     public bool statuetteIsPickedUp = false;
@@ -70,11 +67,12 @@ public class GameManager : MonoBehaviour
             {
                 spawnPointHasBeenSet = true;
             }
+
             lastHubSpawnPoint = pos.transform.position;
         }
     }
 
-        
+
     /// <summary>
     /// Return player's inventory
     /// </summary>
@@ -83,7 +81,7 @@ public class GameManager : MonoBehaviour
     {
         return _playerInventory;
     }
-    
+
     /// <summary>
     /// Return the last spawn point the player walked on in the hub
     /// </summary>
@@ -93,6 +91,7 @@ public class GameManager : MonoBehaviour
         return lastHubSpawnPoint;
     }
 }
+
 /// <summary>
 /// Game current state
 /// </summary>

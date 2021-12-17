@@ -28,6 +28,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         GameManager.instance.UpdateGameState(GameState.HUB);
+        Time.timeScale = 1;
     }
 
     public void LoadCredits()
@@ -44,7 +45,7 @@ public class MainMenu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        
     }
 
     public void Back()

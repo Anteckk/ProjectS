@@ -1,25 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ValveMechanics : Interactable
 {
     [SerializeField] private GameObject GasCloud;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    
-    
+
     public override void action()
     {
         gasControl();
@@ -37,6 +32,5 @@ public class ValveMechanics : Interactable
             GasCloud.SetActive(true);
             Debug.Log("Gas on");
         }
-        
     }
 }

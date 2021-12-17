@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
     [SerializeField] Camera objectCamera;
-    
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,13 +12,11 @@ public class Interactable : MonoBehaviour
         {
             objectCamera.enabled = false;
         }
-       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public virtual void action()
