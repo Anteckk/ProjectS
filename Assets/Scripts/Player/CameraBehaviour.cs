@@ -30,7 +30,7 @@ public class CameraBehaviour : MonoBehaviour
     {
         if (prmInputValue.isPressed)
         {
-            cinemachineOrbitalTransposer.m_XAxis.m_MaxSpeed = 300;
+            cinemachineOrbitalTransposer.m_XAxis.m_MaxSpeed = 150;
         }
         else
         {
