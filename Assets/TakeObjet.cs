@@ -25,7 +25,14 @@ public class TakeObjet : Interactable
             take();
         }
     }
-
+    public override bool isGoodPlayer()
+    {
+        if (!player.GetComponent<PlayerController>().isItSherlock())
+        {
+            return true;
+        }
+        return false;
+    }
 
     private void release()
     {

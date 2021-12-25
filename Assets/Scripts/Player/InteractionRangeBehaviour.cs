@@ -32,9 +32,11 @@ public class InteractionRangeBehaviour : MonoBehaviour
         {
             interactableObject = interactable;
             Debug.Log("In Range");
-
-            InteractioncanCanvas.enabled = true;
-            InteractedObject.SetText(interactable.gameObject.name);
+            if (interactable.isGoodPlayer())
+            {
+                InteractioncanCanvas.enabled = true;
+                InteractedObject.SetText(interactable.gameObject.name);
+            }
         }
     }
 

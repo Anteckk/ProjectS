@@ -20,6 +20,12 @@ public class ValveMechanics : Interactable
         gasControl();
     }
 
+    public override bool isGoodPlayer()
+    {
+        // Here we return true because we didn't care about which character we played
+        return true;
+    }
+
     public void gasControl()
     {
         if (GasCloud.active)

@@ -24,6 +24,11 @@ public class Interactable : MonoBehaviour
         Debug.Log("Action Interactable");
     }
 
+    public virtual bool isGoodPlayer()
+    {
+        return true;
+    }
+
     public Camera getObjectCamera()
     {
         return objectCamera;
