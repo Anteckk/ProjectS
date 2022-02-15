@@ -229,4 +229,10 @@ public class PlayerController : MonoBehaviour
             plate.checkPlates();
         }
     }
+
+    public Vector3 Center()
+    {
+        return transform.position;
+    }
+    
 }
