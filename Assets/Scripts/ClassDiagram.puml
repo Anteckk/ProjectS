@@ -1,0 +1,338 @@
+﻿@startuml
+'https://plantuml.com/class-diagram
+
+
+class GameManager{
+- static _instance : GameManager
++ State : GameState
++ spawnPointHasBeenSet : bool
++ statuetteIsPickedUp : bool
+- currentRoomCheckPoint : Vector3
++ lastHubSpawnPoint : [SerializeField] Vector3
+- _playerInventory : Inventory.Inventory
+
+- void Awake()
++ void UpdateGameState(GameState newState)
+- void InitInventory()
++ Inventory.Inventory GetPlayerInventory()
+}
+
+GameManager-->GameState
+
+enum GameState
+{
+    MAINMENU,
+    HUB,
+    LEVEL,
+}
+
+class Door{
++ Door : DoorControler
+- void OnTriggerEnter(Collider other)
+}
+
+class Interactable{
++ objectCamera : [SerializeField] Camera
++ void Start()
++ virtual void action()
++ virtual bool isGoodPlayer()
++ Camera getObjectCamera()
+}
+
+class ValveMechanics{
+- GasCloud : [SerializeField] GameObject
++ override void action()
++ override bool isGoodPlayer()
++ void gasControl()
+}
+
+class TakeObjet{
+- isTake : bool
+- player : GameObject
++ void Start()
++ override void action()
++ override bool isGoodPlayer()
+- void release()
+- void take()
++ void isTaken()
++ bool objectIsTaken()
+}
+
+Interactable<|--ValveMechanics
+Interactable<|--TakeObjet
+
+class PressurePlateBehaviour{
++ isActive : [SerializeField] bool
++ isSteppedOn : [SerializeField] bool
++ objectsList : List<GameObject>
++ otherPlate : [SerializeField] PressurePlateBehaviour
++ doorBehaviour : [SerializeField] DoorControler
++ statueScript : [SerializeField] StatueScript
++ lightPoint : [SerializeField] GameObject
+
++ void setIsActive(bool prmIsActive)
++ bool getIsActive()
++ bool getIsSteppedOn()
+- void OnTriggerEnter(Collider other)
+- void OnTriggerExit(Collider other)
++ void changePlateState()
++ void checkPlates()
++ void activeLight()
+}
+
+class SpawnPoint{
+- _onlyOnce : bool
+- void OnTriggerStay(Collider other)
+}
+
+class StatueScript{
+- player : GameObject
+- self : Item
++ isPickup : bool
++ void Start()
++ override void action()
++ void setIsPickup(bool prmIsPickup)
++ bool getIsPickup()
+- void StatuePickup()
+}
+
+class CablePlaceBehaviour{
+- isOccuped : bool
+- cableName : string
++ void Start()
++ void occupe(string name)
++ void free()
++ bool haveCable()
++ string getCableName()
+}
+
+class UICharacterChange{
+- playerController : PlayerController
+- angleRotation : [SerializeField] Vector3
+- durationRotation : [SerializeField] float
+- isTurning : bool
+- void Start()
++ void Switch()
+}
+
+class PauseMenu{
++ void loadMenu()
++ void quit()
++ void resume()
+}
+
+class MainMenu{
++ buttonPanel : GameObject
++ creditsPanel : GameObject
++ void Start()
++ void LoadHub()
++ void LoadCredits()
++ void LoadOptions()
++ void Quit()
++ void Back()
+}
+    
+class InventoryWheelController{
++ anim : Animator
++ selectedItem : Image
++ itemID : static int
+- blankIcon : Sprite
+- inventoryWheelSelected : bool 
+- playerController : PlayerController
+- void Awake()
+- void Update()
++ void RefreshUIItem()
++ void ShowInventory()
+}
+
+class InventoryWheelButtonController{
++ iD : int
++ itemText : TextMeshProUGUI
++ selectedItem : Image
++ icon : Image
+- _gameManager : GameManager
+- anim : Animator
+- blankIcon : Sprite
+- void Awake()
++ void Start()
++ void Selected()
++ void HoverEnter()
++ void HoverExit()
++ void RefreshButton()
+- void DisableInteraction()
+}
+
+class PlayerController{
++ Hand : [SerializeField] GameObject
++ crate : [SerializeField] GameObject
++ electricPanel : [SerializeField] GameObject
++ redCableMaterial : [SerializeField] Material
++ blueCableMaterial : [SerializeField] Material
++ pauseMenu : [SerializeField] GameObject
+- speed : float
+- rotationSpeed : float
+- isSherlock : bool
+- isLifting : bool
+- rb : Rigidbody
+- meshRenderer : MeshRenderer
++ SherlockMaterial : Material
++ WatsonMaterial : Material
++ camera : [SerializeField] Camera
+- XZAxis : Vector2
+- inventoryWheelController : InventoryWheelController
+- interactedObject : Interactable
+- redObjects : List<GameObject>
+- previousSpawnPoint : Transform
+- spawnPoint : Transform
+- crateTaken : GameObject
+- UICharacterChange : UICharacterChange
+- plates : PressurePlateBehaviour[]
+    
+- void Awake()
++ void Start()
++ void FixedUpdate()
++ bool isItSherlock()
++ void switchCharacter()
++ InventoryWheelController getInventoryWheelController()
++ void OnMovement(InputValue prmInputValue)
++ void OnChangeCharacter(InputValue prmInputValue)
++ void OnShowInventory()
++ void OnHideInventory()
++ void OnInteract()
++ void OnBack()
++ void OnPause()
++ void TakeCrate()
++ void releaseCrate()
++ void removeFromPlate(GameObject prmGameObject)
+}
+
+class InteractionRangeBehaviour{
+- interactableObject : Interactable
+- triggeredObject : GameObject
+
++ InteractioncanCanvas : Canvas
++ InteractedObject : TMP-Text
+    
+void Update()
+- void OnTriggerEnter(Collider other)
+- void OnTriggerExit(Collider other)
++ Interactable getInteractableObject()
+}
+
+class CameraBehaviour{
++ camera : CinemachineVirtualCamera
+
++ cinemachineOrbitalTransposer : CinemachineOrbitalTransposer
++ void Start()
++ void OnCameraClick(InputValue prmInputValue)
+}
+
+enum ItemType
+    {
+        Empty
+        Screwdriver
+        Statue
+    }
+    
+Item->ItemType
+
+class Item{
++ TypeOfItem : readonly ItemType
++ ItemSprite : readonly Sprite
++ IsEquipped : bool
++ IsRemovable : readonly bool
++ Item(ItemType typeOfItem, bool isRemovable)
++ string GetInfo()
+}
+
+class Inventory{
+- _itemList : readonly List<Item>
++ Inventory()
++ void AddItem(Item item)
++ void RemoveEquippedItem()
+}
+
+class WireBehaviour{
++ camera : [SerializeField] Camera
++ cablePart : [SerializeField] GameObject
++ panel : [SerializeField] GameObject
+- rb : Rigidbody
+- hasGoodPlace : bool
+- cablePlace : GameObject
+- player : GameObject
+    
+- startPosition : Vector3
+- startLocalScale : Vector3
+- center : Vector3
++ void Awake()
++ void Start()
++ void OnMouseDrag()
++ void OnTriggerEnter(Collider other)
++ void OnTriggerExit(Collider other)
++ void OnMouseUp()
++ bool idGoodPlaced()
+}
+
+class ScrewScript{
++ moveAnim : DOTweenAnimation
++ rotateAnim : DOTweenAnimation
++ parent : GameObject
+- _gameManager : GameManager
+- void Start()
++ void DestroyThis()
++ void OnMouseDown()
+}
+
+class Lever{
++ wireList : [SerializeField] List<GameObject>
++ objectToBeActived : [SerializeField] GameObject
+- player : GameObject
+void Start()
+void OnMouseDown()
++ bool checkWires()
+}
+
+class ElectricityPanel{
++ camera : [SerializeField] Camera
++ cableMaterials : [SerializeField] List<Material>
++ cableList : [SerializeField] List<GameObject>
++ cablePlaceList : [SerializeField] List<GameObject>
++ wireList : [SerializeField] List<GameObject>
+- redCableMaterial : [SerializeField] Material
+-  hit : RaycastHit
+-  doorOpen : bool
+-  layerMask : int
+-  ray : Ray
+-  screwsUnscrewed : int
+-  redObjects : List<GameObject>
+- void Start()
+- void initCable()
++ void OpenDoor()
++ bool isDoorOpen()
++ List<GameObject> getRedObjects()
+}
+
+class ElectricityDoor{
++ parent : [SerializeField] GameObject
++ anim : DOTweenAnimation
+- screwUnscrewed : int
++ void CountScrews()
++ void Disappear()
+}
+
+class DoorControler{
++ isActive : [SerializeField] bool
++ levelBuildIndex : [SerializeField] int
++ bool getIsActive()
++ int getLevelBuildIndex()
++ void SetIsActive(bool boolean)
+}
+
+class DoorBehaviour{
++ Door : DoorControler
+- void OnTriggerEnter(Collider other)
+}
+
+DoorBehaviour o-- DoorControler : Door
+
+@enduml
