@@ -1,38 +1,47 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance
-    {
-        get
-        {
-            if (_instance != null)
-            {
-                return _instance;
-            }
-            else
-            {
-                return _instance = new GameObject("GameManager").AddComponent<GameManager>();
-            }
-        }
-    }
+    public static GameManager instance;
+    public Image dialogueBox;
+    public CanvasGroup UICanvas;
 
-    private static GameManager _instance;
-    private Queue<string> dialogue;
-    
+    private Queue<string> textQueue;
+    private Inventory.Inventory _playerInventory;
+
     public GameState State;
     public bool spawnPointHasBeenSet = false;
     public bool statuetteIsPickedUp = false;
     private Vector3 currentRoomCheckPoint;
     [SerializeField] Vector3 lastHubSpawnPoint;
-    private Inventory.Inventory _playerInventory;
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        InitInventory();
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            Init();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
+
+    private void Init()
+    {
+        InitInventory();
+        UICanvas.alpha = 0;
+        UICanvas.blocksRaycasts = false;
+        UICanvas.interactable = false;
+        dialogueBox.enabled = false;
+    }
+
+
     /// <summary>
     /// Change the state to a new one
     /// </summary>
@@ -40,6 +49,34 @@ public class GameManager : MonoBehaviour
     public void UpdateGameState(GameState newState)
     {
         State = newState;
+        GameStateChange(newState);
+    }
+
+    private void GameStateChange(GameState newState)
+    {
+        switch (newState)
+        {
+            case GameState.MAINMENU:
+                UICanvas.alpha = 0;
+                UICanvas.blocksRaycasts = false;
+                UICanvas.interactable = false;
+                dialogueBox.enabled = false;
+                break;
+            case GameState.HUB:
+                UICanvas.alpha = 1;
+                UICanvas.blocksRaycasts = true;
+                UICanvas.interactable = true;
+                dialogueBox.enabled = false;
+                break;
+            case GameState.LEVEL:
+                UICanvas.alpha = 1;
+                UICanvas.blocksRaycasts = true;
+                UICanvas.interactable = true;
+                dialogueBox.enabled = false;
+                break;
+            default:
+                break;
+        }
     }
 
     /// <summary>
@@ -90,7 +127,19 @@ public class GameManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        dialogueBox.enabled = true;
         Debug.Log("Starting dialogue with " + dialogue.name);
+        textQueue.Clear();
+        textQueue.Enqueue(dialogue.name);
+        foreach (string text in dialogue.texts)
+        {
+            textQueue.Enqueue(text);
+        }
+        foreach (string text in textQueue)
+        {
+            Debug.Log(text);
+        }
+        dialogueBox.GetComponent<DialogueBox>().ShowBoxWithText(textQueue);
     }
 }
 
