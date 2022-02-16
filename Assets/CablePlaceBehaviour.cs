@@ -41,4 +41,9 @@ public class CablePlaceBehaviour : MonoBehaviour
     {
         return cableName;
     }
+
+    public void PlayParticle()
+    {
+        GetComponentInChildren<ParticleSystem>().Play();
+    }
 }

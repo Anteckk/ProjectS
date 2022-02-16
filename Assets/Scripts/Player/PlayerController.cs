@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
     private GameObject crateTaken;
     private UICharacterChange UICharacterChange;
     private PressurePlateBehaviour[] plates;
-    
+    [SerializeField] CameraBehaviour camBrain;
+
 
     private void Awake()
     {
@@ -45,7 +46,6 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.transform.position = GameManager.instance.GetLastHubSpawnPoint();
         }
-
         rb = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
         speed = 10;
@@ -68,6 +68,8 @@ public class PlayerController : MonoBehaviour
                 redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
             }
         }
+        
+        InvokeTransparencyWallFromCamera();
 
         camera.enabled = true;
     }
@@ -149,6 +151,20 @@ public class PlayerController : MonoBehaviour
     void OnMovement(InputValue prmInputValue)
     {
         XZAxis = prmInputValue.Get<Vector2>();
+        if (XZAxis.magnitude != 0)
+        {
+            InvokeRepeating(nameof(InvokeTransparencyWallFromCamera), 0f,0.1f);
+        }
+        else
+        {
+            CancelInvoke();
+        }
+        
+    }
+
+    void InvokeTransparencyWallFromCamera()
+    {
+        camBrain.WallTransparency();
     }
 
     void OnChangeCharacter(InputValue prmInputValue)
