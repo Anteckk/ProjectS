@@ -38,51 +38,47 @@ public class CameraBehaviour : MonoBehaviour
     {
     }
 
-    private void FixedUpdate()
-    {
-        if (Physics.Raycast(transform.position, transform.forward, out hit))
-        {
-            if (hit.collider.gameObject.CompareTag("Wall"))
-            {
-                Debug.Log("wall");
-                if (wall != hit.collider.gameObject)
-                {
-                    if (wall)
-                    {
-
-                        wall.GetComponent<MeshRenderer>().material = originalMaterial;
-                    }
-                    wall = hit.collider.gameObject;
-                }
-                wall.GetComponent<MeshRenderer>().material = transparentMaterial;
-                
-
-            }
-            else
-            {
-                Debug.Log("Not wall");
-                if (wall)
-                {
-                    wall.GetComponent<MeshRenderer>().material = originalMaterial;
-                }
-                
-            }
-        }
-        else
-        {
-            Debug.Log("Not hit");
-        }
-    }
-
     void OnCameraClick(InputValue prmInputValue)
     {
         if (prmInputValue.isPressed)
         {
             OrbitalTransposer.m_XAxis.m_MaxSpeed = 150;
+            InvokeRepeating(nameof(WallTransparency), 0f, 0.1f );
         }
         else
         {
             OrbitalTransposer.m_XAxis.m_MaxSpeed = 0;
+            if (IsInvoking())
+            {
+                CancelInvoke();
+            }
+        }
+    }
+
+    public void WallTransparency()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        {
+            if (hit.collider.gameObject.CompareTag("Wall"))
+            {
+                
+                if (wall != hit.collider.gameObject)
+                {
+                    if (wall)
+                    {
+                        wall.GetComponent<MeshRenderer>().material = originalMaterial;
+                    }
+                    wall = hit.collider.gameObject;
+                }
+                wall.GetComponent<MeshRenderer>().material = transparentMaterial;
+            }
+            else
+            {
+                if (wall)
+                {
+                    wall.GetComponent<MeshRenderer>().material = originalMaterial;
+                }
+            }
         }
     }
 }
