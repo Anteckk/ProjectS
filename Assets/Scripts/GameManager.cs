@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class GameManager : MonoBehaviour
     }
 
     private static GameManager _instance;
-
+    private Queue<string> dialogue;
+    
     public GameState State;
     public bool spawnPointHasBeenSet = false;
     public bool statuetteIsPickedUp = false;
@@ -31,11 +33,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         InitInventory();
     }
-
-    private void Start()
-    {
-    }
-
     /// <summary>
     /// Change the state to a new one
     /// </summary>
@@ -89,6 +86,11 @@ public class GameManager : MonoBehaviour
     public Vector3 GetLastHubSpawnPoint()
     {
         return lastHubSpawnPoint;
+    }
+
+    public void StartDialogue(Dialogue dialogue)
+    {
+        Debug.Log("Starting dialogue with " + dialogue.name);
     }
 }
 
