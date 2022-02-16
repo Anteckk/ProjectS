@@ -52,7 +52,7 @@ public class WireBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "CablePlace")
+        if (other.CompareTag("CablePlace"))
         {
             if (!other.GetComponent<CablePlaceBehaviour>().haveCable())
             {
@@ -91,6 +91,7 @@ public class WireBehaviour : MonoBehaviour
             transform.position = (cablePlace.transform.position + startPosition)/2;
             float dist = Vector3.Distance(startPosition, cablePlace.transform.position);
             transform.localScale = new Vector3(transform.localScale.x, dist, transform.localScale.z);
+            cablePlace.GetComponentInChildren<CablePlaceBehaviour>().PlayParticle();
         }
         else
         {
