@@ -9,8 +9,8 @@ namespace UI
         public Image raycastBlocker;
         public Image selectedItem;
         public static int itemID;
+        public bool inventoryWheelSelected = false;
         private Sprite blankIcon;
-        private bool inventoryWheelSelected = false;
         private PlayerController playerController;
 
         private void Awake()
@@ -37,10 +37,9 @@ namespace UI
         /// <summary>
         /// Show/Hide the inventory
         /// </summary>
-        public void ShowInventory()
+        public void ToggleInventory()
         {
             inventoryWheelSelected = !inventoryWheelSelected;
-            Debug.Log("InventoryWheelSelected = " + inventoryWheelSelected.ToString());
         }
     }
 }

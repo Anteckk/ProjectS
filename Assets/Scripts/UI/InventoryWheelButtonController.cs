@@ -39,12 +39,9 @@ namespace UI
         /// </summary>
         public void Selected()
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                InventoryWheelController.itemID = iD;
-                GameManager.instance.GetPlayerInventory().SetItemEquipped(iD);
-                selectedItem.sprite = GameManager.instance.GetPlayerInventory().GetItem(iD).ItemSprite;
-            }
+            InventoryWheelController.itemID = iD;
+            GameManager.instance.GetPlayerInventory().SetItemEquipped(iD);
+            selectedItem.sprite = GameManager.instance.GetPlayerInventory().GetItem(iD).ItemSprite;
         }
         /// <summary>
         /// When mouse is over the button

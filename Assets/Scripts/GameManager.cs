@@ -63,16 +63,25 @@ public class GameManager : MonoBehaviour
                 UICanvas.alpha = 0;
                 UICanvas.blocksRaycasts = false;
                 UICanvas.interactable = false;
+                UIManager.instance.wheelController.inventoryWheelSelected = false;
                 break;
             case GameState.HUB:
                 UICanvas.alpha = 1;
                 UICanvas.blocksRaycasts = true;
                 UICanvas.interactable = true;
+                UIManager.instance.wheelController.inventoryWheelSelected = false;
                 break;
             case GameState.LEVEL:
                 UICanvas.alpha = 1;
                 UICanvas.blocksRaycasts = true;
                 UICanvas.interactable = true;
+                if (GetPlayerInventory().GetInventorySize() >= 2)
+                {
+                    GetPlayerInventory().RemoveAllItemOfType(Item.ItemType.Statue);
+                    UIManager.instance.wheelController.RefreshUIItem();
+                }
+
+                UIManager.instance.wheelController.inventoryWheelSelected = false;
                 break;
             default:
                 break;

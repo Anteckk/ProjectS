@@ -193,14 +193,12 @@ public class PlayerController : MonoBehaviour
 
     void OnShowInventory()
     {
-        UIManager.instance.wheelController.ShowInventory();
-        Debug.Log("ShowInventory");
+        UIManager.instance.wheelController.ToggleInventory();
     }
 
     void OnHideInventory()
     {
-        UIManager.instance.wheelController.ShowInventory();
-        Debug.Log("HideInventory");
+        UIManager.instance.wheelController.ToggleInventory();
     }
 
     void OnInteract()
