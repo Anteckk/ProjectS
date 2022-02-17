@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerController : MonoBehaviour
@@ -31,11 +33,15 @@ public class PlayerController : MonoBehaviour
     private PressurePlateBehaviour[] plates;
     [SerializeField] CameraBehaviour camBrain;
 
+    public float idleTimeSetting = 60f;
+    private float LastIdleTime;
+
 
     private void Awake()
     {
         Debug.Log("Player Awake");
         UICharacterChange = FindObjectOfType<UICharacterChange>();
+        LastIdleTime = Time.time;
     }
 
     // Start is called before the first frame update
@@ -76,6 +82,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
+        
         var transformCam = camera.transform;
         Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
 
@@ -86,6 +94,18 @@ public class PlayerController : MonoBehaviour
         {
             Quaternion rotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.anyKey)
+        {
+            LastIdleTime = Time.time;
+        }
+        else if(Time.time - LastIdleTime > idleTimeSetting)
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
@@ -242,8 +262,8 @@ public class PlayerController : MonoBehaviour
         foreach (var plate in plates)
         {
             plate.objectsList.Remove(prmGameObject);
-            plate.changePlateState();
-            plate.checkPlates();
+            plate.ChangePlateState();
+            plate.CheckPlates();
         }
     }
 

@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1000013067567274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 2, z: 3}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -114,6 +114,7 @@ MonoBehaviour:
   moveAnim: {fileID: 2101487627113075116}
   rotateAnim: {fileID: 8255169586615545967}
   parent: {fileID: 0}
+  highligthMaterial: {fileID: 2100000, guid: 7e2acb62f13da134b9a7d56647cb80b9, type: 2}
 --- !u!114 &2101487627113075116
 MonoBehaviour:
   m_ObjectHideFlags: 0

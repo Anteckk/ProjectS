@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
             UICanvas.blocksRaycasts = false;
             UICanvas.interactable = false;
         }
-        //sentences 
     }
 
 

@@ -10,7 +10,7 @@ public class PressurePlateBehaviour : MonoBehaviour
 
     [SerializeField] PressurePlateBehaviour otherPlate;
     [SerializeField] DoorControler doorBehaviour;
-    [SerializeField] StatueScript statueScript;
+    [SerializeField] GameObject statue;
     [SerializeField] GameObject lightPoint;
 
 
@@ -27,7 +27,7 @@ public class PressurePlateBehaviour : MonoBehaviour
     public void setIsActive(bool prmIsActive)
     {
         isActive = prmIsActive;
-        changePlateState();
+        ChangePlateState();
     }
 
     public bool getIsActive()
@@ -42,12 +42,16 @@ public class PressurePlateBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        objectsList.Add(other.gameObject);
+        if (!other.gameObject.GetComponent<InteractionRangeBehaviour>())
+        {
+             objectsList.Add(other.gameObject);
+        }
 
         if (isActive)
         {
-            checkPlates();
-            changePlateState();
+            ChangePlateState();
+            CheckPlates();
+            
         }
     }
 
@@ -57,11 +61,11 @@ public class PressurePlateBehaviour : MonoBehaviour
         Debug.Log("removed");
         if (isActive)
         {
-            changePlateState();
+            ChangePlateState();
         }
     }
 
-    public void changePlateState()
+    public void ChangePlateState()
     {
         Debug.Log(objectsList.Count);
         if (objectsList.Count == 0)
@@ -76,24 +80,30 @@ public class PressurePlateBehaviour : MonoBehaviour
         }
     }
 
-    public void checkPlates()
+    public void CheckPlates()
     {
+        Debug.Log("CheckPlates");
         if (otherPlate.getIsSteppedOn() && getIsSteppedOn())
         {
             if (!doorBehaviour.getIsActive())
             {
                 doorBehaviour.SetIsActive(true);
             }
+            
+            Debug.Log("Spawn");
+            GameObject statueInstance = Instantiate(statue, new Vector3(-25, 35, -4),new Quaternion(0,0,0,1));
 
-            if (!statueScript.getIsPickup())
+            var script = statueInstance.GetComponent<StatueScript>();
+            if (!script.getIsPickup())
             {
-                statueScript.setIsPickup(true);
-                statueScript.GetComponent<Rigidbody>().useGravity = true;
+               
+                script.setIsPickup(true);
+                script.GetComponent<Rigidbody>().useGravity = true;
             }
         }
     }
 
-    public void activeLight()
+    public void ActiveLight()
     {
         lightPoint.GetComponent<Light>().intensity = 1;
     }

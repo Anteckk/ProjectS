@@ -25,6 +25,14 @@ namespace Inventory
         {
             _itemList.Add(item);
         }
+
+        public void RemoveItem(Item item)
+        {
+            if (_itemList.Contains(item))
+            {
+                _itemList.Remove(item);
+            }
+        }
     
         /// <summary>
         /// 
