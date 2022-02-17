@@ -33,7 +33,18 @@ namespace Inventory
                 _itemList.Remove(item);
             }
         }
-    
+
+        /// <summary>
+        /// Find all item type with the type specified in typeOfTime, and remove them from inventory
+        /// </summary>
+        /// <param name="typeOfItem">Type of the item you want to remove</param>
+        public void RemoveAllItemOfType(Item.ItemType typeOfItem)
+        {
+            while (_itemList.Exists(x => x.TypeOfItem == Item.ItemType.Statue))
+            {
+                _itemList.Remove(_itemList.Find(x => x.TypeOfItem == Item.ItemType.Statue));
+            }
+        }
         /// <summary>
         /// 
         /// </summary>

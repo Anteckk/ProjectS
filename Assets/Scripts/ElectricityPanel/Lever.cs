@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public class Lever : MonoBehaviour
@@ -24,6 +25,11 @@ public class Lever : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            Debug.Log("Ui is blocking");
+            return;
+        }
         checkWires();
     }
     
