@@ -6,5 +6,7 @@ using UnityEngine;
 public class Dialogue : ScriptableObject
 {
     public string name;
-    public string[] text;
+
+    [TextAreaAttribute(3, 10)]
+    public string[] texts;
 }
