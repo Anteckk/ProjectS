@@ -7,7 +7,7 @@ public class ScrewScript : MonoBehaviour
     public DOTweenAnimation moveAnim;
     public DOTweenAnimation rotateAnim;
     public GameObject parent;
-    public Material highligthMaterial;
+    [SerializeField] Material highligthMaterial;
     private Material baseMaterial;
     private MeshRenderer mesh;
     
