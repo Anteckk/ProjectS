@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
         if (electricPanel != null)
         {
-            redObjects = electricPanel.GetComponent<ElectricityPanel>().getRedObjects();
+            redObjects = electricPanel.GetComponent<ElectricityPanel>().GetRedObjects();
         }
 
         if (redObjects != null)
@@ -83,14 +83,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-        
         var transformCam = camera.transform;
         Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
 
         Vector3 direction = new Vector3(movement.x, 0f, movement.z);
         rb.velocity = direction * speed + rb.velocity.y * Vector3.up;
-
+        
         if (XZAxis.magnitude != 0)
         {
             Quaternion rotation = Quaternion.LookRotation(direction);
@@ -117,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
     public void switchCharacter()
     {
-        if (!isLifting)
+        if (!isLifting && !UICharacterChange.isTurning)
         {
             //Trigger the character coin rotating
             UICharacterChange.Switch();
@@ -249,14 +247,14 @@ public class PlayerController : MonoBehaviour
         crateTaken.GetComponent<TakeObjet>().isTaken();
     }
 
-    public void releaseCrate()
+    public void ReleaseCrate()
     {
         isLifting = false;
         crateTaken.GetComponent<Rigidbody>().useGravity = true;
         crateTaken.GetComponent<Rigidbody>().isKinematic = false;
     }
 
-    public void removeFromPlate(GameObject prmGameObject)
+    public void RemoveFromPlate(GameObject prmGameObject)
     {
         foreach (var plate in plates)
         {

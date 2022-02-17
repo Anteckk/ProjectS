@@ -74,7 +74,7 @@ public class ElectricityPanel : MonoBehaviour
         return doorOpen;
     }
 
-    public List<GameObject> getRedObjects()
+    public List<GameObject> GetRedObjects()
     {
         return redObjects;
     }

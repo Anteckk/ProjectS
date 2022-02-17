@@ -38,7 +38,7 @@ public class TakeObjet : Interactable
     {
         Debug.Log("release crate");
         isTake = false;
-        player.GetComponent<PlayerController>().releaseCrate();
+        player.GetComponent<PlayerController>().ReleaseCrate();
 
         transform.parent = null;
     }
@@ -50,7 +50,7 @@ public class TakeObjet : Interactable
             isTaken();
             Debug.Log("take crate");
             player.GetComponent<PlayerController>().TakeCrate();
-            player.GetComponent<PlayerController>().removeFromPlate(gameObject);
+            player.GetComponent<PlayerController>().RemoveFromPlate(gameObject);
             Destroy(gameObject);
         }
     }

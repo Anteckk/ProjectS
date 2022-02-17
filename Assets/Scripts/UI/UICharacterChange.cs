@@ -8,7 +8,7 @@ public class UICharacterChange : MonoBehaviour
     private PlayerController playerController;
     [SerializeField]private Vector3 angleRotation;
     [SerializeField]private float durationRotation;
-    private bool isTurning = false;
+    public bool isTurning = false;
 
     private void Start()
     {
