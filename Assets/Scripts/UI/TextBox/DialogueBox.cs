@@ -7,10 +7,4 @@ public class DialogueBox : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
-    
-    public void ShowBoxWithText(Queue<string> Queue)
-    {
-        nameText.SetText(Queue.Dequeue());
-        dialogueText.SetText(Queue.Dequeue());
-    }
 }

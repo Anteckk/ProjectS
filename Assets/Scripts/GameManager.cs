@@ -1,6 +1,6 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Image dialogueBox;
     public CanvasGroup UICanvas;
+    public Animator animator;
 
-    private Queue<string> textQueue;
+    private Queue<string> sentences;
     private Inventory.Inventory _playerInventory;
 
     public GameState State;
@@ -35,10 +36,12 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         InitInventory();
-        UICanvas.alpha = 0;
-        UICanvas.blocksRaycasts = false;
-        UICanvas.interactable = false;
-        dialogueBox.enabled = false;
+        if (State == GameState.MAINMENU)
+        {
+            UICanvas.alpha = 0;
+            UICanvas.blocksRaycasts = false;
+            UICanvas.interactable = false;
+        }
     }
 
 
@@ -60,19 +63,16 @@ public class GameManager : MonoBehaviour
                 UICanvas.alpha = 0;
                 UICanvas.blocksRaycasts = false;
                 UICanvas.interactable = false;
-                dialogueBox.enabled = false;
                 break;
             case GameState.HUB:
                 UICanvas.alpha = 1;
                 UICanvas.blocksRaycasts = true;
                 UICanvas.interactable = true;
-                dialogueBox.enabled = false;
                 break;
             case GameState.LEVEL:
                 UICanvas.alpha = 1;
                 UICanvas.blocksRaycasts = true;
                 UICanvas.interactable = true;
-                dialogueBox.enabled = false;
                 break;
             default:
                 break;
@@ -127,19 +127,43 @@ public class GameManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        dialogueBox.enabled = true;
+        animator.SetBool("IsOpen", true);
         Debug.Log("Starting dialogue with " + dialogue.name);
-        textQueue.Clear();
-        textQueue.Enqueue(dialogue.name);
+        sentences.Clear();
+        dialogueBox.GetComponent<DialogueBox>().nameText.text = dialogue.name;
         foreach (string text in dialogue.texts)
         {
-            textQueue.Enqueue(text);
-        }
-        foreach (string text in textQueue)
-        {
+            sentences.Enqueue(text);
             Debug.Log(text);
         }
-        dialogueBox.GetComponent<DialogueBox>().ShowBoxWithText(textQueue);
+        NextSentenceDialogue();
+    }
+
+    public void NextSentenceDialogue()
+    {
+        if (sentences.Count == 0)
+        {
+            EndDialogue();
+            return;
+        }
+        string sentence = sentences.Dequeue();
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+    }
+
+    private void EndDialogue()
+    {
+        animator.SetBool("IsOpen", false);
+    }
+
+    IEnumerator TypeSentence(string sentence)
+    {
+        dialogueBox.GetComponent<DialogueBox>().dialogueText.text = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            dialogueBox.GetComponent<DialogueBox>().dialogueText.text += letter;
+            yield return null;
+        }
     }
 }
 

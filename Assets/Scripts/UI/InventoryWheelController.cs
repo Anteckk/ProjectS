@@ -15,38 +15,12 @@ namespace UI
         private void Awake()
         {
             blankIcon = Resources.Load<Sprite>("Inventory/Empty");
-            playerController = FindObjectOfType<PlayerController>();
         }
 
         private void Update()
         {
             //Show/Hide inventory animation
             anim.SetBool("OpenInventoryWheel", inventoryWheelSelected);
-
-            //Do something when an item is selected (TBD)
-            //TODO: Do something idk
-            /*switch (itemID)
-            {
-                case -1: //Nothing is selected
-                    selectedItem.sprite = blankIcon;
-                    break;
-                case 0://Item Slot 1
-                    break;
-                case 1: //Item Slot 2
-                    break;
-                case 2: //Item Slot 3
-                    break;
-                case 3: //Item Slot 4
-                    break;
-                case 4: //Item Slot 5
-                    break;
-                case 5: //Item Slot 6
-                    break;
-                case 6: //Item Slot 7
-                    break;
-                case 7: //Item Slot 8
-                    break;  
-            }*/
         }
         /// <summary>
          /// /!\ CALL THIS WHENEVER YOU ADD/REMOVE ITEM from inventory /!\
@@ -64,6 +38,7 @@ namespace UI
         public void ShowInventory()
         {
             inventoryWheelSelected = !inventoryWheelSelected;
+            Debug.Log("InventoryWheelSelected = " + inventoryWheelSelected.ToString());
         }
     }
 }

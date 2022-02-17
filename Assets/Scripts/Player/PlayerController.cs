@@ -175,11 +175,13 @@ public class PlayerController : MonoBehaviour
     void OnShowInventory()
     {
         inventoryWheelController.ShowInventory();
+        Debug.Log("ShowInventory");
     }
 
     void OnHideInventory()
     {
         inventoryWheelController.ShowInventory();
+        Debug.Log("HideInventory");
     }
 
     void OnInteract()
