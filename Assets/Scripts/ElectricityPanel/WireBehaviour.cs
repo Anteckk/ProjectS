@@ -7,7 +7,7 @@ public class WireBehaviour : MonoBehaviour
 {
     [SerializeField] Camera camera;
     [SerializeField] GameObject cablePart;
-    [SerializeField] GameObject panel;
+    [SerializeField] GameObject doorPanel;
     private Rigidbody rb;
     private bool hasGoodPlace;
     private GameObject cablePlace;
@@ -33,7 +33,7 @@ public class WireBehaviour : MonoBehaviour
 
     public void OnMouseDrag()
     {
-        if (!player.GetComponent<PlayerController>().isItSherlock())
+        if (!player.GetComponent<PlayerController>().isItSherlock() && doorPanel.GetComponent<ElectricityDoor>().IsOpen())
         {
             // We take the mouse position to know were is the cable to update his transform
             Vector3 newPosition = camera.ScreenToWorldPoint(Input.mousePosition);
