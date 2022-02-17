@@ -7,6 +7,7 @@ public class ElectricityDoor : MonoBehaviour
     [SerializeField] GameObject parent;
     public DOTweenAnimation anim;
     private int screwUnscrewed = 0;
+    private bool isOpen = false;
 
     public void CountScrews()
     {
@@ -21,6 +22,12 @@ public class ElectricityDoor : MonoBehaviour
     {
         parent.GetComponent<ElectricityPanel>().OpenDoor();
         anim.DOPlay();
+        isOpen = true;
         enabled = false;
+    }
+
+    public bool IsOpen()
+    {
+        return isOpen;
     }
 }
