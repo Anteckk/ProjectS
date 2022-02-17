@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     public Material WatsonMaterial;
     [SerializeField] Camera camera;
     private Vector2 XZAxis;
-    private InventoryWheelController inventoryWheelController;
     private Interactable interactedObject;
     private List<GameObject> redObjects;
     private Transform previousSpawnPoint = null;
@@ -35,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        inventoryWheelController = FindObjectOfType<InventoryWheelController>();
+        Debug.Log("Player Awake");
         UICharacterChange = FindObjectOfType<UICharacterChange>();
     }
 
@@ -142,7 +141,7 @@ public class PlayerController : MonoBehaviour
 
     public InventoryWheelController getInventoryWheelController()
     {
-        return inventoryWheelController;
+        return UIManager.instance.wheelController;
     }
 
     #endregion
@@ -174,13 +173,13 @@ public class PlayerController : MonoBehaviour
 
     void OnShowInventory()
     {
-        inventoryWheelController.ShowInventory();
+        UIManager.instance.wheelController.ShowInventory();
         Debug.Log("ShowInventory");
     }
 
     void OnHideInventory()
     {
-        inventoryWheelController.ShowInventory();
+        UIManager.instance.wheelController.ShowInventory();
         Debug.Log("HideInventory");
     }
 

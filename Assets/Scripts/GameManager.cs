@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public CanvasGroup UICanvas;
     public Animator animator;
 
-    private Queue<string> sentences;
+    private Queue<string> sentences = new Queue<string>();
     private Inventory.Inventory _playerInventory;
 
     public GameState State;
@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
             UICanvas.blocksRaycasts = false;
             UICanvas.interactable = false;
         }
+        //sentences 
     }
 
 
@@ -128,9 +129,10 @@ public class GameManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
+
         Debug.Log("Starting dialogue with " + dialogue.name);
         sentences.Clear();
-        dialogueBox.GetComponent<DialogueBox>().nameText.text = dialogue.name;
+        dialogueBox.GetComponent<DialogueBox>().nameText.text = dialogue.name + " : ";
         foreach (string text in dialogue.texts)
         {
             sentences.Enqueue(text);

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Valve_Dialogue
   m_EditorClassIdentifier: 
   name: Sherlock
-  texts: []
+  texts:
+  - This valve probably unlocked something nearby ...

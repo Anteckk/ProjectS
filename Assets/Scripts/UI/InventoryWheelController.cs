@@ -6,6 +6,7 @@ namespace UI
     public class InventoryWheelController : MonoBehaviour
     {
         public Animator anim;
+        public Image raycastBlocker;
         public Image selectedItem;
         public static int itemID;
         private Sprite blankIcon;
@@ -21,6 +22,7 @@ namespace UI
         {
             //Show/Hide inventory animation
             anim.SetBool("OpenInventoryWheel", inventoryWheelSelected);
+            raycastBlocker.enabled = inventoryWheelSelected;
         }
         /// <summary>
          /// /!\ CALL THIS WHENEVER YOU ADD/REMOVE ITEM from inventory /!\
