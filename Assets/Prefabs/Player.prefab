@@ -638,6 +638,8 @@ MonoBehaviour:
   SherlockMaterial: {fileID: 2100000, guid: 4cb7696e8e1098a4d9a900d8eaad88cf, type: 2}
   WatsonMaterial: {fileID: 2100000, guid: f421b3da5286b7a4981eafb8e873490d, type: 2}
   camera: {fileID: 1677647359}
+  camBrain: {fileID: 0}
+  idleTimeSetting: 60
 --- !u!114 &1127575389
 MonoBehaviour:
   m_ObjectHideFlags: 0
