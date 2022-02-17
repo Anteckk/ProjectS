@@ -103,7 +103,6 @@ public class PlayerController : MonoBehaviour
         if (Input.anyKey)
         {
             LastIdleTime = Time.time;
-            Debug.Log(LastIdleTime.ToString());
         }
         else if(Time.time - LastIdleTime > idleTimeSetting)
         {
@@ -262,8 +261,8 @@ public class PlayerController : MonoBehaviour
         foreach (var plate in plates)
         {
             plate.objectsList.Remove(prmGameObject);
-            plate.changePlateState();
-            plate.checkPlates();
+            plate.ChangePlateState();
+            plate.CheckPlates();
         }
     }
 

@@ -88,10 +88,10 @@ public class GameManager : MonoBehaviour
         return lastHubSpawnPoint;
     }
 
-    public void StartDialogue(Dialogue dialogue)
-    {
-        Debug.Log("Starting dialogue with " + dialogue.name);
-    }
+    // public void StartDialogue(Dialogue dialogue)
+    // {
+    //     Debug.Log("Starting dialogue with " + dialogue.name);
+    // }
 }
 
 /// <summary>

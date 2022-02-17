@@ -22,7 +22,7 @@ public class DoorBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Door.getIsActive() && other.GetComponent("PlayerController"))
+        if (Door.getIsActive() && other.GetComponent<PlayerController>())
         {
             if (Door.getLevelBuildIndex() > 1)
             {

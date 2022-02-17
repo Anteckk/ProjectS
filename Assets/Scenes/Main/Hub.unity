@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &93164941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 508912881, guid: b4e0ca1989094bf40bd8b541359c04de, type: 3}
+  m_PrefabInstance: {fileID: 1875417845}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 472987282e85e8e4b8ff4d57fc6b6ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &105481708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1727,6 +1738,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8352400254093311804, guid: b4e0ca1989094bf40bd8b541359c04de, type: 3}
+      propertyPath: camBrain
+      value: 
+      objectReference: {fileID: 93164941}
     - target: {fileID: 8352400254093311804, guid: b4e0ca1989094bf40bd8b541359c04de, type: 3}
       propertyPath: pauseMenu
       value: 
