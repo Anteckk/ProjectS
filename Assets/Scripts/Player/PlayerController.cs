@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] GameObject Hand;
     [SerializeField] GameObject crate;
-    [SerializeField] GameObject electricPanel;
+    [SerializeField] GameObject switchPanel;
     [SerializeField] Material redCableMaterial;
     [SerializeField] Material blueCableMaterial;
     [SerializeField] GameObject pauseMenu;
@@ -65,9 +65,9 @@ public class PlayerController : MonoBehaviour
         plates = FindObjectsOfType<PressurePlateBehaviour>();
 
 
-        if (electricPanel != null)
+        if (switchPanel != null)
         {
-            redObjects = electricPanel.GetComponent<ElectricityPanel>().GetRedObjects();
+            redObjects = switchPanel.GetComponent<ElectricityPanel>().GetRedObjects();
         }
 
         if (redObjects != null)
