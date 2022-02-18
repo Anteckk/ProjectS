@@ -10,10 +10,6 @@ public class Lever : MonoBehaviour
     [SerializeField] List<GameObject> wireList;
     [SerializeField] GameObject objectToBeActived;
     private GameObject player;
-
-    [SerializeField] DialogueTrigger objectSuccessDialogue;
-    [SerializeField] DialogueTrigger objectFailWatsonDialogue;
-    [SerializeField] DialogueTrigger objectFailSherlockDialogue;
     
     // Start is called before the first frame update
     void Start()
@@ -34,15 +30,10 @@ public class Lever : MonoBehaviour
             Debug.Log("Ui is blocking");
             return;
         }
-        Debug.Log(checkWires());
+
         if (checkWires())
         {
             player.GetComponent<PlayerController>().OnBack();
-            objectSuccessDialogue.TriggerDialogue();
-        }
-        else
-        {
-            objectFailWatsonDialogue.TriggerDialogue();
         }
     }
     
