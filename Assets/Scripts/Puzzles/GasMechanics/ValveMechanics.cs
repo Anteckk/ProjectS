@@ -4,11 +4,16 @@ public class ValveMechanics : Interactable
 {
     [SerializeField] private GameObject GasCloud;
 
-    [SerializeField] public DialogueTrigger objectDialogue;
+    [SerializeField] DialogueTrigger objectSherlockDialogue;
+    
+    [SerializeField] DialogueTrigger objectWatsonDialogue;
+
+    private PlayerController PC;
 
     // Start is called before the first frame update
     void Start()
     {
+        PC = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -34,7 +39,14 @@ public class ValveMechanics : Interactable
         {
             GasCloud.SetActive(false);
             Debug.Log("Gas off");
-            objectDialogue.TriggerDialogue();
+            if (PC.isItSherlock())
+            {
+                objectSherlockDialogue.TriggerDialogue();
+            }
+            else
+            {
+                objectWatsonDialogue.TriggerDialogue();
+            }
         }
         else
         {

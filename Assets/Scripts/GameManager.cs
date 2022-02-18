@@ -137,7 +137,6 @@ public class GameManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
-
         Debug.Log("Starting dialogue with " + dialogue.name);
         sentences.Clear();
         dialogueBox.GetComponent<DialogueBox>().nameText.text = dialogue.name + " : ";
@@ -164,6 +163,7 @@ public class GameManager : MonoBehaviour
     private void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
+        Time.timeScale = 1;
     }
 
     IEnumerator TypeSentence(string sentence)
@@ -174,6 +174,7 @@ public class GameManager : MonoBehaviour
             dialogueBox.GetComponent<DialogueBox>().dialogueText.text += letter;
             yield return null;
         }
+        Time.timeScale = 0;
     }
 }
 
