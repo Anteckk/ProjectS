@@ -9,7 +9,8 @@ public class PressurePlateBehaviour : MonoBehaviour
     public List<GameObject> objectsList = new List<GameObject>();
 
     [SerializeField] PressurePlateBehaviour otherPlate;
-    [SerializeField] DoorControler doorBehaviour;
+    [SerializeField] GameObject ClosedDoor;
+    [SerializeField] private GameObject OpenDoor;
     [SerializeField] GameObject statue;
     [SerializeField] GameObject lightPoint;
 
@@ -85,9 +86,10 @@ public class PressurePlateBehaviour : MonoBehaviour
         Debug.Log("CheckPlates");
         if (otherPlate.getIsSteppedOn() && getIsSteppedOn())
         {
-            if (!doorBehaviour.getIsActive())
+            if (ClosedDoor.activeSelf)
             {
-                doorBehaviour.SetIsActive(true);
+                ClosedDoor.SetActive(false);
+                OpenDoor.SetActive(true);
             }
             
             Debug.Log("Spawn");
