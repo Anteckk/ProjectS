@@ -30,7 +30,11 @@ public class Lever : MonoBehaviour
             Debug.Log("Ui is blocking");
             return;
         }
-        checkWires();
+
+        if (checkWires())
+        {
+            player.GetComponent<PlayerController>().OnBack();
+        }
     }
     
     
@@ -53,7 +57,7 @@ public class Lever : MonoBehaviour
             objectToBeActived.GetComponent<PressurePlateBehaviour>().setIsActive(false);
         }
 
-        player.GetComponent<PlayerController>().OnBack();
+
         
         return result;
     }
