@@ -8,7 +8,6 @@ public class WireBehaviour : MonoBehaviour
     [SerializeField] Camera camera;
     [SerializeField] GameObject cablePart;
     [SerializeField] GameObject doorPanel;
-    [SerializeField] private DialogueTrigger objectDialogue;
     private Rigidbody rb;
     private bool hasGoodPlace;
     private GameObject cablePlace;
@@ -48,10 +47,6 @@ public class WireBehaviour : MonoBehaviour
             //update scale of cable
             float dist = Vector3.Distance(startPosition, newPosition);
             transform.localScale = new Vector3(transform.localScale.x, dist, transform.localScale.z);
-        }
-        else
-        {
-            objectDialogue.TriggerDialogue();
         }
     }
 

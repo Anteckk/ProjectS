@@ -4,9 +4,6 @@ public class StatueScript : Interactable
 {
     private GameObject player;
     private Item self;
-    private PlayerController PC;
-    [SerializeField] public DialogueTrigger objectSherlockDialogue;
-    [SerializeField] public DialogueTrigger objectWatsonDialogue;
 
     public bool isPickup;
     // Start is called before the first frame update
@@ -14,18 +11,9 @@ public class StatueScript : Interactable
     {
         self = new Item(Item.ItemType.Statue, true);
         player = GameObject.Find("Player");
-        PC = FindObjectOfType<PlayerController>();
         if (GameManager.instance.statuetteIsPickedUp)
         {
             gameObject.SetActive(false);
-        }
-        if (PC.isItSherlock())
-        {
-            objectSherlockDialogue.TriggerDialogue();
-        }
-        else
-        {
-            objectWatsonDialogue.TriggerDialogue();
         }
     }
 
