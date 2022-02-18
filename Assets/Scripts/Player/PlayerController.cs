@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UI;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour
     private GameObject crateTaken;
     private UICharacterChange UICharacterChange;
     private PressurePlateBehaviour[] plates;
+    private Vector3 movement;
+    private NavMeshAgent agent;
     [SerializeField] CameraBehaviour camBrain;
 
     public float idleTimeSetting = 60f;
@@ -53,7 +56,8 @@ public class PlayerController : MonoBehaviour
         }
         rb = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
-        speed = 10;
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = 10;
         rotationSpeed = 10;
         isSherlock = true;
         isLifting = false;
@@ -82,12 +86,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        var transformCam = camera.transform;
-        Vector3 movement = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
 
-        Vector3 direction = new Vector3(movement.x, 0f, movement.z);
-        rb.velocity = direction * speed + rb.velocity.y * Vector3.up;
-        
+       // rb.velocity = direction * speed + rb.velocity.y * Vector3.up;
+        var transformCam = camera.transform;
+        Vector3 movementCam = transformCam.right * XZAxis.x + transformCam.forward * XZAxis.y;
+
+        Vector3 direction = new Vector3(movementCam.x, 0f, movementCam.z);
+         
+        movement.Set(direction.x, 0f, direction.z);
+        agent.Move(movement * (Time.deltaTime * agent.speed));
+        agent.SetDestination(transform.position + movement);
         if (XZAxis.magnitude != 0)
         {
             Quaternion rotation = Quaternion.LookRotation(direction);
@@ -130,7 +138,7 @@ public class PlayerController : MonoBehaviour
 
             if (isSherlock)
             {
-                speed = 10;
+                agent.speed = 10;
                 meshRenderer.material = SherlockMaterial;
                 if (redObjects != null)
                 {
@@ -142,7 +150,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                speed = 15;
+                agent.speed = 15;
                 meshRenderer.material = WatsonMaterial;
                 if (redObjects != null)
                 {
@@ -168,6 +176,8 @@ public class PlayerController : MonoBehaviour
     void OnMovement(InputValue prmInputValue)
     {
         XZAxis = prmInputValue.Get<Vector2>();
+        
+        
         if (XZAxis.magnitude != 0)
         {
             InvokeRepeating(nameof(InvokeTransparencyWallFromCamera), 0f,0.1f);
