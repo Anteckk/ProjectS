@@ -542,6 +542,7 @@ GameObject:
   - component: {fileID: 1905027405115144578}
   - component: {fileID: -5907300103405071869}
   - component: {fileID: 3884549065944958096}
+  - component: {fileID: 8908500122573161125}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -632,7 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hand: {fileID: 3261097264370450509}
   crate: {fileID: 5553225211404514923, guid: 105a3cfe0064a244ba45c28268f16610, type: 3}
-  electricPanel: {fileID: 0}
+  switchPanel: {fileID: 0}
   redCableMaterial: {fileID: 2100000, guid: 6522a1e3e8822b14891998fcdbc9227a, type: 2}
   blueCableMaterial: {fileID: 2100000, guid: c231a79eafc64754798603cd3fa82ce1, type: 2}
   pauseMenu: {fileID: 0}
@@ -640,6 +641,7 @@ MonoBehaviour:
   WatsonMaterial: {fileID: 2100000, guid: f421b3da5286b7a4981eafb8e873490d, type: 2}
   camera: {fileID: 1677647359}
   camBrain: {fileID: 0}
+  contextDialogue: {fileID: 8908500122573161125}
   idleTimeSetting: 60
 --- !u!114 &1127575389
 MonoBehaviour:
@@ -723,6 +725,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8908500122573161125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73510249040266917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42776f9598c561b4f8c976ce7f781b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 11400000, guid: e8e44e3aa26e7f74fbf06b65aeeec344, type: 2}
 --- !u!1 &221831862537900100
 GameObject:
   m_ObjectHideFlags: 0

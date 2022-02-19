@@ -5,6 +5,7 @@ public class TakeObjet : Interactable
     private bool isTake;
 
     private GameObject player;
+    [SerializeField] DialogueTrigger objectDialogue;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +53,13 @@ public class TakeObjet : Interactable
             player.GetComponent<PlayerController>().TakeCrate();
             player.GetComponent<PlayerController>().RemoveFromPlate(gameObject);
             Destroy(gameObject);
+        }
+        else
+        {
+            if (objectDialogue != null)
+            {
+                objectDialogue.TriggerDialogue();
+            }
         }
     }
 

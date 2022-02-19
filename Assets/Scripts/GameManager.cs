@@ -140,7 +140,11 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Starting dialogue with " + dialogue.name);
         sentences.Clear();
-        dialogueBox.GetComponent<DialogueBox>().nameText.text = dialogue.name + " : ";
+        dialogueBox.GetComponent<DialogueBox>().nameText.text = dialogue.name;
+        if (dialogue.name != "")
+        {
+            dialogueBox.GetComponent<DialogueBox>().nameText.text += " : ";
+        }
         foreach (string text in dialogue.texts)
         {
             sentences.Enqueue(text);
@@ -154,6 +158,7 @@ public class GameManager : MonoBehaviour
         if (sentences.Count == 0)
         {
             EndDialogue();
+            Time.timeScale = 1;
             return;
         }
         string sentence = sentences.Dequeue();
@@ -174,6 +179,7 @@ public class GameManager : MonoBehaviour
             dialogueBox.GetComponent<DialogueBox>().dialogueText.text += letter;
             yield return null;
         }
+        Time.timeScale = 0;
     }
 }
 

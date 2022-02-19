@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 
 public class PlayerController : MonoBehaviour
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 movement;
     private NavMeshAgent agent;
     [SerializeField] CameraBehaviour camBrain;
+    [SerializeField] DialogueTrigger contextDialogue;
 
     public float idleTimeSetting = 60f;
     private float LastIdleTime;
@@ -53,6 +55,11 @@ public class PlayerController : MonoBehaviour
         if (GameManager.instance.State == GameState.HUB && GameManager.instance.spawnPointHasBeenSet)
         {
             gameObject.transform.position = GameManager.instance.GetLastHubSpawnPoint();
+        }
+
+        if (GameManager.instance.State == GameState.HUB && !GameManager.instance.spawnPointHasBeenSet)
+        {
+            contextDialogue.TriggerDialogue();
         }
         rb = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();

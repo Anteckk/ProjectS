@@ -10,7 +10,10 @@ public class Lever : MonoBehaviour
     [SerializeField] List<GameObject> wireList;
     [SerializeField] GameObject objectToBeActived;
     private GameObject player;
-    
+
+    [SerializeField] DialogueTrigger objectSuccessDialogue;
+    [SerializeField] DialogueTrigger objectFailDialogue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,11 @@ public class Lever : MonoBehaviour
         if (checkWires())
         {
             player.GetComponent<PlayerController>().OnBack();
+            objectSuccessDialogue.TriggerDialogue();
+        }
+        else
+        {
+            objectFailDialogue.TriggerDialogue();
         }
     }
     

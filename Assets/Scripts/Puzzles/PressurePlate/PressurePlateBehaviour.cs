@@ -13,6 +13,7 @@ public class PressurePlateBehaviour : MonoBehaviour
     [SerializeField] private GameObject OpenDoor;
     [SerializeField] GameObject statue;
     [SerializeField] GameObject lightPoint;
+    [SerializeField] DialogueTrigger objectDialogue;
 
 
     // Start is called before the first frame update

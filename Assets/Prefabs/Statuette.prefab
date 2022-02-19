@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 386547295207710692}
   - component: {fileID: 7024756205392531193}
   - component: {fileID: 5913400858476526278}
+  - component: {fileID: 6576620296338895570}
+  - component: {fileID: 8147917024435047475}
   m_Layer: 0
   m_Name: Statuette
   m_TagString: Untagged
@@ -48,6 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectCamera: {fileID: 0}
+  objectSherlockDialogue: {fileID: 6576620296338895570}
+  objectWatsonDialogue: {fileID: 8147917024435047475}
   isPickup: 0
 --- !u!33 &2772169881424099502
 MeshFilter:
@@ -128,3 +132,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 90
   m_CollisionDetection: 0
+--- !u!114 &6576620296338895570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6542827281476453599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42776f9598c561b4f8c976ce7f781b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 11400000, guid: cfb407b7771b8e148876d2cb33323273, type: 2}
+--- !u!114 &8147917024435047475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6542827281476453599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42776f9598c561b4f8c976ce7f781b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 11400000, guid: 255cbe924812d1c4fbedef2cbc7ef338, type: 2}
