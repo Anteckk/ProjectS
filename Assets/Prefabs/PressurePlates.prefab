@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1716976749}
   - component: {fileID: 3949678484434627650}
   - component: {fileID: 4862910445304397688}
+  - component: {fileID: 3289466712493509154}
   m_Layer: 0
   m_Name: PressurePlates
   m_TagString: Untagged
@@ -63,9 +64,12 @@ MonoBehaviour:
   isSteppedOn: 0
   objectsList: []
   otherPlate: {fileID: 0}
-  doorBehaviour: {fileID: 0}
+  ClosedDoor: {fileID: 0}
+  OpenDoor: {fileID: 0}
   statue: {fileID: 0}
   lightPoint: {fileID: 0}
+  objectDialogue: {fileID: 0}
+  NavMeshObstacle: {fileID: 0}
 --- !u!33 &3949678484434627650
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -115,3 +119,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3289466712493509154
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570273193348012370}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.657, y: 0.265, z: 0.657}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

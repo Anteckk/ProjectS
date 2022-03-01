@@ -38,15 +38,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CameraBehaviour camBrain;
     [SerializeField] DialogueTrigger contextDialogue;
 
-    public float idleTimeSetting = 60f;
-    private float LastIdleTime;
-
 
     private void Awake()
     {
         Debug.Log("Player Awake");
         UICharacterChange = FindObjectOfType<UICharacterChange>();
-        LastIdleTime = Time.time;
     }
 
     // Start is called before the first frame update
@@ -109,19 +105,6 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         }
     }
-
-    private void Update()
-    {
-        if (Input.anyKey)
-        {
-            LastIdleTime = Time.time;
-        }
-        else if(Time.time - LastIdleTime > idleTimeSetting)
-        {
-            SceneManager.LoadScene(0);
-        }
-    }
-
     public bool isItSherlock()
     {
         return isSherlock;
@@ -145,6 +128,7 @@ public class PlayerController : MonoBehaviour
 
             if (isSherlock)
             {
+                
                 agent.speed = 10;
                 meshRenderer.material = SherlockMaterial;
                 if (redObjects != null)
@@ -166,6 +150,11 @@ public class PlayerController : MonoBehaviour
                         redObject.GetComponent<MeshRenderer>().material.color = redCableMaterial.color;
                     }
                 }
+            }
+            
+            foreach (PressurePlateBehaviour plate in plates)
+            {
+                plate.togglePlates(isSherlock);
             }
         }
     }

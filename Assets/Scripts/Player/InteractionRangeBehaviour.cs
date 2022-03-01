@@ -12,9 +12,12 @@ public class InteractionRangeBehaviour : MonoBehaviour
     public Canvas InteractioncanCanvas;
     public TMP_Text InteractedObject;
 
+    private PlayerController _playerController;
+
     // Start is called before the first frame update
     void Start()
     {
+        _playerController = GetComponentInParent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -28,6 +31,11 @@ public class InteractionRangeBehaviour : MonoBehaviour
         Interactable interactable = other.gameObject.GetComponent<Interactable>();
         triggeredObject = other.gameObject;
 
+        if (!_playerController.isItSherlock() && other.gameObject.GetComponent<PressurePlateBehaviour>())
+        {
+            other.GetComponent<PressurePlateBehaviour>().objectDialogue.TriggerDialogue();
+        }
+        
         if (interactable != null)
         {
             interactableObject = interactable;

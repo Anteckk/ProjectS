@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PressurePlateBehaviour : MonoBehaviour
 {
@@ -13,12 +14,16 @@ public class PressurePlateBehaviour : MonoBehaviour
     [SerializeField] private GameObject OpenDoor;
     [SerializeField] GameObject statue;
     [SerializeField] GameObject lightPoint;
-    [SerializeField] DialogueTrigger objectDialogue;
+    [SerializeField] public DialogueTrigger objectDialogue;
+    [SerializeField] private NavMeshObstacle NavMeshObstacle;
 
 
     // Start is called before the first frame update
     void Start()
     {
+
+        NavMeshObstacle = GetComponent<NavMeshObstacle>();
+
     }
 
     // Update is called once per frame
@@ -110,4 +115,17 @@ public class PressurePlateBehaviour : MonoBehaviour
     {
         lightPoint.GetComponent<Light>().intensity = 1;
     }
+
+    public void togglePlates(bool prmIsSherlock)
+    {
+        if (prmIsSherlock && NavMeshObstacle.enabled)
+        {
+            NavMeshObstacle.enabled = false;
+        }
+        else
+        {
+            NavMeshObstacle.enabled = true;
+        }
+    }
+    
 }
