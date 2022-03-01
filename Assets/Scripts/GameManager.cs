@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public Image dialogueBox;
+    public GameObject dialogueBox;
     public CanvasGroup UICanvas;
-    public Animator animator;
 
     private Queue<string> sentences = new Queue<string>();
     private Inventory.Inventory _playerInventory;
@@ -136,8 +135,7 @@ public class GameManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        animator.SetBool("IsOpen", true);
-
+        dialogueBox.SetActive(true);
         Debug.Log("Starting dialogue with " + dialogue.name);
         sentences.Clear();
         dialogueBox.GetComponent<DialogueBox>().nameText.text = dialogue.name;
@@ -168,7 +166,7 @@ public class GameManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        animator.SetBool("IsOpen", false);
+        dialogueBox.SetActive(false);
     }
 
     IEnumerator TypeSentence(string sentence)
@@ -177,7 +175,7 @@ public class GameManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueBox.GetComponent<DialogueBox>().dialogueText.text += letter;
-            yield return null;
+            yield return new WaitForSeconds(0.01f);
         }
         Time.timeScale = 0;
     }

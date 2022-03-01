@@ -408,9 +408,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4681c88bdc8b6469084401ed7da067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueBox: {fileID: 819865962}
+  dialogueBox: {fileID: 1994456069}
   UICanvas: {fileID: 1942007368}
-  animator: {fileID: 819865958}
   State: 1
   spawnPointHasBeenSet: 0
   statuetteIsPickedUp: 0
@@ -612,22 +611,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &819865958 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1001899642, guid: e2d4ef4633ce213428bb696dade9b42d, type: 3}
-  m_PrefabInstance: {fileID: 1994456068}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &819865962 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 913605518, guid: e2d4ef4633ce213428bb696dade9b42d, type: 3}
-  m_PrefabInstance: {fileID: 1994456068}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &874959549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 610336543182850958, guid: eddc17d379e7e324c84747b4a88050a4, type: 3}
@@ -1962,6 +1945,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2d4ef4633ce213428bb696dade9b42d, type: 3}
+--- !u!1 &1994456069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 913605516, guid: e2d4ef4633ce213428bb696dade9b42d, type: 3}
+  m_PrefabInstance: {fileID: 1994456068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2026209222
 GameObject:
   m_ObjectHideFlags: 0

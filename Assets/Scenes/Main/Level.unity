@@ -1504,9 +1504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4681c88bdc8b6469084401ed7da067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueBox: {fileID: 2094965374}
+  dialogueBox: {fileID: 1859833191}
   UICanvas: {fileID: 2094965375}
-  animator: {fileID: 2094965373}
   State: 2
   spawnPointHasBeenSet: 0
   statuetteIsPickedUp: 0
@@ -3229,6 +3228,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 610336543182850958, guid: eddc17d379e7e324c84747b4a88050a4, type: 3}
   m_PrefabInstance: {fileID: 1856224546}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1859833191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 913605516, guid: e2d4ef4633ce213428bb696dade9b42d, type: 3}
+  m_PrefabInstance: {fileID: 2094965372}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1894067982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3507,22 +3511,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2d4ef4633ce213428bb696dade9b42d, type: 3}
---- !u!95 &2094965373 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1001899642, guid: e2d4ef4633ce213428bb696dade9b42d, type: 3}
-  m_PrefabInstance: {fileID: 2094965372}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2094965374 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 913605518, guid: e2d4ef4633ce213428bb696dade9b42d, type: 3}
-  m_PrefabInstance: {fileID: 2094965372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!225 &2094965375 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 2094965376, guid: e2d4ef4633ce213428bb696dade9b42d, type: 3}

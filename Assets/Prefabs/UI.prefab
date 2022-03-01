@@ -279,14 +279,13 @@ GameObject:
   - component: {fileID: 913605519}
   - component: {fileID: 913605518}
   - component: {fileID: 913605520}
-  - component: {fileID: 1001899642}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &913605517
 RectTransform:
   m_ObjectHideFlags: 0
@@ -361,25 +360,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1612041753}
   dialogueText: {fileID: 560784597}
---- !u!95 &1001899642
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913605516}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 308cb9d62e42bfa428887e2bb6d3d56d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1075838190
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +425,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next
+  m_text: Continuer ...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9880f7f89617122408ad449c2beaa226, type: 2}
   m_sharedMaterial: {fileID: -8061342422251644997, guid: 9880f7f89617122408ad449c2beaa226, type: 2}
@@ -1010,6 +990,7 @@ MonoBehaviour:
   anim: {fileID: 2286413026435829017}
   raycastBlocker: {fileID: 2197707426062803155}
   selectedItem: {fileID: 2286413027108318151}
+  inventoryWheelSelected: 0
 --- !u!95 &2286413026435829017
 Animator:
   serializedVersion: 3
