@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3226bcf67e0abb5429673ae638b256da, type: 3}
   m_Name: Sherlock_TouchCrate_Dialogue
   m_EditorClassIdentifier: 
-  name: Sherlock
-  texts:
-  - Watson, rends toi utile.
+  dialogueStruct:
+  - name: Sherlock
+    texts:
+    - Watson, rends toi utile.

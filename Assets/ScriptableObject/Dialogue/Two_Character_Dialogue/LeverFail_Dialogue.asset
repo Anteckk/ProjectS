@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3226bcf67e0abb5429673ae638b256da, type: 3}
   m_Name: LeverFail_Dialogue
   m_EditorClassIdentifier: 
-  name: Watson
-  texts:
-  - Aie!
+  dialogueStruct:
+  - name: Watson
+    texts:
+    - Aie!
+  - name: Sherlock
+    texts:
+    - J'ai bien fais de ne pas le faire ...

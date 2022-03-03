@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
     public GameObject dialogueBox;
     public CanvasGroup UICanvas;
 
-    private Queue<string> sentences = new Queue<string>();
+    private Queue<Dialogue.DialogueStruct> dialogueStructQueue = new Queue<Dialogue.DialogueStruct>();
+    private Dialogue.DialogueStruct dialogueStruct;
     private Inventory.Inventory _playerInventory;
+    private int NumberInArray;
 
     public GameState State;
     public bool spawnPointHasBeenSet = false;
@@ -82,8 +84,6 @@ public class GameManager : MonoBehaviour
 
                 UIManager.instance.wheelController.inventoryWheelSelected = false;
                 break;
-            default:
-                break;
         }
     }
 
@@ -136,39 +136,59 @@ public class GameManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         dialogueBox.SetActive(true);
-        Debug.Log("Starting dialogue with " + dialogue.name);
-        sentences.Clear();
-        dialogueBox.GetComponent<DialogueBox>().nameText.text = dialogue.name;
-        if (dialogue.name != "")
+        Debug.Log("DialogueBox.isActive : " + dialogueBox.activeSelf);
+        dialogueStructQueue.Clear();
+        foreach (Dialogue.DialogueStruct dialogueStructure in dialogue.dialogueStruct)
         {
-            dialogueBox.GetComponent<DialogueBox>().nameText.text += " : ";
+            dialogueStructQueue.Enqueue(dialogueStructure);
         }
-        foreach (string text in dialogue.texts)
+        SetupDialogue();
+    }
+
+    public void SetupDialogue()
+    {
+        if (dialogueStructQueue.Count != 0)
         {
-            sentences.Enqueue(text);
-            Debug.Log(text);
+            dialogueStruct = dialogueStructQueue.Dequeue();
+            NumberInArray = 0;
+            NextSentenceDialogue();
         }
-        NextSentenceDialogue();
+        else
+        {
+            EndDialogue();
+        }
     }
 
     public void NextSentenceDialogue()
     {
-        if (sentences.Count == 0)
+        if (dialogueStruct.texts.Length > NumberInArray)
         {
-            EndDialogue();
             Time.timeScale = 1;
-            return;
+            StopAllCoroutines();
+            StartCoroutine(TypeName(dialogueStruct.name));
+            StartCoroutine(TypeSentence(dialogueStruct.texts[NumberInArray]));
+            NumberInArray++;
         }
-        string sentence = sentences.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        else
+        {
+            SetupDialogue();
+        }
     }
-
     private void EndDialogue()
     {
         dialogueBox.SetActive(false);
+        Time.timeScale = 1;
     }
 
+    IEnumerator TypeName(string name)
+    {
+        dialogueBox.GetComponent<DialogueBox>().nameText.text = "";
+        foreach (char letter in name.ToCharArray())
+        {
+            dialogueBox.GetComponent<DialogueBox>().nameText.text += letter;
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
     IEnumerator TypeSentence(string sentence)
     {
         dialogueBox.GetComponent<DialogueBox>().dialogueText.text = "";

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3226bcf67e0abb5429673ae638b256da, type: 3}
   m_Name: Sherlock_GasOff_Dialogue
   m_EditorClassIdentifier: 
-  name: Sherlock
-  texts:
-  - "D\xE9couvrons ce qui ce cache derri\xE8re ..."
+  dialogueStruct:
+  - name: Sherlock
+    texts:
+    - "D\xE9couvrons ce qui ce cache derri\xE8re."

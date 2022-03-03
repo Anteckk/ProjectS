@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3226bcf67e0abb5429673ae638b256da, type: 3}
   m_Name: TouchCable_Dialogue
   m_EditorClassIdentifier: 
-  name: Sherlock
-  texts:
-  - "Pourquoi ces deux fils sont de la m\xEAme couleurs ?"
+  dialogueStruct:
+  - name: Sherlock
+    texts:
+    - "Pourquoi ces deux fils sont de la m\xEAme couleurs ?"
+  - name: Watson
+    texts:
+    - Laisse moi faire.

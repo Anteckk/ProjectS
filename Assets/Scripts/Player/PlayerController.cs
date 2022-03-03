@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.transform.position = GameManager.instance.GetLastHubSpawnPoint();
         }
-
         if (GameManager.instance.State == GameState.HUB && !GameManager.instance.spawnPointHasBeenSet)
         {
             contextDialogue.TriggerDialogue();
