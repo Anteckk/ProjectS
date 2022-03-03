@@ -20,6 +20,7 @@ public class CameraBehaviour : MonoBehaviour
     private CinemachineOrbitalTransposer OrbitalTransposer;
 
     public PlayerController player;
+    private float distFromCam;
 
     [FormerlySerializedAs("WallEmptyGameObject")]
     public GameObject WallGameObject;
@@ -37,9 +38,6 @@ public class CameraBehaviour : MonoBehaviour
         {
             _walls.Add(WallGameObject.transform.GetChild(i).gameObject);
         }
-
-        Debug.Log("Added walls to walls array. childCount : " + WallGameObject.transform.childCount
-                                                              + ". Walls length : " + _walls.Count);
     }
 
     // Start is called before the first frame update
@@ -47,8 +45,7 @@ public class CameraBehaviour : MonoBehaviour
     {
         OrbitalTransposer = cinemachineOrbitalTransposer.GetCinemachineComponent<CinemachineOrbitalTransposer>();
         OrbitalTransposer.m_XAxis.m_MaxSpeed = 0;
-
-        player = GetComponentInParent<PlayerController>();
+        distFromCam = (player.transform.position - camera.transform.position).magnitude;
     }
 
 
@@ -73,16 +70,15 @@ public class CameraBehaviour : MonoBehaviour
     public void WallTransparency()
     {
         var transformCamera = camera.transform;
-        if (Physics.SphereCast(transformCamera.position, 1, transformCamera.forward, out hit))
+
+        if (Physics.SphereCast(transformCamera.position, 1, transformCamera.forward, out hit,
+                distFromCam, LayerMask.GetMask("RayTraceBlocker")))
         {
-            if (hit.transform.gameObject.CompareTag("WallCenterTrigger"))
-                {
-                    SetWallState("WallCenter", false);
-                }
-            else
-            {
-                SetWallState("WallCenter", true);
-            }
+            SetWallState("WallCenter", false);
+        }
+        else
+        {
+            SetWallState("WallCenter", true);
         }
 
 
