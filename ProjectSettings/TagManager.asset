@@ -7,7 +7,12 @@ TagManager:
   - UI
   - Cable
   - CablePlace
-  - Wall
+  - WallWest
+  - WallEast
+  - WallSouth
+  - WallNorth
+  - WallCenter
+  - WallCenterTrigger
   layers:
   - Default
   - TransparentFX
@@ -16,12 +21,12 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - Player
   - Pressure plate
   - Crate
   - ElectricityPanel
   - Coin
-  - 
+  - RayTraceBlocker
   - 
   - 
   - 
