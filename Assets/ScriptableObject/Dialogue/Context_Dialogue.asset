@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3226bcf67e0abb5429673ae638b256da, type: 3}
   m_Name: Context_Dialogue
   m_EditorClassIdentifier: 
-  name: 
-  texts:
-  - Sherlock et Watosn sont toujours prisonniers de Moriarty
-  - "Aide les \xE0 r\xE9soudre les \xE9nigmes de cette salle pour progresser vers
-    la sortie."
+  dialogueStruct:
+  - name: ' '
+    texts:
+    - 'Sherlock et Watson sont toujours prisonniers de Moriarty. '
+    - "Aide les \xE0 r\xE9soudre les \xE9nigmes de cette salle pour progresser vers
+      la sortie."

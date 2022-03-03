@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3226bcf67e0abb5429673ae638b256da, type: 3}
   m_Name: Watson_TouchGas_Dialogue
   m_EditorClassIdentifier: 
-  name: Watson
-  texts:
-  - '*Tousse Tousse*'
-  - Impossible de passer.
+  dialogueStruct:
+  - name: Watson
+    texts:
+    - <i>Tousse Tousse</i>
+    - Impossible de passer.

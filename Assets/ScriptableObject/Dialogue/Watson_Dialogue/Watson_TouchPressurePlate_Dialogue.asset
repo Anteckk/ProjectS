@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3226bcf67e0abb5429673ae638b256da, type: 3}
   m_Name: Watson_TouchPressurePlate_Dialogue
   m_EditorClassIdentifier: 
-  name: Watson
-  texts:
-  - "\xC7a me rappelle de mauvais souvenir, je ne veux pas le faire Sherlock."
+  dialogueStruct:
+  - name: Watson
+    texts:
+    - "\xC7a me rappelle de mauvais souvenir, je ne veux pas le faire Sherlock."
