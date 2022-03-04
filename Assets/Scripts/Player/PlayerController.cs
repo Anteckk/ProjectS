@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] GameObject Hand;
+    [SerializeField] public GameObject Hand;
     [SerializeField] GameObject crate;
     [SerializeField] GameObject switchPanel;
     [SerializeField] Material redCableMaterial;
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private List<GameObject> redObjects;
     private Transform previousSpawnPoint = null;
     private Transform spawnPoint;
-    private GameObject crateTaken;
+    private Interactable crateTaken;
     private UICharacterChange UICharacterChange;
     private PressurePlateBehaviour[] plates;
     private Vector3 movement;
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
        // rb.velocity = direction * speed + rb.velocity.y * Vector3.up;
@@ -96,8 +96,9 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = new Vector3(movementCam.x, 0f, movementCam.z);
          
         movement.Set(direction.x, 0f, direction.z);
-        agent.Move(movement * (Time.deltaTime * agent.speed));
-        agent.SetDestination(transform.position + movement);
+        //agent.Move(movement * (Time.deltaTime * agent.speed));
+        //agent.SetDestination(transform.position + movement);
+        agent.velocity = movement * agent.speed;
         if (XZAxis.magnitude != 0)
         {
             Quaternion rotation = Quaternion.LookRotation(direction);
@@ -244,10 +245,11 @@ public class PlayerController : MonoBehaviour
     public void TakeCrate()
     {
         isLifting = true;
-        crateTaken = Instantiate(crate, Hand.transform);
-
-        crateTaken.GetComponent<Rigidbody>().useGravity = false;
-        crateTaken.GetComponent<Rigidbody>().isKinematic = true;
+        
+        crateTaken = interactedObject = GetComponentInChildren<InteractionRangeBehaviour>().getInteractableObject();
+        
+        crateTaken.GetComponent<Rigidbody>().constraints.Equals(RigidbodyConstraints.FreezeAll);
+        
         crateTaken.GetComponent<TakeObjet>().isTaken();
     }
 
@@ -256,6 +258,7 @@ public class PlayerController : MonoBehaviour
         isLifting = false;
         crateTaken.GetComponent<Rigidbody>().useGravity = true;
         crateTaken.GetComponent<Rigidbody>().isKinematic = false;
+        crateTaken.GetComponent<Rigidbody>().constraints.Equals(RigidbodyConstraints.None);
     }
 
     public void RemoveFromPlate(GameObject prmGameObject)

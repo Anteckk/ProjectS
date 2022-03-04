@@ -4,13 +4,13 @@ public class TakeObjet : Interactable
 {
     private bool isTake;
 
-    private GameObject player;
+    private PlayerController player;
     [SerializeField] DialogueTrigger objectDialogue;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 
     public override void action()
@@ -28,7 +28,7 @@ public class TakeObjet : Interactable
     }
     public override bool isGoodPlayer()
     {
-        if (!player.GetComponent<PlayerController>().isItSherlock())
+        if (!player.isItSherlock())
         {
             return true;
         }
@@ -39,20 +39,25 @@ public class TakeObjet : Interactable
     {
         Debug.Log("release crate");
         isTake = false;
-        player.GetComponent<PlayerController>().ReleaseCrate();
+        player.ReleaseCrate();
+        
+        CancelInvoke();
 
         transform.parent = null;
     }
 
     private void take()
     {
-        if (!player.GetComponent<PlayerController>().isItSherlock())
+        if (!player.isItSherlock())
         {
             isTaken();
+            
             Debug.Log("take crate");
-            player.GetComponent<PlayerController>().TakeCrate();
-            player.GetComponent<PlayerController>().RemoveFromPlate(gameObject);
-            Destroy(gameObject);
+            player.TakeCrate();
+            player.RemoveFromPlate(gameObject);
+            
+            InvokeRepeating("UpdatePosition", 0f,0.1f);
+            
         }
         else
         {
@@ -61,6 +66,11 @@ public class TakeObjet : Interactable
                 objectDialogue.TriggerDialogue();
             }
         }
+    }
+
+    public void UpdatePosition()
+    {
+        transform.position = (player.Hand.transform.position - transform.position).normalized * Time.deltaTime;
     }
 
     public void isTaken()
