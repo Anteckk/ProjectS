@@ -121,49 +121,52 @@ public class PlayerController : MonoBehaviour
 
     public void switchCharacter()
     {
-        if (!isLifting && !UICharacterChange.isTurning)
+        if (Time.timeScale > 0)
         {
-            //Trigger the character coin rotating
-            UICharacterChange.Switch();
-            // Check which character we played to change it
-            if (isSherlock)
+            if (!isLifting && !UICharacterChange.isTurning)
             {
-                isSherlock = false;
-            }
-            else
-            {
-                isSherlock = true;
-            }
+                //Trigger the character coin rotating
+                UICharacterChange.Switch();
+                // Check which character we played to change it
+                if (isSherlock)
+                {
+                    isSherlock = false;
+                }
+                else
+                {
+                    isSherlock = true;
+                }
 
-            if (isSherlock)
-            {
+                if (isSherlock)
+                {
                 
-                agent.speed = 10;
-                meshRenderer.material = SherlockMaterial;
-                if (redObjects != null)
-                {
-                    foreach (var redObject in redObjects)
+                    agent.speed = 10;
+                    meshRenderer.material = SherlockMaterial;
+                    if (redObjects != null)
                     {
-                        redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
+                        foreach (var redObject in redObjects)
+                        {
+                            redObject.GetComponent<MeshRenderer>().material.color = blueCableMaterial.color;
+                        }
                     }
                 }
-            }
-            else
-            {
-                agent.speed = 15;
-                meshRenderer.material = WatsonMaterial;
-                if (redObjects != null)
+                else
                 {
-                    foreach (var redObject in redObjects)
+                    agent.speed = 15;
+                    meshRenderer.material = WatsonMaterial;
+                    if (redObjects != null)
                     {
-                        redObject.GetComponent<MeshRenderer>().material.color = redCableMaterial.color;
+                        foreach (var redObject in redObjects)
+                        {
+                            redObject.GetComponent<MeshRenderer>().material.color = redCableMaterial.color;
+                        }
                     }
                 }
-            }
             
-            foreach (PressurePlateBehaviour plate in plates)
-            {
-                plate.togglePlates(isSherlock);
+                foreach (PressurePlateBehaviour plate in plates)
+                {
+                    plate.togglePlates(isSherlock);
+                }
             }
         }
     }
