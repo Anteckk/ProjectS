@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class StatueScript : Interactable
@@ -7,6 +8,7 @@ public class StatueScript : Interactable
 
     [SerializeField] DialogueTrigger objectSherlockDialogue;
     [SerializeField] DialogueTrigger objectWatsonDialogue;
+    [SerializeField] List<GameObject> _walls = new List<GameObject>();
 
     public bool isPickup;
     // Start is called before the first frame update
@@ -62,4 +64,21 @@ public class StatueScript : Interactable
             player.GetComponentInChildren<Canvas>().enabled = false;
         }
     }
+
+    public void RemoveMidWalls()
+    {
+        foreach (GameObject wall in _walls)
+        {
+            wall.SetActive(false);
+        }
+    }
+
+    public void RespawnMidWalls()
+    {
+        foreach (GameObject wall in _walls)
+        {
+            wall.SetActive(true);
+        }
+    }
+    
 }

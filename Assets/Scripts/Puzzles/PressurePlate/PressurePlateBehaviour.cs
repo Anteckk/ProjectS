@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Playables;
 
 public class PressurePlateBehaviour : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PressurePlateBehaviour : MonoBehaviour
     public List<GameObject> objectsList = new List<GameObject>();
 
     [SerializeField] PressurePlateBehaviour otherPlate;
+    [SerializeField] PlayableDirector StatuetteCinematic;
     [SerializeField] GameObject ClosedDoor;
     [SerializeField] private GameObject OpenDoor;
     [SerializeField] GameObject statue;
@@ -94,19 +96,9 @@ public class PressurePlateBehaviour : MonoBehaviour
         {
             if (ClosedDoor.activeSelf)
             {
+                StatuetteCinematic.Play();
                 ClosedDoor.SetActive(false);
                 OpenDoor.SetActive(true);
-            }
-            
-            Debug.Log("Spawn");
-            GameObject statueInstance = Instantiate(statue, new Vector3(-25, 35, -4),new Quaternion(0,0,0,1));
-
-            var script = statueInstance.GetComponent<StatueScript>();
-            if (!script.getIsPickup())
-            {
-               
-                script.setIsPickup(true);
-                script.GetComponent<Rigidbody>().useGravity = true;
             }
         }
     }
