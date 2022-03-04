@@ -4,8 +4,7 @@ using UI;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-using Random = UnityEngine.Random;
+
 
 
 public class PlayerController : MonoBehaviour
@@ -20,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private float rotationSpeed;
     private bool isSherlock;
     private bool isLifting;
-    private Rigidbody rb;
+    private Rigidbody Rigidbody;
     private MeshRenderer meshRenderer;
     public Material SherlockMaterial;
     public Material WatsonMaterial;
@@ -56,7 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             contextDialogue.TriggerDialogue();
         }
-        rb = GetComponent<Rigidbody>();
+        Rigidbody = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 10;
@@ -98,9 +97,19 @@ public class PlayerController : MonoBehaviour
         movement.Set(direction.x, 0f, direction.z);
         //agent.Move(movement * (Time.deltaTime * agent.speed));
         //agent.SetDestination(transform.position + movement);
-        agent.velocity = movement * agent.speed;
+        if (XZAxis.magnitude == 0)
+        {
+            agent.velocity = Vector3.zero;
+            Rigidbody.velocity = Vector3.zero;
+        }
+        else
+        {
+            agent.velocity = movement * agent.speed;
+        }
+        
         if (XZAxis.magnitude != 0)
         {
+            
             Quaternion rotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         }
@@ -247,9 +256,9 @@ public class PlayerController : MonoBehaviour
         isLifting = true;
         
         crateTaken = interactedObject = GetComponentInChildren<InteractionRangeBehaviour>().getInteractableObject();
-        
+
+        crateTaken.GetComponent<Rigidbody>().useGravity = false;
         crateTaken.GetComponent<Rigidbody>().constraints.Equals(RigidbodyConstraints.FreezeAll);
-        
         crateTaken.GetComponent<TakeObjet>().isTaken();
     }
 
@@ -275,5 +284,9 @@ public class PlayerController : MonoBehaviour
     {
         return transform.position;
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+    }
 }

@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public bool statuetteIsPickedUp = false;
     private Vector3 currentRoomCheckPoint;
     private DialogueBox DialogueText;
+    private GameObject PlayerController;
     [SerializeField] Vector3 lastHubSpawnPoint;
 
     private void Awake()
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
             UICanvas.interactable = false;
         }
 
+        PlayerController = GameObject.FindWithTag("Player");
         DialogueText = dialogueBox.GetComponent<DialogueBox>();
     }
 
@@ -139,6 +141,7 @@ public class GameManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         dialogueBox.SetActive(true);
+        PlayerController.GetComponent<PlayerController>().GetComponent<PlayerInput>().enabled = false;
         Debug.Log("DialogueBox.isActive : " + dialogueBox.activeSelf);
         dialogueStructQueue.Clear();
         foreach (Dialogue.DialogueStruct dialogueStructure in dialogue.dialogueStruct)
@@ -180,6 +183,7 @@ public class GameManager : MonoBehaviour
     {
         dialogueBox.SetActive(false);
         Time.timeScale = 1;
+        PlayerController.GetComponent<PlayerController>().GetComponent<PlayerInput>().enabled = true;
     }
 
     public void TypeName(string name)

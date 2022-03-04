@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TakeObjet : Interactable
@@ -40,10 +41,8 @@ public class TakeObjet : Interactable
         Debug.Log("release crate");
         isTake = false;
         player.ReleaseCrate();
-        
-        CancelInvoke();
 
-        transform.parent = null;
+        player.Hand.transform.DetachChildren();
     }
 
     private void take()
@@ -56,8 +55,10 @@ public class TakeObjet : Interactable
             player.TakeCrate();
             player.RemoveFromPlate(gameObject);
             
-            InvokeRepeating("UpdatePosition", 0f,0.1f);
             
+            transform.SetParent(player.Hand.transform);
+            transform.SetPositionAndRotation(player.Hand.transform.position, player.Hand.transform.rotation); 
+
         }
         else
         {
@@ -68,9 +69,12 @@ public class TakeObjet : Interactable
         }
     }
 
-    public void UpdatePosition()
+    private void OnCollisionEnter(Collision collision)
     {
-        transform.position = (player.Hand.transform.position - transform.position).normalized * Time.deltaTime;
+        if(isTake)
+        {
+            release();
+        }
     }
 
     public void isTaken()
