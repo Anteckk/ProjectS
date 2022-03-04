@@ -1,18 +1,24 @@
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 public class ValveMechanics : Interactable
 {
-    [SerializeField] private GameObject GasCloud;
+    [SerializeField] PlayableDirector GasOffCinematic;
+    [SerializeField] PlayableDirector GasOnCinematic;
 
-    private PlayerController PC;
+    private PlayerController playerController;
 
     [SerializeField]  DialogueTrigger objectSherlockDialogue;
     [SerializeField]  DialogueTrigger objectWatsonDialogue;
+    private bool isActive;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        PC = FindObjectOfType<PlayerController>();
+        playerController = FindObjectOfType<PlayerController>();
+        isActive = true;
     }
 
     // Update is called once per frame
@@ -34,11 +40,12 @@ public class ValveMechanics : Interactable
 
     public void gasControl()
     {
-        if (GasCloud.active)
+        if (isActive)
         {
-            GasCloud.SetActive(false);
+            GasOffCinematic.Play();
             Debug.Log("Gas off");
-            if (PC.isItSherlock())
+            isActive = false;
+            if (playerController.isItSherlock())
             {
                 objectSherlockDialogue.TriggerDialogue();;
             }
@@ -49,7 +56,8 @@ public class ValveMechanics : Interactable
         }
         else
         {
-            GasCloud.SetActive(true);
+            GasOnCinematic.Play();
+            isActive = true;
             Debug.Log("Gas on");
         }
     }
