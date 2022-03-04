@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
        // rb.velocity = direction * speed + rb.velocity.y * Vector3.up;
