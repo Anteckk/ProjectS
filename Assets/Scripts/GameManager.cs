@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public bool spawnPointHasBeenSet = false;
     public bool statuetteIsPickedUp = false;
     private Vector3 currentRoomCheckPoint;
+    private DialogueBox DialogueText;
     [SerializeField] Vector3 lastHubSpawnPoint;
 
     private void Awake()
@@ -26,7 +28,6 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            Init();
         }
         else
         {
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Init()
+    private void Start()
     {
         InitInventory();
         if (State == GameState.MAINMENU)
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour
             UICanvas.blocksRaycasts = false;
             UICanvas.interactable = false;
         }
+
+        DialogueText = dialogueBox.GetComponent<DialogueBox>();
     }
 
 
@@ -163,9 +166,8 @@ public class GameManager : MonoBehaviour
     {
         if (dialogueStruct.texts.Length > NumberInArray)
         {
-            Time.timeScale = 1;
             StopAllCoroutines();
-            StartCoroutine(TypeName(dialogueStruct.name));
+            TypeName(dialogueStruct.name);
             StartCoroutine(TypeSentence(dialogueStruct.texts[NumberInArray]));
             NumberInArray++;
         }
@@ -180,24 +182,19 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    IEnumerator TypeName(string name)
+    public void TypeName(string name)
     {
-        dialogueBox.GetComponent<DialogueBox>().nameText.text = "";
-        foreach (char letter in name.ToCharArray())
-        {
-            dialogueBox.GetComponent<DialogueBox>().nameText.text += letter;
-            yield return new WaitForSeconds(0.01f);
-        }
+        dialogueBox.GetComponent<DialogueBox>().nameText.text = name;
     }
     IEnumerator TypeSentence(string sentence)
     {
-        dialogueBox.GetComponent<DialogueBox>().dialogueText.text = "";
+        Time.timeScale = 0;
+        DialogueText.dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
-            dialogueBox.GetComponent<DialogueBox>().dialogueText.text += letter;
-            yield return new WaitForSeconds(0.01f);
+            DialogueText.dialogueText.text += letter;
+            yield return new WaitForSecondsRealtime(0.01f);
         }
-        Time.timeScale = 0;
     }
 }
 
