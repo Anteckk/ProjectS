@@ -19,10 +19,11 @@ public class PlayerController : MonoBehaviour
     private float rotationSpeed;
     private bool isSherlock;
     private bool isLifting;
-    private Rigidbody Rigidbody;
-    private MeshRenderer meshRenderer;
+    public Rigidbody Rigidbody;
+    public SkinnedMeshRenderer meshRenderer;
     public Material SherlockMaterial;
     public Material WatsonMaterial;
+    public Animator Animator;
     [SerializeField] Camera camera;
     private Vector2 XZAxis;
     private Interactable interactedObject;
@@ -33,9 +34,10 @@ public class PlayerController : MonoBehaviour
     private UICharacterChange UICharacterChange;
     private PressurePlateBehaviour[] plates;
     private Vector3 movement;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     [SerializeField] CameraBehaviour camBrain;
     [SerializeField] DialogueTrigger contextDialogue;
+    
 
 
     private void Awake()
@@ -55,9 +57,6 @@ public class PlayerController : MonoBehaviour
         {
             contextDialogue.TriggerDialogue();
         }
-        Rigidbody = GetComponent<Rigidbody>();
-        meshRenderer = GetComponent<MeshRenderer>();
-        agent = GetComponent<NavMeshAgent>();
         agent.speed = 10;
         rotationSpeed = 10;
         isSherlock = true;
@@ -82,6 +81,8 @@ public class PlayerController : MonoBehaviour
         InvokeTransparencyWallFromCamera();
 
         camera.enabled = true;
+        
+        UIManager.instance.wheelController.RefreshUIItem();
     }
 
     // Update is called once per frame
@@ -113,6 +114,8 @@ public class PlayerController : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         }
+        
+        Animator.SetFloat("Movement", XZAxis.magnitude);
     }
     public bool isItSherlock()
     {
@@ -256,21 +259,22 @@ public class PlayerController : MonoBehaviour
 
     public void TakeCrate()
     {
+        Animator.SetBool("Carry", true);
         isLifting = true;
-        
         crateTaken = interactedObject = GetComponentInChildren<InteractionRangeBehaviour>().getInteractableObject();
 
         crateTaken.GetComponent<Rigidbody>().useGravity = false;
-        crateTaken.GetComponent<Rigidbody>().constraints.Equals(RigidbodyConstraints.FreezeAll);
+        crateTaken.GetComponent<Rigidbody>().constraints = (RigidbodyConstraints.FreezeAll);
         crateTaken.GetComponent<TakeObjet>().isTaken();
     }
 
     public void ReleaseCrate()
     {
         isLifting = false;
+        Animator.SetBool("Carry", false);
         crateTaken.GetComponent<Rigidbody>().useGravity = true;
         crateTaken.GetComponent<Rigidbody>().isKinematic = false;
-        crateTaken.GetComponent<Rigidbody>().constraints.Equals(RigidbodyConstraints.None);
+        crateTaken.GetComponent<Rigidbody>().constraints=(RigidbodyConstraints.None);
     }
 
     public void RemoveFromPlate(GameObject prmGameObject)
@@ -290,6 +294,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
+        //Debug.Log(collision.gameObject.name);
     }
 }

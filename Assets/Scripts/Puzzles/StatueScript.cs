@@ -57,8 +57,9 @@ public class StatueScript : Interactable
     {
         if (isPickup)
         {
+            Debug.Log("TESTING");
             GameManager.instance.GetPlayerInventory().AddItem(self);
-            //GameManager.instance.statuetteIsPickedUp = true;
+            GameManager.instance.statuetteIsPickedUp = true;
             UIManager.instance.wheelController.RefreshUIItem();
             gameObject.SetActive(false);
             player.GetComponentInChildren<Canvas>().enabled = false;

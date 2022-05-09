@@ -67,7 +67,7 @@ public class PressurePlateBehaviour : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         objectsList.Remove(other.gameObject);
-        Debug.Log("removed");
+        //Debug.Log("removed");
         if (isActive)
         {
             ChangePlateState();
@@ -76,7 +76,7 @@ public class PressurePlateBehaviour : MonoBehaviour
 
     public void ChangePlateState()
     {
-        Debug.Log(objectsList.Count);
+        //Debug.Log(objectsList.Count);
         if (objectsList.Count == 0)
         {
             isSteppedOn = false;
@@ -91,7 +91,7 @@ public class PressurePlateBehaviour : MonoBehaviour
 
     public void CheckPlates()
     {
-        Debug.Log("CheckPlates");
+        //Debug.Log("CheckPlates");
         if (otherPlate.getIsSteppedOn() && getIsSteppedOn())
         {
             if (ClosedDoor.activeSelf)

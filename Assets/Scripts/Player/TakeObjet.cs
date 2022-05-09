@@ -58,6 +58,7 @@ public class TakeObjet : Interactable
             
             transform.SetParent(player.Hand.transform);
             transform.SetPositionAndRotation(player.Hand.transform.position, player.Hand.transform.rotation); 
+            
 
         }
         else
@@ -71,9 +72,13 @@ public class TakeObjet : Interactable
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.name);
         if(isTake)
         {
-            release();
+            if(!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Floor") && !collision.gameObject.CompareTag("WallCenter") && !collision.gameObject.CompareTag("WallCenterTrigger"))
+            {
+                release();
+            }
         }
     }
 

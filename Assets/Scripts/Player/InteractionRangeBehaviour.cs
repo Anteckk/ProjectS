@@ -39,7 +39,7 @@ public class InteractionRangeBehaviour : MonoBehaviour
         if (interactable != null)
         {
             interactableObject = interactable;
-            Debug.Log("In Range");
+            //Debug.Log("In Range");
             if (interactable.isGoodPlayer())
             {
                 InteractioncanCanvas.enabled = true;
@@ -53,7 +53,7 @@ public class InteractionRangeBehaviour : MonoBehaviour
         if (other.gameObject.Equals(triggeredObject))
         {
             interactableObject = null;
-            Debug.Log("Not in Range");
+            //Debug.Log("Not in Range");
 
             InteractioncanCanvas.enabled = false;
         }
