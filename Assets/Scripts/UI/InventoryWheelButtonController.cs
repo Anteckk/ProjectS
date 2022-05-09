@@ -24,14 +24,15 @@ namespace UI
         {
             //If button iD is higher than current player inventory size Disableinteraction()
             //Else show the sprite of the item
-            if (iD >= GameManager.instance.GetPlayerInventory().GetInventorySize())
+
+            /*if (iD >= GameManager.instance.GetPlayerInventory().GetInventorySize())
             {
                 DisableInteraction();
             }
             else
             {
                 icon.sprite = GameManager.instance.GetPlayerInventory().GetItem(iD).ItemSprite;
-            }
+            }*/
         }
         
         /// <summary>

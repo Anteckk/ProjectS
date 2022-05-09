@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         dialogueBox.SetActive(true);
-        PlayerController.GetComponent<PlayerController>().GetComponent<PlayerInput>().enabled = false;
+        //PlayerController.GetComponent<PlayerController>().GetComponent<PlayerInput>().enabled = false;
         Debug.Log("DialogueBox.isActive : " + dialogueBox.activeSelf);
         dialogueStructQueue.Clear();
         foreach (Dialogue.DialogueStruct dialogueStructure in dialogue.dialogueStruct)
@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
     {
         dialogueBox.SetActive(false);
         Time.timeScale = 1;
-        PlayerController.GetComponent<PlayerController>().GetComponent<PlayerInput>().enabled = true;
+        //PlayerController.GetComponent<PlayerController>().GetComponent<PlayerInput>().enabled = true;
     }
 
     public void TypeName(string name)
